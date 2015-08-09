@@ -69,7 +69,7 @@ REGISTRATION_EMAIL_HTML = False
 LOGIN_REDIRECT_URL = '/profile/'
 
 # Grappelli Settings
-GRAPPELLI_ADMIN_TITLE='Estmator Admin'
+GRAPPELLI_ADMIN_TITLE = 'Estmator Admin'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
