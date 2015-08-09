@@ -1,10 +1,12 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from django.contrib.auth.models import User
 
 
 @python_2_unicode_compatible
 class Quote(models.Model):
+    user = models.ForeignKey(User, related_name='user_quotes')
     name = models.CharField(max_length=256)
 
     def __str__(self):
@@ -24,9 +26,9 @@ class Product(models.Model):
     # Inputs
     category = models.ForeignKey(Category)
     name = models.CharField(max_length=256)
-    counts = models.IntegerField()
+    counts = models.IntegerField(blank=True, null=True)
 
-    # Multipliers
+    # Piece Multipliers
     mins_piece = models.IntegerField()
     mult_dollies = models.IntegerField()
     m_cart = models.IntegerField()

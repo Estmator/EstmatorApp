@@ -17,8 +17,8 @@ class UserProfile(models.Model):
         related_name='profile',
         null=False
     )
-    cell = models.IntegerField()
-    desk = models.IntegerField()
+    cell = models.IntegerField(null=True)
+    desk = models.IntegerField(null=True)
 
     objects = models.Manager()
     active = ActiveProfileManager()
