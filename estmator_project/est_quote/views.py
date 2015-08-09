@@ -8,10 +8,10 @@ class QuoteCreateView(CreateView):
     template_name = 'quote.html'
     success_url = '/'
 
-    def get_form(self, form):
+    def get_form(self):
         form = super(QuoteCreateView, self).get_form()
-        form.fields['category'].queryset = Category.objects.all()
-        form.fields['products'].queryset = Product.objects.all()
+        # form.fields['category'].queryset = Category.objects.all()
+        # form.fields['products'].queryset = Product.objects.all()
         return form
 
     def form_valid(self, form):
@@ -25,7 +25,7 @@ class QuoteEditView(UpdateView):
     template_name = 'quote.html'
     success_url = '/'
 
-    def get_form(self, form):
+    def get_form(self):
         form = super(QuoteEditView, self).get_form()
         form.fields['category'].queryset = Category.objects.all()
         form.fields['products'].queryset = Product.objects.all()
