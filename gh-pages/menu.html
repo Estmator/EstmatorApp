@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Main Menu</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <!--<link href="jumbotron-narrow.css" rel="stylesheet">-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="container">
+    <div class="navbar navbar-default navbar-fixed-top">
+        <h2>Estmator</h2>
+        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-canvas=".canvas" data-disable-scrolling="false">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+
+    <button class="btn btn-lg btn-success" data-toggle="modal" data-target="#new_quote">New Quote</button>
+    <br>
+    <button class="btn btn-lg btn-success" data-toggle="modal" data-target="#edit_quote">Edit Quote</button>
+    <br>
+    <button class="btn btn-lg btn-success" data-toggle="modal" data-target="#new_client">New Client</button>
+    <br>
+    <button class="btn btn-lg btn-success" data-toggle="modal" data-target="#edit_client">Edit Client</button>
+
+</div> <!-- /container -->
+
+<div class="modal fade" id="new_quote" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">New Quote</h4>
+            </div>
+            <div class="modal-body">
+                <button class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#edit_quote">Existing Client</button>
+                <button class="btn btn-default">New Client</button>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit_quote" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Edit Quote</h4>
+            </div>
+            <div class="modal-body">
+                <div class="dropdown">
+                    <button id="dLabel" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Clients
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dLabel">
+                        <li data-dismiss="modal">StuffCorp</li>
+                        <li>Things Inc.</li>
+                        <li>Misc and Partners</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="./js/jasny-bootstrap.min.js"></script>
+<script src="./js/jquery.bootstrap-touchspin.js"></script>
+<script src="./js/main.js"></script>
+
+</body>
+</html>
