@@ -1,4 +1,13 @@
-@media (min-width: 768px) {
+@media (min-width: 0px) {
+    .form-inline .input-group > .form-control {
+        width: 75px;
+    }
+    .navmenu {
+        width: 150px;
+    }
+}
+
+@media (min-width: 992px) {
     .form-inline .input-group > .form-control {
         width: 75px;
     }
