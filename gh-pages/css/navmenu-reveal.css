@@ -30,11 +30,11 @@ html, body {
     body {
         padding: 0;
     }
-    .navbar {
-        right: auto;
-        background: none;
-        border: none;
-    }
+    /*.navbar {*/
+        /*right: auto;*/
+        /*background: none;*/
+        /*border: none;*/
+    /*}*/
     .canvas {
         padding: 0;
     }
