@@ -13,6 +13,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/jasny-bootstrap.min.css" rel="stylesheet">
     <link href="./css/jquery.bootstrap-touchspin.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="./css/navmenu-reveal.css" rel="stylesheet">
@@ -32,9 +33,9 @@
 <div class="navmenu navmenu-default navmenu-fixed-left">
     <a class="navmenu-brand" href="#">Categories</a>
     <ul class="nav navmenu-nav">
-        <li><a href="#">Chairs</a></li>
-        <li class="active"><a href="#">Tables</a></li>
-        <li><a href="#">Breakfast Cereals</a></li>
+        <li><a href="#cat_chairs">Chairs</a></li>
+        <li class="active"><a href="#cat_tables">Tables</a></li>
+        <li><a href="#cat_cereals">Breakfast Cereals</a></li>
     </ul>
     <ul class="nav navmenu-nav">
         <li class="dropdown">
@@ -69,7 +70,7 @@
         <p>Non-leading text in the container</p>
 
         <div class="form-inline">
-            <h2>Chairs</h2>
+            <h2 id="cat_chairs">Chairs</h2>
 
             <div class="form-group">
             <input id="demo1" type="text" value="10" name="demo1">
@@ -101,6 +102,108 @@
                     maxboostedstep: 10
                 });
             </script>
+            </div>
+
+            <h2 id="cat_tables">Tables</h2>
+
+            <div class="form-group">
+                <input class="spinner-box" id="table1" type="text" value="10" name="table1">
+                <label for="table1">Table 1</label>
+                <script>
+                    $("input[name='table1']").TouchSpin({
+                        min: 0,
+                        max: 9999,
+                        step: 1,
+                        decimals: 0,
+                        boostat: 5,
+                        maxboostedstep: 10
+                    });
+                </script>
+            </div>
+
+            <br><br>
+
+            <div class="form-group">
+                <input id="table2" type="text" value="20" name="table2">
+                <label for="table2">Table 2</label>
+                <script>
+                    $("input[name='table2']").TouchSpin({
+                        min: 0,
+                        max: 9999,
+                        step: 1,
+                        decimals: 0,
+                        boostat: 5,
+                        maxboostedstep: 10
+                    });
+                </script>
+            </div>
+
+            <br><br>
+
+            <div class="form-group">
+                <input id="table3" type="text" value="20" name="table3">
+                <label for="table3">Table 3</label>
+                <script>
+                    $("input[name='table3']").TouchSpin({
+                        min: 0,
+                        max: 9999,
+                        step: 1,
+                        decimals: 0,
+                        boostat: 5,
+                        maxboostedstep: 10
+                    });
+                </script>
+            </div>
+
+            <br><br>
+
+            <div class="form-group">
+                <input id="table4" type="text" value="20" name="table4">
+                <label for="table4">Table 4</label>
+                <script>
+                    $("input[name='table4']").TouchSpin({
+                        min: 0,
+                        max: 9999,
+                        step: 1,
+                        decimals: 0,
+                        boostat: 5,
+                        maxboostedstep: 10
+                    });
+                </script>
+            </div>
+
+            <h2 id="cat_cereals">Breakfast Cereals</h2>
+
+            <div class="form-group">
+                <input id="cereal1" type="text" value="10" name="cereal1">
+                <label for="cereal1">Cereal 1</label>
+                <script>
+                    $("input[name='cereal1']").TouchSpin({
+                        min: 0,
+                        max: 9999,
+                        step: 1,
+                        decimals: 0,
+                        boostat: 5,
+                        maxboostedstep: 10
+                    });
+                </script>
+            </div>
+
+            <br><br>
+
+            <div class="form-group">
+                <input id="cereal2" type="text" value="20" name="cereal2">
+                <label for="cereal2">Some chair with a really long description</label>
+                <script>
+                    $("input[name='cereal2']").TouchSpin({
+                        min: 0,
+                        max: 9999,
+                        step: 1,
+                        decimals: 0,
+                        boostat: 5,
+                        maxboostedstep: 10
+                    });
+                </script>
             </div>
         </div>
     </div><!-- /.container -->
