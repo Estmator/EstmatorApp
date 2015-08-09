@@ -83,7 +83,12 @@ ROOT_URLCONF = 'estmator_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'estmator_project/templates'),
+            os.path.join(BASE_DIR, 'est_client/templates'),
+            os.path.join(BASE_DIR, 'est_profile/templates'),
+            os.path.join(BASE_DIR, 'est_quote/templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

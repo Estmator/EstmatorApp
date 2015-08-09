@@ -1,0 +1,43 @@
+{# Load the tag library #}
+{% load bootstrap3 %}
+{% load staticfiles %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% bootstrap_javascript jquery=1 %}
+    {% bootstrap_css %}
+    {% block extra_head %}{% endblock extra_head %}
+    {# Load CSS and JavaScript #}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Estmator</title>
+</head>
+<body>
+    <header id="header">
+    {% block header %}
+        <div id="auth">
+            <a href="{% url 'index' %}">{% trans "Home" %}</a> | 
+    {% if user.is_authenticated %}
+        {% trans "Logged in" %}: {{ user.username }} 
+            (<a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a> | 
+            <a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a>)
+    {% else %}
+        <div id="no_auth">
+            <a href="{% url 'auth_login' %}">{% trans "Log in" %}</a> | 
+            <a href="{% url 'registration_register' %}">{% trans 'Register' %}</a>
+        </div>
+    {% endif %}
+    {% endblock %}
+    </header>
+    <main id="content">
+    {% block content %}{% endblock %}
+    </main>
+    <footer id="footer">
+    {% block footer %}
+        <p>{% trans "Estmator.com" %}</p>
+    {% endblock %}
+    </footer>
+</body>
+</html>
