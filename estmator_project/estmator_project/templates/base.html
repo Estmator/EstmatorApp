@@ -26,7 +26,6 @@
     {% else %}
         <div id="no_auth">
             <a href="{% url 'auth_login' %}">{% trans "Log in" %}</a> | 
-            <a href="{% url 'registration_register' %}">{% trans 'Register' %}</a>
         </div>
     {% endif %}
     {% endblock %}

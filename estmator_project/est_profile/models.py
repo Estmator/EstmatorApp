@@ -1,9 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
-from localflavor.us.forms import (
-    USPhoneNumberField,
-)
 from django.utils.encoding import python_2_unicode_compatible
 
 
@@ -20,8 +17,8 @@ class UserProfile(models.Model):
         related_name='profile',
         null=False
     )
-    cell = USPhoneNumberField()
-    desk = USPhoneNumberField()
+    cell = models.IntegerField()
+    desk = models.IntegerField()
 
     objects = models.Manager()
     active = ActiveProfileManager()

@@ -17,6 +17,8 @@ class Migration(migrations.Migration):
                 ('first_name', models.CharField(max_length=256)),
                 ('last_name', models.CharField(max_length=256)),
                 ('title', models.CharField(max_length=256)),
+                ('cell', models.IntegerField()),
+                ('desk', models.IntegerField()),
                 ('email', models.EmailField(max_length=254)),
             ],
         ),
@@ -25,9 +27,12 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('company_name', models.CharField(max_length=256)),
+                ('phone', models.IntegerField()),
                 ('address', models.CharField(max_length=256)),
                 ('address2', models.CharField(max_length=256)),
                 ('city', models.CharField(max_length=256)),
+                ('state', models.CharField(max_length=256)),
+                ('postal', models.IntegerField()),
             ],
         ),
         migrations.AddField(
