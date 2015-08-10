@@ -16,7 +16,7 @@ branches:
 python:
   - "2.7"
 
-install: 'pip install -r requirements.txt'
+install: 'pip install -r requirements/local.txt'
 
 script: cd estmator_project; python manage.py test
 
