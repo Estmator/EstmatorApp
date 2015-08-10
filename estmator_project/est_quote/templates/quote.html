@@ -6,7 +6,17 @@
 <section class=''>
   <form action="" method="post" enctype="multipart/form-data" accept-charset="utf-8">
   {% csrf_token %}
-    {{ form.as_p }}
+    {% for q in quote %}
+      {{ q.name }}
+    {% endfor %}
+
+    {% for c in category %}
+      {{ c.name }}
+    {% endfor %}
+
+    {% for p in product %}
+      {{ p.name }}
+    {% endfor %}
     <input type="submit" name="Save" value="Save">
   </form>
 </section>
