@@ -28,14 +28,14 @@ install:
   - pip install -r requirements.txt
   - pip install -q Django==$DJANGO_VERSION
 
-script: cd estmator_project; python manage.py test
-
 addons:
   postgresql: "9.4"
+
+services:
+  - postgresql
 
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - import django; django.setup()
 
-services:
-  - postgresql
+script: cd estmator_project; python manage.py test
