@@ -21,6 +21,9 @@ env:
   - DJANGO_VERSION=1.8.3
   - SECRET_KEY='sooper-s3cr3+-k3y'
 
+before-install:
+  - sudo apt-get -y install libzmq
+
 install:
   - pip install -r requirements.txt
   - pip install -q Django==$DJANGO_VERSION
