@@ -37,15 +37,29 @@
                 </button>
                 <span class="navbar-brand">Estmator</span>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'auth_login' %}">User: {{ request.user.username }}</a></li>
-            </ul>
+            <p class="navbar-text navbar-right">
+                <a class="navbar-link" href="{% url 'auth_login' %}">User: {{ request.user.username }}</a>
+            </p>
         </div>
     </div>
 
-    <div class="container">
-        <p class="lead">This example demonstrates the use of the offcanvas plugin with a reveal effect.</p>
-        <p>Non-leading text in the container</p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 id="cat_chairs2">Chairs</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <label for="demo12">Chair 1</label>
+            </div>
+            <div class="col-xs-6 col-md-2">
+                <input class="spinner-box" id="demo12" type="text" value="10" name="demo1">
+            </div>
+            <div class="col-xs-6 col-md-2">
+                Hours: 100
+            </div>
+        </div>
 
         <div class="form-inline">
             <h2 id="cat_chairs">Chairs</h2>
