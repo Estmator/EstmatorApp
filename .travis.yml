@@ -16,15 +16,23 @@ branches:
 python:
   - "2.7"
 
-install: 'pip install -r requirements.txt'
+# Django versions to test against
+env:
+  - DJANGO_VERSION=1.8.3 SECRET_KEY='sooper-s3cr3+-k3y' DEBUG='True'
 
-script: cd estmator_project; python manage.py test
+install:
+  - pip install -r requirements.txt
+  - pip install -q Django==$DJANGO_VERSION
 
 addons:
   postgresql: "9.4"
 
+services:
+  - postgresql
+
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 
-services:
-  - postgresql
+script:
+  - cd estmator_project
+  - python manage.py test
