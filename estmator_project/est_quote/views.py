@@ -8,9 +8,9 @@ class QuoteCreateView(FormView):
     form_class = QuoteForm
     success_url = '/'
 
-    def get_form(self, form_class=QuoteForm):
-        quote = Quote.objects.get(user=self.request.user)
-        return QuoteForm(instance=quote, **self.get_form_kwargs())
+    # def get_form(self, form_class=QuoteForm):
+    #     # quote = Quote.objects.get(user=self.request.user)
+    #     return QuoteForm(instance=quote, **self.get_form_kwargs())
 
     def get_form_kwargs(self):
         kwargs = super(QuoteCreateView, self).get_form_kwargs()
