@@ -44,14 +44,16 @@
     </div>
 
     <div class="container-fluid">
+        {% for c in categories %}
         <div class="row">
             <div class="col-md-12">
-                <h2 id="cat_chairs2">Chairs</h2>
+                <h2 id="category_{{ c.id }}">{{ c.name }}</h2>
             </div>
         </div>
+        {% for p in c.product_set.all %}
         <div class="row">
             <div class="col-xs-12 col-md-12">
-                <label for="demo12">Chair 1</label>
+                <label for="demo12">{{ p.name }}</label>
             </div>
             <div class="col-xs-6 col-md-2">
                 <input class="spinner-box" id="demo12" type="text" value="10" name="demo1">
@@ -60,64 +62,8 @@
                 Hours: 100
             </div>
         </div>
-
-        <div class="form-inline">
-            <h2 id="cat_chairs">Chairs</h2>
-
-            <div class="form-group">
-            <input class="spinner-box" id="demo1" type="text" value="10" name="demo1">
-            <label for="demo1">Chair 1</label>
-            </div>
-
-            <br><br>
-
-            <div class="form-group">
-            <input class="spinner-box" id="demo2" type="text" value="20" name="demo2">
-            <label for="demo2">Some chair with a really long description</label>
-            </div>
-
-            <h2 id="cat_tables">Tables</h2>
-
-            <div class="form-group">
-                <input class="spinner-box" id="table1" type="text" value="10" name="table1">
-                <label for="table1">Table 1</label>
-            </div>
-
-            <br><br>
-
-            <div class="form-group">
-                <input class="spinner-box" id="table2" type="text" value="20" name="table2">
-                <label for="table2">Table 2</label>
-            </div>
-
-            <br><br>
-
-            <div class="form-group">
-                <input class="spinner-box" id="table3" type="text" value="20" name="table3">
-                <label for="table3">Table 3</label>
-            </div>
-
-            <br><br>
-
-            <div class="form-group">
-                <input class="spinner-box" id="table4" type="text" value="20" name="table4">
-                <label for="table4">Table 4</label>
-            </div>
-
-            <h2 id="cat_cereals">Breakfast Cereals</h2>
-
-            <div class="form-group">
-                <input class="spinner-box" id="cereal1" type="text" value="10" name="cereal1">
-                <label for="cereal1">Cereal 1</label>
-            </div>
-
-            <br><br>
-
-            <div class="form-group">
-                <input class="spinner-box" id="cereal2" type="text" value="20" name="cereal2">
-                <label for="cereal2">Some chair with a really long description</label>
-            </div>
-        </div>
+        {% endfor %}
+        {% endfor %}
     </div><!-- /.container -->
 
     <div class="navbar navbar-default navbar-fixed-bottom">

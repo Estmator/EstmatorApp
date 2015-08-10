@@ -1,4 +1,5 @@
 from django.views.generic import TemplateView
+from est_quote.models import Quote, Category, Product, ProductInQuote
 
 
 class IndexView(TemplateView):
@@ -14,6 +15,10 @@ class QuoteView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(QuoteView, self).get_context_data(**kwargs)
+        context['quotes'] = Quote.objects.all()
+        context['categories'] = Category.objects.all()
+        context['products'] = Product.objects.all()
+        context['prods_in_quote'] = ProductInQuote.objects.all()
         return context
 
 
