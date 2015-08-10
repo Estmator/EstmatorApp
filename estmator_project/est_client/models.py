@@ -30,7 +30,7 @@ class Company(models.Model):
     address = models.CharField(max_length=256)
     address2 = models.CharField(max_length=256)
     city = models.CharField(max_length=256)
-    state = models.CharField(max_length=2,
+    state = models.CharField(max_length=10,
                              choices=STATES,
                              default='Washington')
     postal = models.IntegerField()
