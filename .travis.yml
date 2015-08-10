@@ -22,8 +22,8 @@ env:
   - SECRET_KEY='sooper-s3cr3+-k3y'
 
 install:
-  - pip install -r requirements.txt --use-mirrors
-  - pip install -q Django==$DJANGO_VERSION --use-mirrors
+  - pip install -r requirements.txt
+  - pip install -q Django==$DJANGO_VERSION
 
 script: cd estmator_project; python manage.py test
 
