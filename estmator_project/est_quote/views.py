@@ -1,36 +1,24 @@
-from .models import Quote, Category, Product
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import FormView
+from .models import Quote
+from .forms import QuoteForm
 
 
-class QuoteCreateView(CreateView):
-    model = Quote
-    fields = ['name']
+class QuoteCreateView(FormView):
     template_name = 'quote.html'
+    form_class = QuoteForm
     success_url = '/'
 
-    def get_form(self):
-        form = super(QuoteCreateView, self).get_form()
-        # form.fields['category'].queryset = Category.objects.all()
-        # form.fields['products'].queryset = Product.objects.all()
-        return form
+    def get_form(self, form_class=QuoteForm):
+        quote = Quote.objects.get(user=self.request.user)
+        return QuoteForm(instance=quote, **self.get_form_kwargs())
+
+    def get_form_kwargs(self):
+        kwargs = super(QuoteCreateView, self).get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super(QuoteCreateView, self).form_valid(form)
-
-
-class QuoteEditView(UpdateView):
-    model = Quote
-    fields = ['name']
-    template_name = 'quote.html'
-    success_url = '/'
-
-    def get_form(self):
-        form = super(QuoteEditView, self).get_form()
-        form.fields['category'].queryset = Category.objects.all()
-        form.fields['products'].queryset = Product.objects.all()
-        return form
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super(QuoteEditView, self).form_valid(form)
+        quote = form.save(commit=False, request=self.request)
+        quote.user = self.request.user
+        quote.save()
+        return super(QuoteCreateView, self).form_valid(quote)

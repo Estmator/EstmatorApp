@@ -5,15 +5,6 @@ from django.contrib.auth.models import User
 
 
 @python_2_unicode_compatible
-class Quote(models.Model):
-    user = models.ForeignKey(User, related_name='user_quotes')
-    name = models.CharField(max_length=256)
-
-    def __str__(self):
-        return self.name
-
-
-@python_2_unicode_compatible
 class Category(models.Model):
     name = models.CharField(max_length=256)
 
@@ -60,6 +51,17 @@ class Product(models.Model):
     @property
     def speed_packs(self):
         return self.counts * self.s_pack
+
+    def __str__(self):
+        return self.name
+
+
+@python_2_unicode_compatible
+class Quote(models.Model):
+    user = models.ForeignKey(User, related_name='user_quotes')
+    name = models.CharField(max_length=256)
+    products = models.ManyToManyField(Product, related_name='products')
+    category = models.ManyToManyField(Category, related_name='category')
 
     def __str__(self):
         return self.name
