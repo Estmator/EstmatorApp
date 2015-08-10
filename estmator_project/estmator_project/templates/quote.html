@@ -6,9 +6,9 @@
 <div class="navmenu navmenu-default navmenu-fixed-left">
     <a class="navmenu-brand" href="#">Categories</a>
     <ul class="nav navmenu-nav">
-        <li class="category_btn"><a href="#cat_chairs">Chairs</a></li>
-        <li class="category_btn"><a href="#cat_tables">Tables</a></li>
-        <li class="category_btn"><a href="#cat_cereals">Breakfast Cereals</a></li>
+        {% for c in categories %}
+        <li class="category_btn"><a href="#category_{{ c.id }}">{{ c.name }}</a></li>
+        {% endfor %}
     </ul>
     <ul class="nav navmenu-nav">
         <li class="dropdown">
@@ -53,10 +53,10 @@
         {% for p in c.product_set.all %}
         <div class="row">
             <div class="col-xs-12 col-md-12">
-                <label for="demo12">{{ p.name }}</label>
+                <label for="item_{{ p.id }}">{{ p.name }}</label>
             </div>
             <div class="col-xs-6 col-md-2">
-                <input class="spinner-box" id="demo12" type="text" value="10" name="demo1">
+                <input class="spinner-box" id="item_{{ p.id }}" type="text" value="10" name="item_{{ p.id }}">
             </div>
             <div class="col-xs-6 col-md-2">
                 Hours: 100
