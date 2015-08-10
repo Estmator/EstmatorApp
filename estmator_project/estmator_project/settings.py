@@ -12,29 +12,27 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'f_c@$n+^7p2@d+64*x$$37dam)6$tk4bffbdvli0%j74y+y0+$'
+SECRET_KEY = os.environ.get('SECRET_KEY', None)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', False)
+TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split()
 
 
 # Application definition
@@ -60,10 +58,9 @@ INSTALLED_APPS = (
 )
 
 SITE_ID = 1
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = os.environ.get(
     'EMAIL_BACKEND',
-    'django.core.mail.backends.smtp.EmailBackend'
+    'django.core.mail.backends.console.EmailBackend'
 )
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_EMAIL_HTML = False
@@ -90,9 +87,9 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'estmator_project/templates'),
-            os.path.join(BASE_DIR, 'est_client/templates'),
-            os.path.join(BASE_DIR, 'est_profile/templates'),
-            os.path.join(BASE_DIR, 'est_quote/templates'),
+            # os.path.join(BASE_DIR, 'est_client/templates'),
+            # os.path.join(BASE_DIR, 'est_profile/templates'),
+            # os.path.join(BASE_DIR, 'est_quote/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -112,28 +109,16 @@ WSGI_APPLICATION = 'estmator_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'estmator',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
+DATABASES = {'default': dj_database_url.config(
+    default='postgres://localhost:5432/estmator'
+    )
 }
 
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
+TIME_ZONE = os.environ.get('TIME_ZONE', 'UTC')
+USE_I18N = os.environ.get('USE_I18N', True)
+USE_L10N = os.environ.get('USE_L10N', True)
+USE_TZ = os.environ.get('USE_TZ', True)
