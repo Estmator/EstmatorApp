@@ -1,0 +1,26 @@
+@media (min-width: 0px) {
+    html {
+        overflow-x: hidden;
+    }
+    .navmenu {
+        width: 150px;
+    }
+}
+
+@media (min-width: 992px) {
+    .form-inline .input-group > .form-control {
+        width: 75px;
+    }
+}
+
+.container {
+    padding-top: 75px;
+}
+
+#navbar-header {
+    font-size: 2em;
+}
+
+.bgcol {
+    background-color: #444444;
+}
