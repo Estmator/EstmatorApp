@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load i18n %}f]-->
+
+{% block content %}
+
+<div class="navmenu navmenu-default navmenu-fixed-left">
+    <a class="navmenu-brand" href="#">Categories</a>
+    <ul class="nav navmenu-nav">
+        {% for c in categories %}
+        <li class="category_btn"><a href="#category_{{ c.id }}">{{ c.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <ul class="nav navmenu-nav">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+            <ul class="dropdown-menu navmenu-nav">
+                <li><a href="#">If</a></li>
+                <li><a href="#">We Need</a></li>
+                <li><a href="#">A Dropdown Menu</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div class="canvas">
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-canvas=".canvas" data-disable-scrolling="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span class="navbar-brand">Estmator</span>
+            </div>
+            <p class="navbar-text navbar-right">
+                <a class="navbar-link" href="{% url 'auth_login' %}">User: {{ request.user.username }}</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        {% for c in categories %}
+        <div class="row">
+            <div class="col-md-12">
+                <h2 id="category_{{ c.id }}">{{ c.name }}</h2>
+            </div>
+        </div>
+        {% for p in c.product_set.all %}
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <label for="item_{{ p.id }}">{{ p.name }}</label>
+            </div>
+            <div class="col-xs-6 col-md-2">
+                <input class="spinner-box" id="item_{{ p.id }}" type="text" value="10" name="item_{{ p.id }}">
+            </div>
+            <div class="col-xs-6 col-md-2">
+                Hours: 100
+            </div>
+        </div>
+        {% endfor %}
+        {% endfor %}
+    </div><!-- /.container -->
+
+    <div class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="navbar-nav navbar-left">
+                <button class="btn btn-default navbar-btn">Calculate</button>
+            </div>
+            <div class="navbar-nav navbar-right">
+                <button class="btn btn-default navbar-btn">Review</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% load i18n %}f]-->
+
+{% block content %}
+
+<div class="container">
+    <div class="navbar navbar-default navbar-fixed-top">
+        <h2>Estmator</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 text-center">
+            <div class="form-group">
+                <button class="btn btn-lg btn-success" data-toggle="modal" data-target="#new_quote">New Quote</button>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-success" data-toggle="modal" data-target="#edit_quote">Edit Quote</button>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-success" data-toggle="modal" data-target="#new_client">New Client</button>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-success" data-toggle="modal" data-target="#edit_client">Edit Client</button>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+</div> <!-- /container -->
+
+<div class="modal fade" id="new_quote" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">New Quote</h4>
+            </div>
+            <div class="modal-body text-center">
+                <div class="form-group">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Existing Client
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dLabel">
+                            <li data-dismiss="modal">StuffCorp</li>
+                            <li>Things Inc.</li>
+                            <li>Misc and Partners</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#new_client">New Client</button>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit_quote" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Edit Quote</h4>
+            </div>
+            <div class="modal-body text-center">
+                <div class="form-group">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Client
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dLabel">
+                            <li data-dismiss="modal">StuffCorp</li>
+                            <li>Things Inc.</li>
+                            <li>Misc and Partners</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Quote
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dLabel">
+                            <li data-dismiss="modal">Quote 1</li>
+                            <li>Quote 2</li>
+                            <li>Quote 3</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="new_client" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">New Client</h4>
+            </div>
+            <div class="modal-body text-center">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input class="form-control" type="text" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input class="form-control" type="text" id="address">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input class="form-control" type="text" id="phone">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit_client" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Edit Client</h4>
+            </div>
+            <div class="modal-body text-center">
+                <div class="form-group">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Existing Client
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dLabel">
+                            <li>StuffCorp</li>
+                            <li>Things Inc.</li>
+                            <li>Misc and Partners</li>
+                        </ul>
+                    </div>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input class="form-control" type="text" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input class="form-control" type="text" id="address">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input class="form-control" type="text" id="phone">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
