@@ -36,7 +36,7 @@ services:
 
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
-  - import django; django.setup()
 
 script:
-  - cd estmator_project; python manage.py test
+  - cd estmator_project
+  - python manage.py test
