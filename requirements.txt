@@ -3,6 +3,7 @@ Babel==2.0
 backports.ssl-match-hostname==3.4.0.2
 boto==2.38.0
 certifi==2015.4.28
+dj-database-url==0.3.0
 Django==1.8.3
 django-bootstrap3==6.1.0
 django-grappelli==2.7.1
