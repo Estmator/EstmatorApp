@@ -20,9 +20,9 @@ python:
 env:
   - DJANGO_VERSION=1.8.3 SECRET_KEY='sooper-s3cr3+-k3y'
 
-before_install:
-  - sudo apt-get -y update
-  - sudo apt-get -y install libzmq
+# before_install:
+#   - sudo apt-get -y update
+#   - sudo apt-get -y install libzmq-dev
 
 install:
   - pip install -r requirements.txt
