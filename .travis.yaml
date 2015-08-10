@@ -1,0 +1,30 @@
+language: python
+
+notifications:
+  email:
+    # change is when the repo status goes from pass to fail or vice versa
+    on_success: change
+    on_failure: always
+
+# whitelist
+branches:
+  only:
+    - master
+    - development
+    - test
+
+python:
+  - "2.7"
+
+install: 'pip install -r requirements.txt'
+
+script: cd estmator_project; python manage.py test
+
+addons:
+  postgresql: "9.4"
+
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+
+services:
+  - postgresql
