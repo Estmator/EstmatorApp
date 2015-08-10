@@ -14,7 +14,8 @@ urlpatterns = [
     # url(r'^client/', include('est_client.urls')),
     # url(r'^profile/', include('est_profile.urls')),
     # url(r'^quote/', include('est_quote.urls')),
-    url(r'^quote/$', views.MakeQuoteView.as_view(), name='quote')
+    url(r'^quote/$', views.QuoteView.as_view(), name='quote'),
+    url(r'^menu/$', views.MenuView.as_view(), name='menu')
 ]
 
 

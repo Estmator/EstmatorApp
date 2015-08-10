@@ -9,4 +9,12 @@ $(function () {
             maxboostedstep: 10
         });
     });
+
+    //add click listeners to each category button
+    $(".category_btn").each(function () {
+       $(this).click(function () {
+           console.log('called');
+           $('.navmenu').offcanvas('toggle');
+       });
+    });
 });
