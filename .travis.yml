@@ -16,7 +16,13 @@ branches:
 python:
   - "2.7"
 
-install: 'pip install -r requirements.txt'
+# Django versions to test against
+env:
+  - DJANGO_VERSION=1.8.3
+
+install:
+  - pip install -r requirements.txt --use-mirrors
+  - pip install -q Django==$DJANGO_VERSION --use-mirrors
 
 script: cd estmator_project; python manage.py test
 
