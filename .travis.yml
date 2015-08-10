@@ -28,7 +28,7 @@ install:
   - pip install -r requirements.txt
   - pip install -q Django==$DJANGO_VERSION
 
-script: python manage.py test
+script: cd estmator_project; python manage.py test
 
 addons:
   postgresql: "9.4"
