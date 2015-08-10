@@ -56,7 +56,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     'rest_framework',
     'localflavor',
-    'test-plus'
+    'test_plus'
 )
 
 SITE_ID = 1
