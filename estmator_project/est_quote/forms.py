@@ -1,17 +1,17 @@
+from django.forms.formsets import BaseFormSet
 from django import forms
-from .models import Quote
+from .models import Quote, Product, Category
 
 
 class QuoteForm(forms.ModelForm):
-    # user = forms.CharField(max_length=256)
-    # category = forms.CharField(max_length=256)
-    # products = forms.CharField(max_length=256)
-
     class Meta:
         model = Quote
         fields = ['name', 'category', 'products']
 
-    def save(self, *args, **kwargs):
-        self.request = kwargs.pop("request")
-        self.instance.user.save()
-        return super(QuoteForm, self).save(*args, **kwargs)
+
+class QuoteFormSet(BaseFormSet):
+    def add_fields(self, form, index):
+        super(QuoteFormSet, self).add_fields(form, index)
+        form.fields['name'] = forms.CharField(max_length=128)
+        form.fields['category'].queryset = Category.objects.all()
+        form.fields['products'].queryset = Product.objects.all()

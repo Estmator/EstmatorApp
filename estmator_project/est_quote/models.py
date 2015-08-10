@@ -60,6 +60,8 @@ class Product(models.Model):
 class Quote(models.Model):
     user = models.ForeignKey(User, related_name='user_quotes')
     name = models.CharField(max_length=256)
+    date = models.DateField(auto_now_add=True)
+    
     products = models.ManyToManyField(Product, related_name='products')
     category = models.ManyToManyField(Category, related_name='category')
 
