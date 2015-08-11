@@ -15,3 +15,4 @@ class UserFactory(factory.django.DjangoModelFactory):
     first_name = fake.first_name()
     last_name = fake.last_name()
     email = fake.email()
+
