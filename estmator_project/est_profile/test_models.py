@@ -42,7 +42,7 @@ class UserProfileTestCase(TestCase):
     #     user = UserFactory.create()
     #     profile = user.profile
     #     with self.assertRaises(TransactionManagementError):
-    #         profile.cell = '1234567890123456789012356'
+    #         profile.cell = '12345678901234567890123567827957432'
     #         profile.save()
 
     # def test_desk_phone_char_limit(self):
