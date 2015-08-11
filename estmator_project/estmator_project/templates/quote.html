@@ -9,8 +9,7 @@
         {% for c in categories %}
         <li class="category_btn"><a href="#category_{{ c.id }}">{{ c.name }}</a></li>
         {% endfor %}
-    </ul>
-    <ul class="nav navmenu-nav">
+        <li><a href="{% url 'menu' %}">Back</a></li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
             <ul class="dropdown-menu navmenu-nav">
