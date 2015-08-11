@@ -46,8 +46,17 @@
                         method: 'GET',
                         url: "{% url 'client_list_form' %}"
                     }).done(function(response) {
-                        $('#edit_client_form_list').html(response);
-                        $('#edit_client_form :input').attr('disabled', true);
+                        $('#edit_client_form_list').html(response).find('select').change(function (e) {
+                            var clientID = e.target.value;
+                            $.ajax({
+                                method: 'GET',
+                                url: "{% url 'client_edit_form' %}",
+                                data: {pk: clientID}
+                            }).done(function (response) {
+                               $('#edit_client_form_contents').html(response);
+                            });
+                        });
+                        $('#edit_client_form_contents :input').attr('disabled', true);
                         $('#edit_client').modal('toggle');
                     });
                 });
@@ -142,9 +151,9 @@
                 <h4 class="modal-title">Edit Client</h4>
             </div>
             <div class="modal-body text-center">
-                <div id="edit_client_form_list"></div>
                 <form id="edit_client_form" action="{% url 'api_client' %}" method="post">{% csrf_token %}
-                    {{ client_form }}
+                    <div id="edit_client_form_list"></div>
+                    <div id="edit_client_form_contents">{{ client_form }}</div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
             </div>

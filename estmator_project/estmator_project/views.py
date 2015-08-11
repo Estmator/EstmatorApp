@@ -63,6 +63,25 @@ def quote_form_view(request):
 
 
 @login_required
+def client_form_view(request):
+    if request.method == 'GET':
+        client_form = ClientCreateForm()
+        return HttpResponse(client_form.as_p())
+    else:
+        return HttpResponseNotAllowed(['GET'])
+
+
+@login_required
+def client_edit_form_view(request):
+    if request.method == 'GET':
+        client = Client.objects.get(id=request.GET['pk'])
+        client_form = ClientCreateForm(instance=client)
+        return HttpResponse(client_form.as_p())
+    else:
+        return HttpResponseNotAllowed(['GET'])
+
+
+@login_required
 def client_list_form_view(request):
     if request.method == 'GET':
         client_list_form = ClientListForm()

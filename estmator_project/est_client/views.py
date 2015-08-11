@@ -8,26 +8,21 @@ from est_quote.forms import QuoteCreateForm
 @login_required
 def client_view(request):
     if request.method == 'POST':
-        client = Client(
-            company=Company.objects.get(id=int(request.POST['company'])),
-            first_name=request.POST['first_name'],
-            last_name=request.POST['last_name'],
-            title=request.POST['title'],
-            cell=request.POST['cell'],
-            desk=request.POST['desk'],
-            email=request.POST['email']
-        )
+        if 'client' in request.POST:
+            client = Client.objects.get(id=request.POST['client'])
+        else:
+            client = Client()
+
+        client.company = Company.objects.get(id=int(request.POST['company']))
+        client.first_name = request.POST['first_name']
+        client.last_name = request.POST['last_name']
+        client.title = request.POST['title']
+        client.cell = request.POST['cell']
+        client.desk = request.POST['desk']
+        client.email = request.POST['email']
+
         client.save()
 
-        # JSONSerializer = get_serializer('json')
-        # serializer = JSONSerializer()
-        #
-        # quote_form = QuoteCreateForm()
-        # rendered_forms = {
-        #     'new_quote': quote_form.as_p()
-        # }
-        # json_data = serializer.serialize(rendered_forms)
-        # return HttpResponse(json_data, content_type='application/json')
         return HttpResponse()
     else:
         return HttpResponseNotAllowed(['POST'])
