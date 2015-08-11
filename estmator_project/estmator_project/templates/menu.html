@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}f]-->
+{% load i18n %}
 
 {% block content %}
 
@@ -37,22 +37,10 @@
                 <h4 class="modal-title">New Quote</h4>
             </div>
             <div class="modal-body text-center">
-                <div class="form-group">
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Existing Client
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dLabel">
-                            <li data-dismiss="modal">StuffCorp</li>
-                            <li>Things Inc.</li>
-                            <li>Misc and Partners</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#new_client">New Client</button>
-                </div>
+                <form>{% csrf_token %}
+                    {{ quote_form }}
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
             </div>
             <div class="modal-footer"></div>
         </div>
@@ -107,19 +95,8 @@
                 <h4 class="modal-title">New Client</h4>
             </div>
             <div class="modal-body text-center">
-                <form>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input class="form-control" type="text" id="name">
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <input class="form-control" type="text" id="address">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input class="form-control" type="text" id="phone">
-                    </div>
+                <form>{% csrf_token %}
+                    {{ client_form }}
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
             </div>

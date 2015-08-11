@@ -1,5 +1,9 @@
 from django.views.generic import TemplateView
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 from est_quote.models import Quote, Category, Product, ProductInQuote
+from est_quote.forms import QuoteCreateForm
+from est_client.forms import ClientCreateForm
 
 
 class IndexView(TemplateView):
@@ -22,9 +26,17 @@ class QuoteView(TemplateView):
         return context
 
 
-class MenuView(TemplateView):
-    template_name = 'menu.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(MenuView, self).get_context_data(**kwargs)
-        return context
+@login_required
+def menu_view(request):
+    if request.method == 'POST':
+        pass
+    else:
+        client_form = ClientCreateForm()
+        quote_form = QuoteCreateForm()
+        context = {
+            'client_form': client_form.as_p,
+            'quote_form':quote_form.as_p
+        }
+        return render(
+            request, 'menu.html', context
+        )
