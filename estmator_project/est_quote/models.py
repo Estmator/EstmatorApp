@@ -98,37 +98,24 @@ class ProductProperties(models.Model):
 
 
 class QuoteOptions(models.Model):
-    CHOICES = (('Yes', 'Yes'), ('No', 'No'))
     quote = models.ForeignKey(Quote, null=True, blank=True)
     product = models.ForeignKey(Product, null=True, blank=True)
     travel_time = models.IntegerField()
 
     # Origin variables
-    org_street_load = models.CharField(
-        choices=CHOICES, default='No', max_length=3)
-    org_midrise_elev_std = models.CharField(
-        choices=CHOICES, default='No', max_length=3)
-    org_midrise_elv_frt = models.CharField(
-        choices=CHOICES, default='No', max_length=3)
-    org_highrise = models.CharField(
-        choices=CHOICES, default='No', max_length=3)
-    org_stairs = models.CharField(
-        choices=CHOICES, default='No', max_length=3)
-    org_lng_psh = models.CharField(
-        choices=CHOICES, default='No', max_length=3)
+    org_street_load = models.BooleanField()
+    org_midrise_elev_std = models.BooleanField()
+    org_midrise_elv_frt = models.BooleanField()
+    org_highrise = models.BooleanField()
+    org_stairs = models.BooleanField()
+    org_lng_psh = models.BooleanField()
     # Destination variables
-    dest_street_load = models.CharField(
-        choices=CHOICES, default='No', max_length=3)
-    dest_midrise_elev_std = models.CharField(
-        choices=CHOICES, default='No', max_length=3)
-    dest_midrise_elv_frt = models.CharField(
-        choices=CHOICES, default='No', max_length=3)
-    dest_highrise = models.CharField(
-        choices=CHOICES, default='No', max_length=3)
-    dest_stairs = models.CharField(
-        choices=CHOICES, default='No', max_length=3)
-    dest_lng_psh = models.CharField(
-        choices=CHOICES, default='No', max_length=3)
+    dest_street_load = models.BooleanField()
+    dest_midrise_elev_std = models.BooleanField()
+    dest_midrise_elv_frt = models.BooleanField()
+    dest_highrise = models.BooleanField()
+    dest_stairs = models.BooleanField()
+    dest_lng_psh = models.BooleanField()
 
 
 class QuoteProperties(models.Model):

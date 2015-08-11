@@ -28,7 +28,8 @@ class Company(models.Model):
     company_name = models.CharField(max_length=256)
     phone = models.IntegerField()
     address = models.CharField(max_length=256)
-    address2 = models.CharField(max_length=256)
+    address2 = models.CharField(max_length=256,
+                                blank=True)
     city = models.CharField(max_length=256)
     state = models.CharField(max_length=10,
                              choices=STATES,
@@ -45,8 +46,9 @@ class Client(models.Model):
     first_name = models.CharField(max_length=256)
     last_name = models.CharField(max_length=256)
     title = models.CharField(max_length=256)
-    cell = models.IntegerField()
-    desk = models.IntegerField()
+    cell = models.CharField(max_length=20)
+    desk = models.CharField(max_length=20,
+                            blank=True)
     email = models.EmailField()
 
     def __str__(self):
