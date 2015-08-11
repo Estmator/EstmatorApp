@@ -38,8 +38,6 @@ TEMPLATE_DEBUG = DEBUG
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split()
 
 
-# Application definition
-
 INSTALLED_APPS = (
     'grappelli',
     'django.contrib.admin',
@@ -56,17 +54,31 @@ INSTALLED_APPS = (
     'registration',
     'bootstrap3',
     'rest_framework',
-    'localflavor'
+    'localflavor',
+    # 'test_plus'
 )
 
+
+# email settings
 SITE_ID = 1
 EMAIL_BACKEND = os.environ.get(
     'EMAIL_BACKEND',
     'django.core.mail.backends.console.EmailBackend'
 )
+EMAIL_HOST = os.environ.get('EMAIL_HOST', None)
+EMAIL_PORT = os.environ.get('EMAIL_PORT', None)
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', None)
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', None)
+EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', None)
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', None)
+EMAIL_TIMEOUT = os.environ.get('EMAIL_TIMEOUT', None)
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# registration settings
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_EMAIL_HTML = False
 LOGIN_REDIRECT_URL = '/profile/'
+
 
 # Grappelli Settings
 GRAPPELLI_ADMIN_TITLE = 'Estmator Admin'

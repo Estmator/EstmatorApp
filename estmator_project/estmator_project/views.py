@@ -3,10 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotAllowed
 from django.core.urlresolvers import reverse
-from est_quote.models import Quote, Category, Product, ProductInQuote
 from est_quote.forms import QuoteCreateForm, ClientListForm
 from est_client.models import Client, Company
 from est_client.forms import ClientCreateForm
+from est_quote.models import Quote, Category, Product, ProductProperties
 
 
 class IndexView(TemplateView):
@@ -21,7 +21,6 @@ class QuoteView(TemplateView):
     template_name = 'quote.html'
 
     def get_context_data(self, **kwargs):
-        print self.request.GET
         try:
             context = super(QuoteView, self).get_context_data(**kwargs)
             context['quotes'] = Quote.objects.all()
