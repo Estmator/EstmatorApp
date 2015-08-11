@@ -68,6 +68,7 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', None)
 EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', None)
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', None)
 EMAIL_TIMEOUT = os.environ.get('EMAIL_TIMEOUT', None)
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # registration settings
 ACCOUNT_ACTIVATION_DAYS = 7
