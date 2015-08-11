@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% load i18n %}
-
+{% load static from staticfiles %}
 {% block content %}
+
+<script src="{% static './js/menu.js' %}"></script>
 
 <div class="container">
     <div class="navbar navbar-default navbar-fixed-top">
@@ -95,7 +97,7 @@
                 <h4 class="modal-title">New Client</h4>
             </div>
             <div class="modal-body text-center">
-                <form>{% csrf_token %}
+                <form id="new_client_form" action="{% url 'api_client' %}" method="post">{% csrf_token %}
                     {{ client_form }}
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>

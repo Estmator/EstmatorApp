@@ -10,10 +10,7 @@ urlpatterns = [
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('registration.backends.default.urls')),
-    # url(r'^api/v1/', include('est_api.urls')),
-    # url(r'^client/', include('est_client.urls')),
-    # url(r'^profile/', include('est_profile.urls')),
-    # url(r'^quote/', include('est_quote.urls')),
+    url(r'^api/v1/', include('est_api.urls')),
     url(r'^quote/$', views.QuoteView.as_view(), name='quote'),
     url(r'^menu/$', views.menu_view, name='menu')
 ]

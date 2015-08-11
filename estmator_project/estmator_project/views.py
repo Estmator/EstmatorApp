@@ -1,8 +1,11 @@
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from django.http import HttpResponseRedirect, HttpResponseNotAllowed
+from django.core.urlresolvers import reverse
 from est_quote.models import Quote, Category, Product, ProductInQuote
 from est_quote.forms import QuoteCreateForm
+from est_client.models import Client, Company
 from est_client.forms import ClientCreateForm
 
 
@@ -28,15 +31,15 @@ class QuoteView(TemplateView):
 
 @login_required
 def menu_view(request):
-    if request.method == 'POST':
-        pass
-    else:
+    if request.method == 'GET':
         client_form = ClientCreateForm()
         quote_form = QuoteCreateForm()
         context = {
             'client_form': client_form.as_p,
-            'quote_form':quote_form.as_p
+            'quote_form': quote_form.as_p
         }
         return render(
             request, 'menu.html', context
         )
+    else:
+        return HttpResponseNotAllowed(['GET'])
