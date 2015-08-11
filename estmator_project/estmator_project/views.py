@@ -26,7 +26,7 @@ class QuoteView(TemplateView):
             context['quotes'] = Quote.objects.all()
             context['categories'] = Category.objects.all()
             context['products'] = Product.objects.all()
-            context['prods_in_quote'] = ProductInQuote.objects.all()
+            context['prods_in_quote'] = ProductProperties.objects.all()
             context['quote_client'] = self.request.GET.get('client')
             context['quote_name'] = self.request.GET.get('name')
         except (KeyError, ValueError):
