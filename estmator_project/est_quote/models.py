@@ -38,22 +38,17 @@ class Quote(models.Model):
     name = models.CharField(max_length=256)
     date = models.DateField(auto_now_add=True)
     sub_total = models.IntegerField(blank=True, null=True)
+    grand_total = models.IntegerField(blank=True, null=True)
     products = models.ManyToManyField(
         Product,
         related_name='quote',
-        through='ProductInQuote',
+        through='ProductProperties',
         blank=True
     )
-    # loc_vars = models.ManyToManyField(
-    #     Product,
-    #     related_name='quote',
-    #     through='LocVars',
-    #     blank=True
-    # )
     global_mods = models.ManyToManyField(
-        'GlobalVars',
+        'QuoteModifiers',
         related_name='quote',
-        through='GlobalMods',
+        through='QuoteProperties',
         blank=True
     )
 
@@ -61,7 +56,7 @@ class Quote(models.Model):
         return 'Quote: {}'.format(self.name)
 
 
-class GlobalVars(models.Model):
+class QuoteModifiers(models.Model):
     # Location multipliers
     street_load = models.FloatField()
     midrise_elev_std = models.FloatField()
@@ -71,7 +66,7 @@ class GlobalVars(models.Model):
     lng_psh = models.FloatField()
 
 
-class ProductInQuote(models.Model):
+class ProductProperties(models.Model):
     quote = models.ForeignKey('Quote', null=True, blank=True)
     product = models.ForeignKey(Product, null=True, blank=True)
     count = models.IntegerField(blank=True, null=True)
@@ -102,29 +97,43 @@ class ProductInQuote(models.Model):
         return self.count * self.product.s_pack
 
 
-class LocVars(models.Model):
+class QuoteOptions(models.Model):
     CHOICES = (('Yes', 'Yes'), ('No', 'No'))
     quote = models.ForeignKey(Quote, null=True, blank=True)
     product = models.ForeignKey(Product, null=True, blank=True)
+    travel_time = models.IntegerField()
+
     # Origin variables
-    org_street_load = models.CharField(choices=CHOICES, default='No', max_length=3)
-    org_midrise_elev_std = models.CharField(choices=CHOICES, default='No', max_length=3)
-    org_midrise_elv_frt = models.CharField(choices=CHOICES, default='No', max_length=3)
-    org_highrise = models.CharField(choices=CHOICES, default='No', max_length=3)
-    org_stairs = models.CharField(choices=CHOICES, default='No', max_length=3)
-    org_lng_psh = models.CharField(choices=CHOICES, default='No', max_length=3)
+    org_street_load = models.CharField(
+        choices=CHOICES, default='No', max_length=3)
+    org_midrise_elev_std = models.CharField(
+        choices=CHOICES, default='No', max_length=3)
+    org_midrise_elv_frt = models.CharField(
+        choices=CHOICES, default='No', max_length=3)
+    org_highrise = models.CharField(
+        choices=CHOICES, default='No', max_length=3)
+    org_stairs = models.CharField(
+        choices=CHOICES, default='No', max_length=3)
+    org_lng_psh = models.CharField(
+        choices=CHOICES, default='No', max_length=3)
     # Destination variables
-    dest_street_load = models.CharField(choices=CHOICES, default='No', max_length=3)
-    dest_midrise_elev_std = models.CharField(choices=CHOICES, default='No', max_length=3)
-    dest_midrise_elv_frt = models.CharField(choices=CHOICES, default='No', max_length=3)
-    dest_highrise = models.CharField(choices=CHOICES, default='No', max_length=3)
-    dest_stairs = models.CharField(choices=CHOICES, default='No', max_length=3)
-    dest_lng_psh = models.CharField(choices=CHOICES, default='No', max_length=3)
+    dest_street_load = models.CharField(
+        choices=CHOICES, default='No', max_length=3)
+    dest_midrise_elev_std = models.CharField(
+        choices=CHOICES, default='No', max_length=3)
+    dest_midrise_elv_frt = models.CharField(
+        choices=CHOICES, default='No', max_length=3)
+    dest_highrise = models.CharField(
+        choices=CHOICES, default='No', max_length=3)
+    dest_stairs = models.CharField(
+        choices=CHOICES, default='No', max_length=3)
+    dest_lng_psh = models.CharField(
+        choices=CHOICES, default='No', max_length=3)
 
 
-class GlobalMods(models.Model):
+class QuoteProperties(models.Model):
     quote = models.ForeignKey(Quote, null=True, blank=True)
-    glob_vars = models.ForeignKey(GlobalVars, null=True, blank=True)
+    glob_vars = models.ForeignKey(QuoteModifiers, null=True, blank=True)
 
     @property
     def get_street_load(self):
