@@ -40,19 +40,19 @@ class Quote(models.Model):
     sub_total = models.IntegerField(blank=True, null=True)
     products = models.ManyToManyField(
         Product,
-        related_name='products',
+        related_name='quote',
         through='ProductInQuote',
         blank=True
     )
-    loc_vars = models.ManyToManyField(
-        Product,
-        related_name='loc_vars',
-        through='LocVars',
-        blank=True
-    )
+    # loc_vars = models.ManyToManyField(
+    #     Product,
+    #     related_name='quote',
+    #     through='LocVars',
+    #     blank=True
+    # )
     global_mods = models.ManyToManyField(
         'GlobalVars',
-        related_name='globals',
+        related_name='quote',
         through='GlobalMods',
         blank=True
     )
@@ -74,32 +74,32 @@ class GlobalVars(models.Model):
 class ProductInQuote(models.Model):
     quote = models.ForeignKey('Quote', null=True, blank=True)
     product = models.ForeignKey(Product, null=True, blank=True)
-    counts = models.IntegerField(blank=True, null=True)
+    count = models.IntegerField(blank=True, null=True)
 
     # Outputs
     @property
     def total_mins(self):
-        return self.counts * self.mins_piece
+        return self.count * self.product.mins_piece
 
     @property
     def dollies(self):
-        return self.counts * self.mult_dollies
+        return self.count * self.product.mult_dollies
 
     @property
     def machine_carts(self):
-        return self.counts * self.m_cart
+        return self.count * self.product.m_cart
 
     @property
     def library_carts(self):
-        return self.counts * self.l_cart
+        return self.count * self.product.l_cart
 
     @property
     def panel_carts(self):
-        return self.counts * self.p_cart
+        return self.count * self.product.p_cart
 
     @property
     def speed_packs(self):
-        return self.counts * self.s_pack
+        return self.count * self.product.s_pack
 
 
 class LocVars(models.Model):
