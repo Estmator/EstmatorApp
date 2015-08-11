@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^api/v1/', include('est_api.urls')),
     url(r'^quote/$', views.QuoteView.as_view(), name='quote'),
     url(r'^quote/form$', views.quote_form_view, name='quote_form'),
+    url(r'^client/listform$', views.client_list_form_view, name='client_list_form'),
     url(r'^menu/$', views.menu_view, name='menu')
 ]
 

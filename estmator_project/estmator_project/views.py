@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotAllowed
 from django.core.urlresolvers import reverse
 from est_quote.models import Quote, Category, Product, ProductInQuote
-from est_quote.forms import QuoteCreateForm
+from est_quote.forms import QuoteCreateForm, ClientListForm
 from est_client.models import Client, Company
 from est_client.forms import ClientCreateForm
 
@@ -41,9 +41,11 @@ def menu_view(request):
     if request.method == 'GET':
         client_form = ClientCreateForm()
         quote_form = QuoteCreateForm()
+        client_list_form = ClientListForm()
         context = {
             'client_form': client_form.as_p,
-            'quote_form': quote_form.as_p
+            'quote_form': quote_form.as_p,
+            'client_list_form': client_list_form.as_p
         }
         return render(
             request, 'menu.html', context
@@ -57,5 +59,14 @@ def quote_form_view(request):
     if request.method == 'GET':
         quote_form = QuoteCreateForm()
         return HttpResponse(quote_form.as_p())
+    else:
+        return HttpResponseNotAllowed(['GET'])
+
+
+@login_required
+def client_list_form_view(request):
+    if request.method == 'GET':
+        client_list_form = ClientListForm()
+        return HttpResponse(client_list_form.as_p())
     else:
         return HttpResponseNotAllowed(['GET'])

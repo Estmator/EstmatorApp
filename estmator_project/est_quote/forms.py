@@ -6,3 +6,9 @@ class QuoteCreateForm(forms.ModelForm):
     class Meta:
         model = Quote
         fields = ['client', 'name']
+
+
+class ClientListForm(forms.ModelForm):
+    class Meta:
+        model = Quote
+        fields = ['client']
