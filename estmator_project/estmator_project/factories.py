@@ -1,9 +1,8 @@
 from django.contrib.auth.models import User
-from est_quote.models import (
-    Company, Client, Category, Product, Quote, QuoteModifiers)
-
-import factory
+from est_quote.models import (Category, Product, Quote, QuoteModifiers)
+from est_client.models import Company, Client
 from faker import Faker
+import factory
 
 fake = Faker()
 
@@ -14,6 +13,7 @@ class UserFactory(factory.django.DjangoModelFactory):
         model = User
 
     username = fake.user_name()
+    password = fake.password()
     first_name = fake.first_name()
     last_name = fake.last_name()
     email = fake.email()
