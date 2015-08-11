@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from est_quote.models import Quote, Category, Product, ProductInQuote
+from est_quote.models import Quote, Category, Product, ProductProperties
 
 
 class IndexView(TemplateView):
@@ -18,7 +18,7 @@ class QuoteView(TemplateView):
         context['quotes'] = Quote.objects.all()
         context['categories'] = Category.objects.all()
         context['products'] = Product.objects.all()
-        context['prods_in_quote'] = ProductInQuote.objects.all()
+        context['prods_in_quote'] = ProductProperties.objects.all()
         return context
 
 
