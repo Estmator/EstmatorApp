@@ -47,24 +47,10 @@
             <p>{{ quote.user.profile.review_intro }}</p>
         </section>
         <section class='quote_info'>
-            <ul>
-                <h3>Category</h3>
-                <li>Product / Count</li>
-                <li>Product / Count</li>
-                <li>Product / Count</li>
-            </ul>
-            <ul>
-                <h3>Category</h3>
-                <li>Product / Count</li>
-                <li>Product / Count</li>
-                <li>Product / Count</li>
-            </ul>
-            <ul>
-                <h3>Category</h3>
-                <li>Product / Count</li>
-                <li>Product / Count</li>
-                <li>Product / Count</li>
-            </ul>
+            {% for c in quote.products.all %}
+            <h2 id="category_{{ c.id }}">{{ c.name }}</h2>
+            {% endfor %}
+            </div>
             <p>ST Total Cost</p>
             <p>OT Total Cost</p>
         </section>

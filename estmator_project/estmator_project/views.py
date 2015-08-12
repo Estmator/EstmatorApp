@@ -129,7 +129,6 @@ def review_quote_view(request):
         quote.dest_lng_psh = 'dest_lng_psh' in request.POST
 
         quote.save()
-
         products = request.POST.getlist('product')
         counts = request.POST.getlist('product_count')
 
@@ -144,6 +143,7 @@ def review_quote_view(request):
                 quote.productproperties_set.add(prop)
 
         quote.save()
+        # import pdb; pdb.set_trace()
         context['quote'] = quote
 
     return render(
