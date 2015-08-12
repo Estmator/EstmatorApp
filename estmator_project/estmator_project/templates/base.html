@@ -10,31 +10,68 @@
     {% bootstrap_css %}
     {% block extra_head %}{% endblock extra_head %}
     {# Load CSS and JavaScript #}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css" rel="stylesheet">
     <link href="{% static 'css/jquery.bootstrap-touchspin.css' %}" rel="stylesheet">
     <link href="{% static 'css/navmenu-reveal.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block title %}
     <title>Estmator</title>
+    {% endblock %}
 </head>
 <body>
     <header id="header">
     {% block header %}
-        <div id="auth">
-            <a href="{% url 'index' %}">{% trans "Home" %}</a> | 
-    {% if user.is_authenticated %}
-        {% trans "Logged in" %}: {{ user.username }} 
-            (<a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a> | 
-            <a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a>)
-    {% else %}
-        <div id="no_auth">
-            <a href="{% url 'auth_login' %}">{% trans "Log in" %}</a> | 
-        </div>
-    {% endif %}
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <img id="logo_image" class="navbar-brand" alt="Estmator" src="{% static 'images/est_logo_symbol.png' %}">
+              <a class="navbar-brand" href="{% url 'index' %}">Estmator</a>
+            </div>
+            
+            <p class="navbar-text">{% block header_text %}Scott Loves Andy{% endblock %}</p>
+            
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                {% block nav_links %}
+                <li><a href="#">Some</a></li>
+                <li><a href="#">Nav</a></li>
+                <li><a href="#">Links</a></li>
+<!--                 <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                  </ul>
+                </li> -->
+                {% endblock %}
+                {% block header_buttons %}
+                <li>
+                  <button type="button" class="btn btn-default navbar-btn">Do it!</button>
+                </li>
+                {% endblock %}
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
     {% endblock %}
     </header>
+    
     <main id="content">
     {% block content %}{% endblock %}
     </main>
+    
     <footer id="footer">
     {% block footer %}
         <p>{% trans "Estmator.com" %}</p>

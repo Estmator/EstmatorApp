@@ -24,3 +24,7 @@
 .bgcol {
     background-color: #444444;
 }
+
+#logo_image {
+    padding: 15px 5px 15px 15px;
+}
