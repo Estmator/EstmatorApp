@@ -35,8 +35,8 @@ class Company(models.Model):
                              choices=STATES,
                              default='Washington')
     postal = models.IntegerField()
-    ot_rate = models.IntegerField(default=30)
-    st_rate = models.IntegerField(default=40)
+    st_rate = models.IntegerField(default=30)
+    ot_rate = models.IntegerField(default=40)
 
     def __str__(self):
         return self.company_name
@@ -55,3 +55,20 @@ class Client(models.Model):
 
     def __str__(self):
         return self.first_name + " " + self.last_name
+
+    def quotes_select_html(self):
+        """Return HTML of select elements for all client quotes."""
+        quotes = self.quotes.all()
+        quote_form = '<p>\n' \
+                     '<label for="id_quote">Quote:</label>' \
+                     '<select id="id_quote" name="quote">\n' \
+                     '<option value selected="selected">---------</option>\n'
+        for quote in quotes:
+            quote_form += (
+                '<option value="{id}">{name}: {date}</option>\n'
+                .format(
+                    id=quote.id, name=quote.name, date=quote.date
+                )
+            )
+        quote_form += '</select></p>\n'
+        return quote_form

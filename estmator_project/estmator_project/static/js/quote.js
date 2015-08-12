@@ -1,9 +1,40 @@
-function calcSuccess(res) {
-    console.log(res);
-}
+function calculateQuote() {
+    var totalProducts = 0;
+    var subTotal = 0;
 
-function showRequest(formdata) {
-    console.dir(formdata);
+    $('.item-row').each(function () {
+        var spinner = $(this).find('.spinner-box');
+        var count = parseInt(spinner.val());
+        totalProducts += count;
+        var minutes = count * parseFloat(spinner.data('mins')).toFixed(2);
+        subTotal += minutes;
+
+        $(this).find('.calc_mins').html(minutes);
+    });
+
+    var totalTruckLoads = (totalProducts / 22).toFixed(2);
+    var totalDriveTime = $('#id_travel_time').val() * 2;
+    var grandTotal = subTotal + totalDriveTime;
+    var totalHours = (grandTotal / 60).toFixed(2);
+    var totalDays = (totalHours / 8).toFixed(2);
+    var companyVals = $('#companyvals');
+    var straightTimeCost = (parseFloat(companyVals.data('straight-time-rate')) * totalHours).toFixed(2);
+    var overTimeCost = (parseFloat(companyVals.data('over-time-rate')) * totalHours).toFixed(2);
+
+    $('#genval_totalproducts').html(totalProducts);
+    $('#genval_totaltruckloads').html(totalTruckLoads);
+    $('#genval_subtotal').html(subTotal);
+    $('#quote_subtotal').val(subTotal);
+    $('#genval_totaldrivetime').html(totalDriveTime);
+    $('#quote_traveltime').val(totalDriveTime);
+    $('#genval_grandtotal').html(grandTotal);
+    $('#quote_grandtotal').val(grandTotal);
+    $('#genval_totalhours').html(totalHours);
+    $('#genval_totaldays').html(totalDays);
+    $('#genval_straighttimecost').html(straightTimeCost);
+    $('#quote_straighttimecost').val(straightTimeCost);
+    $('#genval_overtimecost').html(overTimeCost);
+    $('#quote_overtimecost').val(overTimeCost);
 }
 
 // executed after pageload completes
@@ -24,18 +55,30 @@ $(function () {
     //add click listeners to each category button
     $(".category_btn").each(function () {
         $(this).click(function () {
-            $('.navmenu').offcanvas('toggle');
+            $('.reveal-left').offcanvas('toggle');
         });
     });
 
-    $('.quote-submit').click(function () {
-        var url = $(this).data('url');
-        $('#quote_form').ajaxSubmit({
-            url: url,
-            beforeSubmit: showRequest,
-            success: calcSuccess
-        });
-        //this prevents normal form submit page navigation
-        return false;
+    //click listener for calculate button
+    $('#calculate_btn').click(function () {
+        calculateQuote();
     });
+
+    var reviewButton = $('#review_btn');
+    var reviewEnabled = true;
+    setInterval(function () {
+        if (reviewEnabled && !navigator.onLine) {
+            reviewButton.prop('disabled', true);
+            reviewButton.removeClass('btn-default');
+            reviewButton.addClass('btn-warning');
+            reviewEnabled = false;
+        } else if (!reviewEnabled && navigator.onLine) {
+            reviewButton.prop('disabled', false);
+            reviewButton.removeClass('btn-warning');
+            reviewButton.addClass('btn-default');
+            reviewEnabled = true;
+        }
+    }, 2000);
+
+    //$('#quote_form').ajaxForm();
 });

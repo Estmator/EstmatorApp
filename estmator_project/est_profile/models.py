@@ -21,6 +21,7 @@ class UserProfile(models.Model):
     cell = models.CharField(max_length=20)
     desk = models.CharField(max_length=20,
                             blank=True)
+    review_intro = models.TextField()
 
     objects = models.Manager()
     active = ActiveProfileManager()
