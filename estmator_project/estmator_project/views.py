@@ -9,6 +9,12 @@ from est_client.models import Client, Company
 from est_client.forms import ClientCreateForm
 from est_quote.models import Quote, Category, Product, ProductProperties
 
+from django.conf import settings
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.template import RequestContext, TemplateDoesNotExist
+from django.contrib.sites.shortcuts import get_current_site
+
 
 class IndexView(TemplateView):
     template_name = 'index.html'
@@ -145,6 +151,52 @@ def review_quote_view(request):
 
         quote.save()
         context['quote'] = quote
+
+    return render(
+        request, 'review.html', context
+    )
+
+
+@login_required
+def send_quote(request):
+    context = {}
+    if request is not None:
+        context = RequestContext(request, context)
+
+    quote = Quote.objects.filter(pk=request.pk)
+    client = Client.objects.filter(pk=request.quote.client)
+
+    context['token'] = quote.token
+    context['site'] = get_current_site(request)
+
+    subject = "Yay, you have a quote!!"
+    from_email = settings.DEFAULT_FROM_EMAIL
+    to_email = client.email
+
+    message_txt = render_to_string('email_quote_link.txt', context)
+
+    email_message = EmailMultiAlternatives(
+        subject,
+        message_txt,
+        from_email,
+        [to_email]
+    )
+
+    if getattr(settings, 'REGISTRATION_EMAIL_HTML', True):
+        try:
+            message_html = render_to_string('email_quote_link.html', context)
+        except TemplateDoesNotExist:
+            pass
+        else:
+            email_message.attach_alternative(message_html, 'text/html')
+
+    email_message.send()
+
+
+def quote_from_token(request):
+    context = {}
+
+    context['quote'] = Quote.objects.get(token=request.token)
 
     return render(
         request, 'review.html', context
