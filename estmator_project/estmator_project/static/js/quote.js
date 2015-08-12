@@ -2,6 +2,10 @@ function calcSuccess(res) {
     console.log(res);
 }
 
+function showRequest(formdata) {
+    console.dir(formdata);
+}
+
 // executed after pageload completes
 $(function () {
     //enable number spinner input functionality for each input
@@ -28,6 +32,7 @@ $(function () {
         var url = $(this).data('url');
         $('#quote_form').ajaxSubmit({
             url: url,
+            beforeSubmit: showRequest,
             success: calcSuccess
         });
         //this prevents normal form submit page navigation
