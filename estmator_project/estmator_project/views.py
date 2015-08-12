@@ -67,16 +67,6 @@ def quote_form_view(request):
 def quote_edit_form_view(request):
     if request.method == 'GET':
         client = Client.objects.get(id=request.GET['pk'])
-        # quotes = Quote.objects.filter(client=client)
-        # quote_form = '<p>\n' \
-        #              '<label for="id_quote">Quote:</label>' \
-        #              '<select id="id_quote" name="quote">\n' \
-        #              '<option value selected="selected">---------</option>\n'
-        # for quote in quotes:
-        #     quote_form += '<option value="' + str(quote.id) + '">' + quote.name + '</option>\n'
-
-        # quote_form += '</select></p>\n'
-
         return HttpResponse(client.quotes_to_html())
     else:
         return HttpResponseNotAllowed(['GET'])
