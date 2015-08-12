@@ -30,42 +30,36 @@
     <!--Main Content-->
     <section class="container-fluid">
         <section class='review_header'>
+        {% with qcc=quote.client.company %}
             <section class='client_info'>
-                <h3>Client Name</h3>
-                <p>Comapny</p>
-                <p>Address info</p>
+                <h3>{{ quote.client.name }}</h3>
+                <p>{{ qcc.company_name }}</p>
+                <p>{{ qcc.address }}</p>
+            {% if qcc.address2 %}
+                <p>{{ qcc.address2 }}</p>
+            {% endif %}
+                <p>{{ qcc.city }},{{ qcc.state }} {{ qcc.zipcode }}</p>
             </section>
             <img src="" alt'user logo'>
+        {% endwith %}
         </section>
         <section class='user_intro'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>{{ quote.user.profile.review_intro }}</p>
         </section>
         <section class='quote_info'>
-            <ul>
-                <h3>Category</h3>
-                <li>Product / Count</li>
-                <li>Product / Count</li>
-                <li>Product / Count</li>
-            </ul>
-            <ul>
-                <h3>Category</h3>
-                <li>Product / Count</li>
-                <li>Product / Count</li>
-                <li>Product / Count</li>
-            </ul>
-            <ul>
-                <h3>Category</h3>
-                <li>Product / Count</li>
-                <li>Product / Count</li>
-                <li>Product / Count</li>
-            </ul>
+        {% with pa=quote.products.all %}
+            {% for c in categories %}
+                <h2 id="category_{{ c.id }}">{{ c.name }}</h2>
+                {% for p in pa %}
+                    {% if p.category == c %}
+                        <p id="product_{{ p.id }}">{{ p.name }}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            </div>
             <p>ST Total Cost</p>
             <p>OT Total Cost</p>
+        {% endwith %}
         </section>
         <section class='quote_sig'>
             <section class='signature'>

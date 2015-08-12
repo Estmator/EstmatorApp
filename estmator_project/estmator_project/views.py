@@ -24,23 +24,21 @@ class IndexView(TemplateView):
         return context
 
 
-class QuoteView(TemplateView):
-    template_name = 'quote.html'
-
-    def get_context_data(self, **kwargs):
-        try:
-            context = super(QuoteView, self).get_context_data(**kwargs)
-            context['categories'] = Category.objects.all()
-
-            options_form = QuoteOptionsForm()
-            context['options_form'] = options_form.as_ul
-
-            context['client'] = Client.objects.get(id=self.request.GET.get('client'))
-            context['quote_name'] = self.request.GET.get('name')
-        except (KeyError, ValueError):
-            return redirect('menu')
-
-        return context
+@login_required
+def quote_view(request):
+    if request.method == 'POST':
+        options_form = QuoteOptionsForm()
+        context = {
+            'categories': Category.objects.all(),
+            'options_form': options_form.as_ul,
+            'client': Client.objects.get(id=request.POST['client']),
+            'quote_name': request.POST['name']
+        }
+        return render(
+            request, 'quote.html', context
+        )
+    else:
+        return HttpResponseNotAllowed(['POST'])
 
 
 @login_required
@@ -135,22 +133,24 @@ def review_quote_view(request):
         quote.dest_lng_psh = 'dest_lng_psh' in request.POST
 
         quote.save()
-
         products = request.POST.getlist('product')
-        counts = request.POST.getlist('product_count')
+        counts = [int(x) for x in request.POST.getlist('product_count')]
 
         for i, count in enumerate(counts):
             if count > 0:
                 prop = ProductProperties()
                 prop.quote = quote
                 prop.product = Product.objects.get(id=int(products[i]))
-                prop.count = int(count)
+                prop.count = count
                 prop.save()
 
                 quote.productproperties_set.add(prop)
 
         quote.save()
         context['quote'] = quote
+        context['categories'] = Category.objects.all()
+        # context['straight_time_cost'] = request.POST['straight_time_cost']
+        # context['over_time_cost'] = request.POST['over_time_cost']
 
     return render(
         request, 'review.html', context

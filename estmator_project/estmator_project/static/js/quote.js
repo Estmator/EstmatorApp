@@ -32,7 +32,9 @@ function calculateQuote() {
     $('#genval_totalhours').html(totalHours);
     $('#genval_totaldays').html(totalDays);
     $('#genval_straighttimecost').html(straightTimeCost);
+    $('#quote_straighttimecost').val(straightTimeCost);
     $('#genval_overtimecost').html(overTimeCost);
+    $('#quote_overtimecost').val(overTimeCost);
 }
 
 // executed after pageload completes
