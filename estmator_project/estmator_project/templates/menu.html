@@ -47,6 +47,7 @@
                                 url: "{% url 'quote_edit_form' %}",
                                 data: {pk: clientID}
                             }).done(function (response) {
+                                console.dir(response);
                                 $('#edit_quote_form_contents').html(response);
                             });
                         });
@@ -115,7 +116,7 @@
                 <h4 class="modal-title">Edit Quote</h4>
             </div>
             <div class="modal-body text-center">
-                <form id="edit_quote_form" action="{% url 'api_client' %}" method="post">{% csrf_token %}
+                <form id="edit_quote_form" action="{% url 'quote' %}" method="post">{% csrf_token %}
                     <div id="edit_quote_form_list"></div>
                     <div id="edit_quote_form_contents"></div>
                     <!-- <div id="edit_quote_form_contents">{{ client_form }}</div> -->
