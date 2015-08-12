@@ -8,8 +8,8 @@
 }
 
 @media (min-width: 992px) {
-    .form-inline .input-group > .form-control {
-        width: 75px;
+    .navmenu {
+        width: 300px;
     }
 }
 

@@ -31,8 +31,31 @@
                 });
             </script>
             <div class="form-group">
-                <button class="btn btn-lg btn-success" data-toggle="modal" data-target="#edit_quote">Edit Quote</button>
+                <button class="btn btn-lg btn-success" id="btn_edit_quote">Edit Quote</button>
             </div>
+            <script>
+                //Edit Quote Button
+                $('#btn_edit_quote').click(function () {
+                    $.ajax({
+                        method: 'GET',
+                        url: "{% url 'client_list_form' %}"
+                    }).done(function(response) {
+                        $('#edit_quote_form_list').html(response).find('select').change(function (e) {
+                            var clientID = e.target.value;
+                            $.ajax({
+                                method: 'GET',
+                                url: "{% url 'quote_edit_form' %}",
+                                data: {pk: clientID}
+                            }).done(function (response) {
+                                console.dir(response);
+                                $('#edit_quote_form_contents').html(response);
+                            });
+                        });
+                        $('#edit_quote_form_contents :input').attr('disabled', true);
+                        $('#edit_quote').modal('toggle');
+                    });
+                });
+            </script>
             <div class="form-group">
                 <button class="btn btn-lg btn-success" data-toggle="modal" data-target="#new_client">New Client</button>
             </div>
@@ -46,8 +69,17 @@
                         method: 'GET',
                         url: "{% url 'client_list_form' %}"
                     }).done(function(response) {
-                        $('#edit_client_form_list').html(response);
-                        $('#edit_client_form :input').attr('disabled', true);
+                        $('#edit_client_form_list').html(response).find('select').change(function (e) {
+                            var clientID = e.target.value;
+                            $.ajax({
+                                method: 'GET',
+                                url: "{% url 'client_edit_form' %}",
+                                data: {pk: clientID}
+                            }).done(function (response) {
+                               $('#edit_client_form_contents').html(response);
+                            });
+                        });
+                        $('#edit_client_form_contents :input').attr('disabled', true);
                         $('#edit_client').modal('toggle');
                     });
                 });
@@ -84,32 +116,12 @@
                 <h4 class="modal-title">Edit Quote</h4>
             </div>
             <div class="modal-body text-center">
-                <div class="form-group">
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Client
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dLabel">
-                            <li data-dismiss="modal">StuffCorp</li>
-                            <li>Things Inc.</li>
-                            <li>Misc and Partners</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Quote
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dLabel">
-                            <li data-dismiss="modal">Quote 1</li>
-                            <li>Quote 2</li>
-                            <li>Quote 3</li>
-                        </ul>
-                    </div>
-                </div>
+                <form id="edit_quote_form" action="{% url 'quote' %}" method="post">{% csrf_token %}
+                    <div id="edit_quote_form_list"></div>
+                    <div id="edit_quote_form_contents"></div>
+                    <!-- <div id="edit_quote_form_contents">{{ client_form }}</div> -->
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
             </div>
             <div class="modal-footer"></div>
         </div>
@@ -142,9 +154,9 @@
                 <h4 class="modal-title">Edit Client</h4>
             </div>
             <div class="modal-body text-center">
-                <div id="edit_client_form_list"></div>
                 <form id="edit_client_form" action="{% url 'api_client' %}" method="post">{% csrf_token %}
-                    {{ client_form }}
+                    <div id="edit_client_form_list"></div>
+                    <div id="edit_client_form_contents">{{ client_form }}</div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
             </div>
