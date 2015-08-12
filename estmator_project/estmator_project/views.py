@@ -143,6 +143,8 @@ def review_quote_view(request):
 
         quote.save()
         context['quote'] = quote
+        context['straight_time_cost'] = request.POST['straight_time_cost']
+        context['over_time_cost'] = request.POST['over_time_cost']
 
     return render(
         request, 'review.html', context
