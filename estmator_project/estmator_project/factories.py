@@ -19,30 +19,30 @@ class UserFactory(factory.django.DjangoModelFactory):
     email = fake.email()
 
 
-class ClientFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = Client
-
-    company = fake.company()
-    first_name = fake.first_name()
-    last_name = fake.last_name()
-    title = fake.job()
-    cell = fake.phone_number()
-    desk = fake.phone_number()
-    email = fake.email()
-
-
 class CompanyFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Company
 
     company_name = fake.company()
-    phone = fake.phone_number()
+    phone = 9995550000
     address = fake.street_address()
     address2 = fake.building_number()
     city = fake.city()
     state = fake.state()
     postal = fake.zipcode()
+
+
+class ClientFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = Client
+
+    company = factory.SubFactory(CompanyFactory)
+    first_name = fake.first_name()
+    last_name = fake.last_name()
+    title = fake.job()
+    cell = 2221114444
+    desk = 3335557777
+    email = fake.email()
 
 
 class CategoryFactory(factory.django.DjangoModelFactory):
@@ -56,7 +56,7 @@ class ProductFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Product
 
-    category = fake.word()
+    category = factory.SubFactory(CategoryFactory)
     name = fake.word()
     mins_piece = fake.pyfloat()
     mult_dollies = fake.pyfloat()
@@ -82,12 +82,12 @@ class QuoteFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Quote
 
-    user = fake.username
-    client = fake.name()
+    user = factory.SubFactory(UserFactory)
+    client = factory.SubFactory(ClientFactory)
     name = fake.words()
     date = fake.date()
     sub_total = fake.random_number()
-    products = None
+    products = factory.SubFactory(ProductFactory)
     travel_time = fake.random_number()
     org_street_load = fake.boolean()
     org_midrise_elev_std = fake.boolean()

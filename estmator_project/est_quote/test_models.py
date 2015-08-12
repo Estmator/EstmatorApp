@@ -8,19 +8,31 @@ from estmator_project.factories import (
 
 class TestCategoryModel(TestCase):
     def setUp(self):
-        pass
+        cat = CategoryFactory()
+        cat.save()
 
     def test_category_add(self):
-        pass
+        self.assertTrue(len(Category.objects.all()), 1)
+        cat1 = CategoryFactory()
+        cat1.save()
+        cat2 = CategoryFactory()
+        cat2.save()
+        self.assertTrue(len(Category.objects.all()), 3)
 
     def test_category_delete(self):
-        pass
+        self.assertTrue(len(Category.objects.all()), 1)
+        cat1 = CategoryFactory()
+        cat1.save()
+        self.assertTrue(len(Category.objects.all()), 2)
+        cat1.delete()
+        self.assertTrue(len(Category.objects.all()), 1)
 
     def test_category_edit(self):
-        pass
-
-    def test_category_invalid_chars_in_name(self):
-        pass
+        cat1 = CategoryFactory()
+        cat1.save()
+        org_name = cat1.name
+        cat1.name = 'Monkeys'
+        self.assertNotEqual(org_name, cat1.name)
 
     def tearDown(self):
         Category.objects.all().delete()
@@ -28,16 +40,30 @@ class TestCategoryModel(TestCase):
 
 class TestProductModel(TestCase):
     def setUp(self):
-        pass
+        cat = CategoryFactory()
+        self.prod = ProductFactory(category=cat)
+        self.prod2 = ProductFactory(category=cat)
+
+    def test_product_category_change(self):
+        self.assertTrue(self.prod.category, self.prod2.category)
+        self.cat2 = CategoryFactory()
+        self.prod.category = self.cat2
+        self.assertTrue(self.prod.category, self.cat2)
 
     def test_product_add(self):
-        pass
+        self.assertTrue(len(Product.objects.all()), 2)
+        ProductFactory()
+        ProductFactory()
+        self.assertTrue(len(Product.objects.all()), 4)
 
     def test_product_delete(self):
-        pass
-
-    def test_product_edit(self):
-        pass
+        self.assertTrue(len(Product.objects.all()), 2)
+        prod3 = ProductFactory()
+        prod4 = ProductFactory()
+        self.assertTrue(len(Product.objects.all()), 4)
+        prod3.delete()
+        prod4.delete()
+        self.assertTrue(len(Product.objects.all()), 2)
 
     def test_product_invalid_chars(self):
         pass
@@ -46,22 +72,17 @@ class TestProductModel(TestCase):
         Product.objects.all().delete()
 
 
-class TestQuoteModel(TestCase):
-    def setUp(self):
-        quote_mods = QuoteModsFactory.create()
+# class TestQuoteModel(TestCase):
+#     def setUp(self):
+#         quote_mods = QuoteModsFactory.create()
+#         quote_mods.save()
 
-    def test_quote_add(self):
-        pass
+#     def test_quote_add(self):
+#         pass
 
-    def test_quote_delete(self):
-        pass
+#     def test_quote_delete(self):
+#         pass
 
-    def test_quote_edit(self):
-        pass
-
-    def test_quote_invalid_chars(self):
-        pass
-
-    def tearDown(self):
-        Quote.objects.all().delete()
-        QuoteModifiers.objects.all().delete()
+#     def tearDown(self):
+#         Quote.objects.all().delete()
+#         QuoteModifiers.objects.all().delete()
