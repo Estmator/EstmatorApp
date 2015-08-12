@@ -18,23 +18,21 @@ class IndexView(TemplateView):
         return context
 
 
-class QuoteView(TemplateView):
-    template_name = 'quote.html'
-
-    def get_context_data(self, **kwargs):
-        try:
-            context = super(QuoteView, self).get_context_data(**kwargs)
-            context['categories'] = Category.objects.all()
-
-            options_form = QuoteOptionsForm()
-            context['options_form'] = options_form.as_ul
-
-            context['client'] = Client.objects.get(id=self.request.GET.get('client'))
-            context['quote_name'] = self.request.GET.get('name')
-        except (KeyError, ValueError):
-            return redirect('menu')
-
-        return context
+@login_required
+def quote_view(request):
+    if request.method == 'POST':
+        options_form = QuoteOptionsForm()
+        context = {
+            'categories': Category.objects.all(),
+            'options_form': options_form.as_ul,
+            'client': Client.objects.get(id=request.POST['client']),
+            'quote_name': request.POST['name']
+        }
+        return render(
+            request, 'quote.html', context
+        )
+    else:
+        return HttpResponseNotAllowed(['POST'])
 
 
 @login_required
@@ -145,6 +143,8 @@ def review_quote_view(request):
         quote.save()
         # import pdb; pdb.set_trace()
         context['quote'] = quote
+        context['straight_time_cost'] = request.POST['straight_time_cost']
+        context['over_time_cost'] = request.POST['over_time_cost']
 
     return render(
         request, 'review.html', context
