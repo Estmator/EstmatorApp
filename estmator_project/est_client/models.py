@@ -53,5 +53,7 @@ class Client(models.Model):
                             blank=True)
     email = models.EmailField()
 
+    review_intro = models.TextField()
+
     def __str__(self):
         return self.first_name + " " + self.last_name

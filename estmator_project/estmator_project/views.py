@@ -110,3 +110,11 @@ def client_list_form_view(request):
         return HttpResponse(client_list_form.as_p())
     else:
         return HttpResponseNotAllowed(['GET'])
+
+
+class ReviewQuoteView(TemplateView):
+    template_name = 'review.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ReviewQuoteView, self).get_context_data(**kwargs)
+        return context

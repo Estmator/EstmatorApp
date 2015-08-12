@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load i18n %}f]-->
+{% load static from staticfiles %}
+{% block content %}
+
+<script src="{% static './js/quote.js' %}"></script>
+
+<div class="canvas">
+    <!--Top Navbar-->
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="nav navbar-nav navbar-left">
+                <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".reveal-left" data-canvas=".canvas" data-disable-scrolling="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="nav navbar-nav">
+                <span class="navbar-brand">Estmator</span>
+            </div>
+            <div class="nav navbar-nav navbar-right">
+                <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".reveal-right" data-canvas=".canvas" data-disable-scrolling="false">
+                    <span class="glyphicon glyphicon-option-horizontal"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!--Main Content-->
+    <div class="container-fluid">
+        <br><br>
+        <input type="hidden" name="quote_client" value="{{ quote_client }}">
+        <input type="hidden" name="quote_name" value="{{ quote_name }}">
+        {% for c in categories %}
+        <div class="row">
+            <div class="col-md-12">
+                <h2 id="category_{{ c.id }}">{{ c.name }}</h2>
+            </div>
+        </div>
+        {% for p in c.product_set.all %}
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <label for="item_{{ p.id }}">{{ p.name }}</label>
+            </div>
+            <div class="col-xs-6 col-md-2">
+                <input class="spinner-box" id="item_{{ p.id }}" type="text" value="10" name="item_{{ p.id }}">
+            </div>
+            <div class="col-xs-6 col-md-2">
+                <span class="calc_hours" id="hour_for_item_{{ p.id }}"> -- </span>
+            </div>
+        </div>
+        {% endfor %}
+        {% endfor %}
+        <br><br>
+    </div><!-- /.container-fluid -->
+
+    <!--Bottom Navbar-->
+    <div class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="nav navbar-nav navbar-left">
+                <button class="btn btn-default navbar-btn quote-submit" id="calculate_btn" data-url="{% url 'api_calc' %}">Calculate</button>
+            </div>
+            <div class="nav navbar-nav navbar-right">
+                <button class="btn btn-default navbar-btn quote-submit" id="review_btn" data-url="{% url 'api_calc' %}">Review</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
