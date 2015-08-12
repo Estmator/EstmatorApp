@@ -65,9 +65,9 @@ def quote_form_view(request):
 @login_required
 def quote_edit_form_view(request):
     if request.method == 'GET':
-        client = Client.objects.get(id=request.GET['pk'])
-        # quote = client.quo
-        quote_form = QuoteCreateForm(instance=client)
+        # client = Client.objects.get(id=request.GET['pk'])
+        quote = Quote.objects.get(client__id=request.GET['pk'])
+        quote_form = QuoteCreateForm(instance=quote)  # Fix this form
         return HttpResponse(quote_form.as_p())
     else:
         return HttpResponseNotAllowed(['GET'])
