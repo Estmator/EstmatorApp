@@ -20,12 +20,13 @@
 <body>
     <header id="header">
     {% block header %}
-        <div id="auth">
             <a href="{% url 'index' %}">{% trans "Home" %}</a> | 
     {% if user.is_authenticated %}
+        <div id="auth">
         {% trans "Logged in" %}: {{ user.username }} 
             (<a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a> | 
             <a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a>)
+        </div>
     {% else %}
         <div id="no_auth">
             <a href="{% url 'auth_login' %}">{% trans "Log in" %}</a> | 
