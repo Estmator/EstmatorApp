@@ -45,8 +45,8 @@ class QuoteModifiers(models.Model):
 
 @python_2_unicode_compatible
 class Quote(models.Model):
-    user = models.ForeignKey(User, related_name='user')
-    client = models.ForeignKey(Client, related_name='client')
+    user = models.ForeignKey(User, related_name='quotes')
+    client = models.ForeignKey(Client, related_name='quotes')
     name = models.CharField(max_length=256)
     date = models.DateField(auto_now_add=True)
     sub_total = models.IntegerField(blank=True, null=True)

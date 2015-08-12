@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}f]-->
+{% load i18n %}
 {% load static from staticfiles %}
 {% block content %}
 
@@ -63,7 +63,8 @@
     <!--Main Content-->
     <div class="container-fluid">
         <br><br>
-        <input type="hidden" name="quote_client" value="{{ quote_client }}">
+        <span id="companyvals" data-straight-time-rate="{{ client.company.st_rate }}" data-over-time-rate="{{ client.company.ot_rate }}"></span>
+        <input type="hidden" name="quote_client" value="{{ client.id }}">
         <input type="hidden" name="quote_name" value="{{ quote_name }}">
         {% for c in categories %}
         <div class="row">
@@ -72,19 +73,96 @@
             </div>
         </div>
         {% for p in c.product_set.all %}
-        <div class="row">
+        <div class="row item-row">
             <div class="col-xs-12 col-md-12">
                 <label for="item_{{ p.id }}">{{ p.name }}</label>
             </div>
             <div class="col-xs-6 col-md-2">
-                <input class="spinner-box" id="item_{{ p.id }}" type="text" value="10" name="item_{{ p.id }}">
+                <input class="spinner-box" id="item_{{ p.id }}" type="text" value="10" name="item_{{ p.id }}" data-mins="{{ p.mins_piece }}">
             </div>
             <div class="col-xs-6 col-md-2">
-                <span class="calc_hours" id="hour_for_item_{{ p.id }}"> -- </span>
+                <span class="calc_mins" id="hour_for_item_{{ p.id }}"> -- </span>
             </div>
         </div>
         {% endfor %}
         {% endfor %}
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Totals</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-2">
+                <h4>Total Products: </h4>
+            </div>
+            <div class="col-xs-6 col-md-2">
+                <h4 id="genval_totalproducts">--</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-2">
+                <h4>Total Truck Loads: </h4>
+            </div>
+            <div class="col-xs-6 col-md-2">
+                <h4 id="genval_totaltruckloads">--</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-2">
+                <h3>Sub-Total: </h3>
+            </div>
+            <div class="col-xs-6 col-md-2">
+                <h3 id="genval_subtotal">--</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-2">
+                <h4>Total Drive Time: </h4>
+            </div>
+            <div class="col-xs-6 col-md-2">
+                <h4 id="genval_totaldrivetime">--</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-2">
+                <h3>Grand Total: </h3>
+            </div>
+            <div class="col-xs-6 col-md-2">
+                <h3 id="genval_grandtotal">--</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-2">
+                <h4>Total Hours: </h4>
+            </div>
+            <div class="col-xs-6 col-md-2">
+                <h4 id="genval_totalhours">--</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-2">
+                <h4>Total Days: </h4>
+            </div>
+            <div class="col-xs-6 col-md-2">
+                <h4 id="genval_totaldays">--</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-2">
+                <h3>Straight Time Cost: </h3>
+            </div>
+            <div class="col-xs-6 col-md-2">
+                <h3 id="genval_straighttimecost">--</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-2">
+                <h3>Overtime Cost: </h3>
+            </div>
+            <div class="col-xs-6 col-md-2">
+                <h3 id="genval_overtimecost">--</h3>
+            </div>
+        </div>
         <br><br>
     </div><!-- /.container-fluid -->
 
@@ -92,10 +170,10 @@
     <div class="navbar navbar-default navbar-fixed-bottom">
         <div class="container-fluid">
             <div class="nav navbar-nav navbar-left">
-                <button class="btn btn-default navbar-btn quote-submit" id="calculate_btn" data-url="{% url 'api_calc' %}">Calculate</button>
+                <button type="button" class="btn btn-default navbar-btn" id="calculate_btn">Calculate</button>
             </div>
             <div class="nav navbar-nav navbar-right">
-                <button class="btn btn-default navbar-btn quote-submit" id="review_btn" data-url="{% url 'api_calc' %}">Review</button>
+                <button type="submit" class="btn btn-default navbar-btn" id="review_btn">Review</button>
             </div>
         </div>
     </div>
