@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotAllowed
 from django.core.urlresolvers import reverse
 from est_quote.forms import QuoteCreateForm, ClientListForm, QuoteOptionsForm
@@ -117,4 +118,11 @@ class ReviewQuoteView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ReviewQuoteView, self).get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        context['products'] = Product.objects.all()
+        # import pdb; pdb.set_trace()
+        # context['quote'] = Quote.objects.get(id=self.kwargs['id'])
+        # context['client'] = Client.objects.get(id=self.kwargs['id'])
+        # context['user'] = User.objects.filter(user=self.request.user)
+
         return context

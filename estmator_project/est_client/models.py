@@ -35,8 +35,8 @@ class Company(models.Model):
                              choices=STATES,
                              default='Washington')
     postal = models.IntegerField()
-    ot_rate = models.IntegerField(default=30)
-    st_rate = models.IntegerField(default=40)
+    st_rate = models.IntegerField(default=30)
+    ot_rate = models.IntegerField(default=40)
 
     def __str__(self):
         return self.company_name
@@ -52,8 +52,6 @@ class Client(models.Model):
     desk = models.CharField(max_length=20,
                             blank=True)
     email = models.EmailField()
-
-    review_intro = models.TextField()
 
     def __str__(self):
         return self.first_name + " " + self.last_name
