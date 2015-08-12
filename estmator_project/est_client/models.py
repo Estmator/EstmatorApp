@@ -62,8 +62,11 @@ class Client(models.Model):
                      '<select id="id_quote" name="quote">\n' \
                      '<option value selected="selected">---------</option>\n'
         for quote in quotes:
-            quote_form += '<option value="{id}">{name}</option>\n'.format(
-                id=quote.id, name=quote.name
+            quote_form += (
+                '<option value="{id}">{name}: {date}</option>\n'
+                .format(
+                    id=quote.id, name=quote.name, date=quote.date
+                )
             )
         quote_form += '</select></p>\n'
         return quote_form
