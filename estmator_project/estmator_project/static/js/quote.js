@@ -1,3 +1,7 @@
+function calcSuccess(res) {
+    console.log(res);
+}
+
 // executed after pageload completes
 $(function () {
     //enable number spinner input functionality for each input
@@ -18,5 +22,15 @@ $(function () {
         $(this).click(function () {
             $('.navmenu').offcanvas('toggle');
         });
+    });
+
+    $('.quote-submit').click(function () {
+        var url = $(this).data('url');
+        $('#quote_form').ajaxSubmit({
+            url: url,
+            success: calcSuccess
+        });
+        //this prevents normal form submit page navigation
+        return false;
     });
 });

@@ -5,6 +5,8 @@
 
 <script src="{% static './js/quote.js' %}"></script>
 
+<form id="quote_form" action="{% url 'api_calc' %}" method="post">{% csrf_token %}
+
 <!-- Left Reveal Menu -->
 <div class="navmenu navmenu-default navmenu-fixed-left reveal-left">
     <a class="navmenu-brand" href="#">Categories</a>
@@ -37,6 +39,7 @@
 </div>
 
 <div class="canvas">
+    <!--Top Navbar-->
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="nav navbar-nav navbar-left">
@@ -57,6 +60,7 @@
         </div>
     </div>
 
+    <!--Main Content-->
     <div class="container-fluid">
         <br><br>
         <input type="hidden" name="quote_client" value="{{ quote_client }}">
@@ -76,24 +80,28 @@
                 <input class="spinner-box" id="item_{{ p.id }}" type="text" value="10" name="item_{{ p.id }}">
             </div>
             <div class="col-xs-6 col-md-2">
-                Hours: 100
+                <span class="calc_hours" id="hour_for_item_{{ p.id }}"> -- </span>
             </div>
         </div>
         {% endfor %}
         {% endfor %}
-    </div><!-- /.container -->
+        <br><br>
+    </div><!-- /.container-fluid -->
 
+    <!--Bottom Navbar-->
     <div class="navbar navbar-default navbar-fixed-bottom">
         <div class="container-fluid">
             <div class="nav navbar-nav navbar-left">
-                <button class="btn btn-default navbar-btn">Calculate</button>
+                <button class="btn btn-default navbar-btn quote-submit" id="calculate_btn" data-url="{% url 'api_calc' %}">Calculate</button>
             </div>
             <div class="nav navbar-nav navbar-right">
-                <button class="btn btn-default navbar-btn">Review</button>
+                <button class="btn btn-default navbar-btn quote-submit" id="review_btn" data-url="{% url 'api_calc' %}">Review</button>
             </div>
         </div>
     </div>
 
 </div>
+
+</form>
 
 {% endblock %}
