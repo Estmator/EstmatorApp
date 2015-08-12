@@ -35,6 +35,8 @@ class Company(models.Model):
                              choices=STATES,
                              default='Washington')
     postal = models.IntegerField()
+    ot_rate = models.IntegerField(default=30)
+    st_rate = models.IntegerField(default=40)
 
     def __str__(self):
         return self.company_name

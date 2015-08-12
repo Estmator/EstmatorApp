@@ -20,12 +20,12 @@ class Product(models.Model):
     name = models.CharField(max_length=256)
 
     # Piece Multipliers
-    mins_piece = models.IntegerField()
-    mult_dollies = models.IntegerField()
-    m_cart = models.IntegerField()
-    l_cart = models.IntegerField()
-    p_cart = models.IntegerField()
-    s_pack = models.IntegerField()
+    mins_piece = models.FloatField()
+    mult_dollies = models.FloatField()
+    m_cart = models.FloatField()
+    l_cart = models.FloatField()
+    p_cart = models.FloatField()
+    s_pack = models.FloatField()
 
     def __str__(self):
         return 'Product: {}'.format(self.name)
