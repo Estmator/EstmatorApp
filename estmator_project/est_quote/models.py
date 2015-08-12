@@ -43,6 +43,7 @@ class QuoteModifiers(models.Model):
 
 @python_2_unicode_compatible
 class Quote(models.Model):
+    # Add field for hash
     user = models.ForeignKey(User, related_name='user')
     client = models.ForeignKey(Client, related_name='client')
     name = models.CharField(max_length=256)

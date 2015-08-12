@@ -12,6 +12,7 @@ class ActiveProfileManager(models.Manager):
 
 @python_2_unicode_compatible
 class UserProfile(models.Model):
+    # Add field for User Blurb which will be used on Quote.
     user = models.OneToOneField(
         User,
         related_name='profile',
