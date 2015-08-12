@@ -59,17 +59,6 @@ $(function () {
         calculateQuote();
     });
 
-    //$('.quote-submit').click(function () {
-    //    var url = $(this).data('url');
-    //    $('#quote_form').ajaxSubmit({
-    //        url: url,
-    //        beforeSubmit: showRequest,
-    //        success: calcSuccess
-    //    });
-    //    //this prevents normal form submit page navigation
-    //    return false;
-    //});
-
     var reviewButton = $('#review_btn');
     var reviewEnabled = true;
     setInterval(function () {
@@ -85,4 +74,6 @@ $(function () {
             reviewEnabled = true;
         }
     }, 2000);
+
+    $('#quote_form').ajaxForm();
 });
