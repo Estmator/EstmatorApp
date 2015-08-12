@@ -67,7 +67,7 @@ def quote_form_view(request):
 def quote_edit_form_view(request):
     if request.method == 'GET':
         client = Client.objects.get(id=request.GET['pk'])
-        return HttpResponse(client.quotes_to_html())
+        return HttpResponse(client.quotes_select_html())
     else:
         return HttpResponseNotAllowed(['GET'])
 

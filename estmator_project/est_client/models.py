@@ -54,7 +54,7 @@ class Client(models.Model):
     def __str__(self):
         return self.first_name + " " + self.last_name
 
-    def quotes_to_html(self):
+    def quotes_select_html(self):
         """Return HTML of select elements for all client quotes."""
         quotes = self.quotes.all()
         quote_form = '<p>\n' \
