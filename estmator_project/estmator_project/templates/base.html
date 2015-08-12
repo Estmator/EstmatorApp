@@ -22,7 +22,7 @@
 <body>
     <header id="header">
     {% block header %}
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-inverse">
           <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -32,7 +32,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">Estmator</a>
+              <img id="logo_image" class="navbar-brand" alt="Estmator" src="{% static 'images/est_logo_symbol.png' %}">
+              <a class="navbar-brand" href="{% url 'index' %}">Estmator</a>
             </div>
             
             <p class="navbar-text">{% block header_text %}Scott Loves Andy{% endblock %}</p>
@@ -54,7 +55,7 @@
                     <li><a href="#">Separated link</a></li>
                   </ul>
                 </li> -->
-                {% end block %}
+                {% endblock %}
                 {% block header_buttons %}
                 <li>
                   <button type="button" class="btn btn-default navbar-btn">Do it!</button>
