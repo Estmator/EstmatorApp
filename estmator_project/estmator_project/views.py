@@ -28,7 +28,7 @@ class QuoteView(TemplateView):
             options_form = QuoteOptionsForm()
             context['options_form'] = options_form.as_ul
 
-            context['quote_client'] = self.request.GET.get('client')
+            context['client'] = Client.objects.get(id=self.request.GET.get('client'))
             context['quote_name'] = self.request.GET.get('name')
         except (KeyError, ValueError):
             return redirect('menu')

@@ -6,6 +6,40 @@ function showRequest(formdata) {
     console.dir(formdata);
 }
 
+function calculateQuote() {
+    var totalProducts = 0;
+    var subTotal = 0;
+
+    $('.item-row').each(function () {
+        var spinner = $(this).find('.spinner-box');
+        var count = parseInt(spinner.val());
+        totalProducts += count;
+        var minutes = count * parseFloat(spinner.data('mins')).toFixed(2);
+        subTotal += minutes;
+
+        $(this).find('.calc_mins').html(minutes);
+    });
+
+    var totalTruckLoads = (totalProducts / 22).toFixed(2);
+    var totalDriveTime = $('#id_travel_time').val() * 2;
+    var grandTotal = subTotal + totalDriveTime;
+    var totalHours = (grandTotal / 60).toFixed(2);
+    var totalDays = (totalHours / 8).toFixed(2);
+    var companyVals = $('#companyvals');
+    var straightTimeCost = (parseFloat(companyVals.data('straight-time-rate')) * totalHours).toFixed(2);
+    var overTimeCost = (parseFloat(companyVals.data('over-time-rate')) * totalHours).toFixed(2);
+
+    $('#genval_totalproducts').html(totalProducts);
+    $('#genval_totaltruckloads').html(totalTruckLoads);
+    $('#genval_subtotal').html(subTotal);
+    $('#genval_totaldrivetime').html(totalDriveTime);
+    $('#genval_grandtotal').html(grandTotal);
+    $('#genval_totalhours').html(totalHours);
+    $('#genval_totaldays').html(totalDays);
+    $('#genval_straighttimecost').html(straightTimeCost);
+    $('#genval_overtimecost').html(overTimeCost);
+}
+
 // executed after pageload completes
 $(function () {
     //enable number spinner input functionality for each input
@@ -26,6 +60,11 @@ $(function () {
         $(this).click(function () {
             $('.navmenu').offcanvas('toggle');
         });
+    });
+
+    //click listener for calculate button
+    $('#calculate_btn').click(function () {
+        calculateQuote();
     });
 
     $('.quote-submit').click(function () {
