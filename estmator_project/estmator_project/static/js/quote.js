@@ -50,6 +50,10 @@ $(function () {
             boostat: 5,
             maxboostedstep: 10
         });
+
+        $(this).change(function () {
+            disableReviewButton();
+        });
     });
 
     //add click listeners to each category button
@@ -66,38 +70,44 @@ $(function () {
     });
 
     var reviewButton = $('#review_btn');
-    var reviewButtonEnabled = false;
+    var reviewButtonEnabled = true;
     var reviewButtonInterval = null;
     //review button is disabled at start, available again upon calculation
     disableReviewButton();
 
     function disableReviewButton() {
-        reviewButton.prop('disabled', true);
-        reviewButton.removeClass('btn-warning');
-        reviewButton.addClass('btn-default');
-        reviewButtonEnabled = false;
-        reviewButtonInterval = null;
+        if (reviewButtonEnabled) {
+            reviewButton.prop('disabled', true);
+            reviewButton.removeClass('btn-warning');
+            reviewButton.addClass('btn-default');
+            reviewButtonEnabled = false;
+            clearInterval(reviewButtonInterval);
+        }
     }
 
     function enableReviewButton() {
-        reviewButton.prop('disabled', false);
-        reviewButton.removeClass('btn-warning');
-        reviewButton.addClass('btn-default');
-        reviewButtonEnabled = true;
-        reviewButtonInterval = setInterval(checkIfOnline, 2000);
+        if (!reviewButtonEnabled) {
+            reviewButton.prop('disabled', false);
+            reviewButton.removeClass('btn-warning');
+            reviewButton.addClass('btn-default');
+            reviewButtonEnabled = true;
+            reviewButtonInterval = setInterval(checkIfOnline, 2000);
+        }
     }
 
     function warningReviewButton() {
-        reviewButton.prop('disabled', true);
-        reviewButton.removeClass('btn-default');
-        reviewButton.addClass('btn-warning');
-        reviewButtonEnabled = false;
+        if (reviewButtonEnabled) {
+            reviewButton.prop('disabled', true);
+            reviewButton.removeClass('btn-default');
+            reviewButton.addClass('btn-warning');
+            reviewButtonEnabled = false;
+        }
     }
 
     function checkIfOnline() {
-        if (reviewButtonEnabled && !navigator.onLine) {
+        if (!navigator.onLine) {
             warningReviewButton();
-        } else if (!reviewButtonEnabled && navigator.onLine) {
+        } else {
             enableReviewButton();
         }
     }
