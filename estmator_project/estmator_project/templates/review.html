@@ -47,12 +47,19 @@
             <p>{{ quote.user.profile.review_intro }}</p>
         </section>
         <section class='quote_info'>
-            {% for c in quote.products.all %}
-            <h2 id="category_{{ c.id }}">{{ c.name }}</h2>
+        {% with pa=quote.products.all %}
+            {% for c in categories %}
+                <h2 id="category_{{ c.id }}">{{ c.name }}</h2>
+                {% for p in pa %}
+                    {% if p.category == c %}
+                        <p id="product_{{ p.id }}">{{ p.name }}</p>
+                    {% endif %}
+                {% endfor %}
             {% endfor %}
             </div>
             <p>ST Total Cost</p>
             <p>OT Total Cost</p>
+        {% endwith %}
         </section>
         <section class='quote_sig'>
             <section class='signature'>
