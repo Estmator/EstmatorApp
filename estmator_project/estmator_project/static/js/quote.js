@@ -24,8 +24,11 @@ function calculateQuote() {
     $('#genval_totalproducts').html(totalProducts);
     $('#genval_totaltruckloads').html(totalTruckLoads);
     $('#genval_subtotal').html(subTotal);
+    $('#quote_subtotal').val(subTotal);
     $('#genval_totaldrivetime').html(totalDriveTime);
+    $('#quote_traveltime').val(totalDriveTime);
     $('#genval_grandtotal').html(grandTotal);
+    $('#quote_grandtotal').val(grandTotal);
     $('#genval_totalhours').html(totalHours);
     $('#genval_totaldays').html(totalDays);
     $('#genval_straighttimecost').html(straightTimeCost);
@@ -75,5 +78,5 @@ $(function () {
         }
     }, 2000);
 
-    $('#quote_form').ajaxForm();
+    //$('#quote_form').ajaxForm();
 });

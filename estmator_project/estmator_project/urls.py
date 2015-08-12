@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^api/v1/', include('est_api.urls')),
     url(r'^quote/$', views.QuoteView.as_view(), name='quote'),
-    url(r'^quote/review$', views.ReviewQuoteView.as_view(), name='review'),
+    url(r'^quote/review$', views.review_quote_view, name='review'),
     url(r'^quote/form$', views.quote_form_view, name='quote_form'),
     url(
         r'^quote/form/edit$',

@@ -101,16 +101,51 @@ def client_list_form_view(request):
         return HttpResponseNotAllowed(['GET'])
 
 
-class ReviewQuoteView(TemplateView):
-    template_name = 'review.html'
+@login_required
+def review_quote_view(request):
+    context = {}
+    if request.method == 'POST':
+        quote = Quote()
 
-    def get_context_data(self, **kwargs):
-        context = super(ReviewQuoteView, self).get_context_data(**kwargs)
-        context['categories'] = Category.objects.all()
-        context['products'] = Product.objects.all()
-        # import pdb; pdb.set_trace()
-        # context['quote'] = Quote.objects.get(id=self.kwargs['id'])
-        # context['client'] = Client.objects.get(id=self.kwargs['id'])
-        # context['user'] = User.objects.filter(user=self.request.user)
+        quote.user = request.user
+        quote.client = Client.objects.get(id=request.POST['quote_client'])
+        quote.name = request.POST['quote_name']
+        quote.sub_total = request.POST['sub_total']
+        quote.grand_total = request.POST['grand_total']
+        quote.travel_time = request.POST['travel_time']
 
-        return context
+        quote.org_street_load = 'org_street_load' in request.POST
+        quote.org_midrise_elev_std = 'org_midrise_elev_std' in request.POST
+        quote.org_midrise_elv_frt = 'org_midrise_elv_frt' in request.POST
+        quote.org_highrise = 'org_highrise' in request.POST
+        quote.org_stairs = 'org_stairs' in request.POST
+        quote.org_lng_psh = 'org_lng_psh' in request.POST
+
+        quote.dest_street_load = 'dest_street_load' in request.POST
+        quote.dest_midrise_elev_std = 'dest_midrise_elev_std' in request.POST
+        quote.dest_midrise_elv_frt = 'dest_midrise_elv_frt' in request.POST
+        quote.dest_highrise = 'dest_highrise' in request.POST
+        quote.dest_stairs = 'dest_stairs' in request.POST
+        quote.dest_lng_psh = 'dest_lng_psh' in request.POST
+
+        quote.save()
+
+        products = request.POST.getlist('product')
+        counts = request.POST.getlist('product_count')
+
+        for i, count in enumerate(counts):
+            if count > 0:
+                prop = ProductProperties()
+                prop.quote = quote
+                prop.product = Product.objects.get(id=int(products[i]))
+                prop.count = int(count)
+                prop.save()
+
+                quote.productproperties_set.add(prop)
+
+        quote.save()
+        context['quote'] = quote
+
+    return render(
+        request, 'review.html', context
+    )
