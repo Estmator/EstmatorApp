@@ -5,7 +5,7 @@
 
 <script src="{% static './js/quote.js' %}"></script>
 
-<form id="quote_form" action="{% url 'api_quote' %}" method="post">{% csrf_token %}
+<form id="quote_form" action="{% url 'review' %}" method="post">{% csrf_token %}
 
 <!-- Left Reveal Menu -->
 <div class="navmenu navmenu-default navmenu-fixed-left reveal-left">
@@ -78,7 +78,8 @@
                 <label for="item_{{ p.id }}">{{ p.name }}</label>
             </div>
             <div class="col-xs-6 col-md-2">
-                <input class="spinner-box" id="item_{{ p.id }}" type="text" value="10" name="item_{{ p.id }}" data-mins="{{ p.mins_piece }}">
+                <input type="hidden" name="product" value="{{ p.id }}">
+                <input class="spinner-box" id="item_{{ p.id }}" type="text" value="10" name="product_count" data-mins="{{ p.mins_piece }}">
             </div>
             <div class="col-xs-6 col-md-2">
                 <span class="calc_mins" id="hour_for_item_{{ p.id }}"> -- </span>
@@ -108,6 +109,7 @@
             </div>
         </div>
         <div class="row">
+            <input type="hidden" id="quote_subtotal" name="sub_total" value="0">
             <div class="col-xs-6 col-md-2">
                 <h3>Sub-Total: </h3>
             </div>
@@ -116,6 +118,7 @@
             </div>
         </div>
         <div class="row">
+            <input type="hidden" id="quote_traveltime" name="travel_time" value="0">
             <div class="col-xs-6 col-md-2">
                 <h4>Total Drive Time: </h4>
             </div>
@@ -124,6 +127,7 @@
             </div>
         </div>
         <div class="row">
+            <input type="hidden" id="quote_grandtotal" name="grand_total" value="0">
             <div class="col-xs-6 col-md-2">
                 <h3>Grand Total: </h3>
             </div>
