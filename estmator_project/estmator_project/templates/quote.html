@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 {% load i18n %}f]-->
-
+{% load static from staticfiles %}
 {% block content %}
 
-<div class="navmenu navmenu-default navmenu-fixed-left">
+<script src="{% static './js/quote.js' %}"></script>
+
+<form id="quote_form" action="{% url 'api_calc' %}" method="post">{% csrf_token %}
+
+<!-- Left Reveal Menu -->
+<div class="navmenu navmenu-default navmenu-fixed-left reveal-left">
     <a class="navmenu-brand" href="#">Categories</a>
     <ul class="nav navmenu-nav">
         {% for c in categories %}
@@ -25,24 +30,39 @@
     </ul>
 </div>
 
+<!-- Right Reveal Menu -->
+<div class="navmenu navmenu-default navmenu-fixed-right reveal-right">
+    <a class="navmenu-brand" href="#">Options</a>
+    <ul class="nav navmenu-nav">
+        {{ options_form }}
+    </ul>
+</div>
+
 <div class="canvas">
+    <!--Top Navbar-->
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-canvas=".canvas" data-disable-scrolling="false">
+            <div class="nav navbar-nav navbar-left">
+                <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".reveal-left" data-canvas=".canvas" data-disable-scrolling="false">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+            </div>
+            <div class="nav navbar-nav">
                 <span class="navbar-brand">Estmator</span>
             </div>
-            <p class="navbar-text navbar-right">
-                <a class="navbar-link" href="{% url 'auth_login' %}">User: {{ request.user.username }}</a>
-            </p>
+            <div class="nav navbar-nav navbar-right">
+                <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".reveal-right" data-canvas=".canvas" data-disable-scrolling="false">
+                    <span class="glyphicon glyphicon-option-horizontal"></span>
+                </button>
+            </div>
         </div>
     </div>
 
+    <!--Main Content-->
     <div class="container-fluid">
+        <br><br>
         <input type="hidden" name="quote_client" value="{{ quote_client }}">
         <input type="hidden" name="quote_name" value="{{ quote_name }}">
         {% for c in categories %}
@@ -60,24 +80,28 @@
                 <input class="spinner-box" id="item_{{ p.id }}" type="text" value="10" name="item_{{ p.id }}">
             </div>
             <div class="col-xs-6 col-md-2">
-                Hours: 100
+                <span class="calc_hours" id="hour_for_item_{{ p.id }}"> -- </span>
             </div>
         </div>
         {% endfor %}
         {% endfor %}
-    </div><!-- /.container -->
+        <br><br>
+    </div><!-- /.container-fluid -->
 
+    <!--Bottom Navbar-->
     <div class="navbar navbar-default navbar-fixed-bottom">
         <div class="container-fluid">
-            <div class="navbar-nav navbar-left">
-                <button class="btn btn-default navbar-btn">Calculate</button>
+            <div class="nav navbar-nav navbar-left">
+                <button class="btn btn-default navbar-btn quote-submit" id="calculate_btn" data-url="{% url 'api_calc' %}">Calculate</button>
             </div>
-            <div class="navbar-nav navbar-right">
-                <button class="btn btn-default navbar-btn">Review</button>
+            <div class="nav navbar-nav navbar-right">
+                <button class="btn btn-default navbar-btn quote-submit" id="review_btn" data-url="{% url 'api_calc' %}">Review</button>
             </div>
         </div>
     </div>
 
 </div>
+
+</form>
 
 {% endblock %}
