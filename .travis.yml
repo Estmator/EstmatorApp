@@ -13,6 +13,10 @@ branches:
     - development
     - test
 
+# blacklist
+  except:
+    - /^.*test.*$/
+
 python:
   - "2.7"
 
