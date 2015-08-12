@@ -62,23 +62,43 @@ $(function () {
     //click listener for calculate button
     $('#calculate_btn').click(function () {
         calculateQuote();
+        enableReviewButton();
     });
 
     var reviewButton = $('#review_btn');
-    var reviewEnabled = true;
-    setInterval(function () {
-        if (reviewEnabled && !navigator.onLine) {
-            reviewButton.prop('disabled', true);
-            reviewButton.removeClass('btn-default');
-            reviewButton.addClass('btn-warning');
-            reviewEnabled = false;
-        } else if (!reviewEnabled && navigator.onLine) {
-            reviewButton.prop('disabled', false);
-            reviewButton.removeClass('btn-warning');
-            reviewButton.addClass('btn-default');
-            reviewEnabled = true;
-        }
-    }, 2000);
+    var reviewButtonEnabled = false;
+    var reviewButtonInterval = null;
+    //review button is disabled at start, available again upon calculation
+    disableReviewButton();
 
-    //$('#quote_form').ajaxForm();
+    function disableReviewButton() {
+        reviewButton.prop('disabled', true);
+        reviewButton.removeClass('btn-warning');
+        reviewButton.addClass('btn-default');
+        reviewButtonEnabled = false;
+        reviewButtonInterval = null;
+    }
+
+    function enableReviewButton() {
+        reviewButton.prop('disabled', false);
+        reviewButton.removeClass('btn-warning');
+        reviewButton.addClass('btn-default');
+        reviewButtonEnabled = true;
+        reviewButtonInterval = setInterval(checkIfOnline, 2000);
+    }
+
+    function warningReviewButton() {
+        reviewButton.prop('disabled', true);
+        reviewButton.removeClass('btn-default');
+        reviewButton.addClass('btn-warning');
+        reviewButtonEnabled = false;
+    }
+
+    function checkIfOnline() {
+        if (reviewButtonEnabled && !navigator.onLine) {
+            warningReviewButton();
+        } else if (!reviewButtonEnabled && navigator.onLine) {
+            enableReviewButton();
+        }
+    }
 });
