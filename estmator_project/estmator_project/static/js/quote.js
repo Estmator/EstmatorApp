@@ -1,11 +1,3 @@
-function calcSuccess(res) {
-    console.log(res);
-}
-
-function showRequest(formdata) {
-    console.dir(formdata);
-}
-
 function calculateQuote() {
     var totalProducts = 0;
     var subTotal = 0;
@@ -67,16 +59,16 @@ $(function () {
         calculateQuote();
     });
 
-    $('.quote-submit').click(function () {
-        var url = $(this).data('url');
-        $('#quote_form').ajaxSubmit({
-            url: url,
-            beforeSubmit: showRequest,
-            success: calcSuccess
-        });
-        //this prevents normal form submit page navigation
-        return false;
-    });
+    //$('.quote-submit').click(function () {
+    //    var url = $(this).data('url');
+    //    $('#quote_form').ajaxSubmit({
+    //        url: url,
+    //        beforeSubmit: showRequest,
+    //        success: calcSuccess
+    //    });
+    //    //this prevents normal form submit page navigation
+    //    return false;
+    //});
 
     var reviewButton = $('#review_btn');
     var reviewEnabled = true;
