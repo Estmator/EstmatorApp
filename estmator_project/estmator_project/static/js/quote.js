@@ -77,4 +77,20 @@ $(function () {
         //this prevents normal form submit page navigation
         return false;
     });
+
+    var reviewButton = $('#review_btn');
+    var reviewEnabled = true;
+    setInterval(function () {
+        if (reviewEnabled && !navigator.onLine) {
+            reviewButton.prop('disabled', true);
+            reviewButton.removeClass('btn-default');
+            reviewButton.addClass('btn-warning');
+            reviewEnabled = false;
+        } else if (!reviewEnabled && navigator.onLine) {
+            reviewButton.prop('disabled', false);
+            reviewButton.removeClass('btn-warning');
+            reviewButton.addClass('btn-default');
+            reviewEnabled = true;
+        }
+    }, 2000);
 });
