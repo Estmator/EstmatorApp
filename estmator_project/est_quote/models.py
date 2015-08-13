@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
-from django.db import models
+from uuid import uuid4
+from django.db import IntegrityError, models
 from django.utils.encoding import python_2_unicode_compatible
 from django.contrib.auth.models import User
 from est_client.models import Client
@@ -43,6 +44,15 @@ class QuoteModifiers(models.Model):
     lng_psh = models.FloatField()
 
 
+def make_token():
+    """
+    Generate a unique token for each quote.
+
+    Token is used to reference a client's quote in an email link.
+    """
+    return str(uuid4())
+
+
 @python_2_unicode_compatible
 class Quote(models.Model):
     user = models.ForeignKey(User, related_name='quotes')
@@ -57,6 +67,8 @@ class Quote(models.Model):
         through='ProductProperties',
         blank=True
     )
+
+    token = models.CharField(max_length=36, editable=False, default=make_token)
 
     travel_time = models.IntegerField()
 

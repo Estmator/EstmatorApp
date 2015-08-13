@@ -30,49 +30,46 @@
     <!--Main Content-->
     <section class="container-fluid">
         <section class='review_header'>
+        {% with qcc=quote.client.company %}
             <section class='client_info'>
-                <h3>Client Name</h3>
-                <p>Comapny</p>
-                <p>Address info</p>
+                <h3>{{ quote.client.name }}</h3>
+                <p>{{ qcc.company_name }}</p>
+                <p>{{ qcc.address }}</p>
+            {% if qcc.address2 %}
+                <p>{{ qcc.address2 }}</p>
+            {% endif %}
+                <p>{{ qcc.city }},{{ qcc.state }} {{ qcc.postal }}</p>
             </section>
             <img src="" alt'user logo'>
+        {% endwith %}
         </section>
         <section class='user_intro'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>{{ quote.user.profile.review_intro }}</p>
         </section>
         <section class='quote_info'>
-            <ul>
-                <h3>Category</h3>
-                <li>Product / Count</li>
-                <li>Product / Count</li>
-                <li>Product / Count</li>
-            </ul>
-            <ul>
-                <h3>Category</h3>
-                <li>Product / Count</li>
-                <li>Product / Count</li>
-                <li>Product / Count</li>
-            </ul>
-            <ul>
-                <h3>Category</h3>
-                <li>Product / Count</li>
-                <li>Product / Count</li>
-                <li>Product / Count</li>
-            </ul>
-            <p>ST Total Cost</p>
-            <p>OT Total Cost</p>
+        <h2>Relocation Inventory:</h2>
+
+        {% for c, plist in categories.items %}
+            <h3 id="category_{{ c.id }}">{{ c.name }}</h3>
+            {% for p, count in plist %}
+                <p id="product_{{ p.id }}">{{ p.name }} {{ count }}</p>
+            {% endfor %}
+        {% endfor %}
+
         </section>
         <section class='quote_sig'>
-            <section class='signature'>
-                <p>Client Signature</p>
-            </section>
-            <h3>User Information</h3>
-            <button type="submit">Send Email</button>
+        {% with qu=quote.user %}
+        {% if user.is_authenticated %}
+            <section class='signature'></section>
+            <h3>{{ qu.first_name }} {{ qu.last_name }}</h3>
+            <p>degub user {{ qu.username }}</p>
+            <p>c: {{ qu.cell }}</p>
+            <p>d: {{ qu.desk }}</p>
+            <a href="{% url 'send_quote' quote.pk %}">
+                <button type="button">Send Email</button>
+            </a>
+        {% endif %}
+        {% endwith %}
         </section>
     </section><!-- /.container-fluid -->
 
