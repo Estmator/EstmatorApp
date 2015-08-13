@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="container pad_top_50">
-    <form method="post" action="">
+    <form class="form-horizontal" method="post" action="">
         {% csrf_token %}
         {{ form.as_p }}
         <input class="btn btn-primary" type="submit" value="{% trans 'Log in' %}" />
