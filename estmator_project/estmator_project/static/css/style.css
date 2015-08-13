@@ -8,6 +8,10 @@ body {
     height: 100%;
 }
 
+.navbar .navbar-tagline {
+    text-align: center;
+}
+
 
 /* Positioning
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -45,7 +49,7 @@ body {
 
 @media (min-width: 992px) {
     .navmenu {
-        width: 300px;
+        width: 200px;
     }
 }
 
@@ -75,4 +79,45 @@ body {
 
 .gray {
     background-color: lightgray;
+}
+
+.hilite_color {
+    color: #f68620;
+}
+
+/* Main Menu
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+#est-menu {
+    padding-top: 100px;
+}
+
+@media (min-width: 992px) {
+    #quote-totals-container {
+        position: fixed;
+    }
+}
+
+.input-group .form-control {
+    z-index: 0;
+}
+
+
+
+/* About page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+img.media-object.img-circle {
+    max-width: 5rem;
+}
+
+img.gh_img {
+    max-width: 2rem;
+}
+
+img.logo {
+    max-width: 7rem;
+}
+
+.about_intro {
+    margin-top: 1.5rem;
 }

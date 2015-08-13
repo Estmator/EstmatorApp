@@ -2,20 +2,22 @@
 {% load i18n %}
 {% load static from staticfiles %}
 {% block nav_links %}
-{{ block.super }}
 {% endblock %}
 {% block content %}
 
 <script src="{% static './js/menu.js' %}"></script>
 
-<div class="container">
+<div class="container" id="est-menu">
 
     <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6 text-center">
+        <div class="col-md-12 text-center">
+            <h1>Select An Option</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-3 col-md-3 col-xs-12 text-center">
             <div class="form-group">
-                <!--<button class="btn btn-lg btn-success" data-toggle="modal" data-target="#new_quote">New Quote</button>-->
-                <button class="btn btn-lg btn-success" id="btn_new_quote">New Quote</button>
+                <button class="btn btn-lg btn-default btn-block" id="btn_new_quote">New Quote</button>
             </div>
             <script>
                 //New Quote Button
@@ -30,7 +32,7 @@
                 });
             </script>
             <div class="form-group">
-                <button class="btn btn-lg btn-success" id="btn_edit_quote">Edit Quote</button>
+                <button class="btn btn-lg btn-default btn-block" id="btn_edit_quote">Edit Quote</button>
             </div>
             <script>
                 //Edit Quote Button
@@ -54,11 +56,13 @@
                     });
                 });
             </script>
+        </div>
+        <div class="col-md-3 col-xs-12 text-center">
             <div class="form-group">
-                <button class="btn btn-lg btn-success" data-toggle="modal" data-target="#new_client">New Client</button>
+                <button class="btn btn-lg btn-default btn-block" data-toggle="modal" data-target="#new_client">New Client</button>
             </div>
             <div class="form-group">
-                <button class="btn btn-lg btn-success" id="btn_edit_client">Edit Client</button>
+                <button class="btn btn-lg btn-default btn-block" id="btn_edit_client">Edit Client</button>
             </div>
             <script>
                 //Edit Client Button
@@ -83,7 +87,6 @@
                 });
             </script>
         </div>
-        <div class="col-md-3"></div>
     </div>
 
 </div> <!-- /container -->
