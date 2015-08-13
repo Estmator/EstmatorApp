@@ -4,15 +4,11 @@ html {
     overflow-x: hidden;
 }
 
-/*body {
-    margin-top: 50px;
-}*/
-
 
 /* Positioning
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.container {
-    padding-top: 75px;
+.pad_top_50 {
+    padding-top: 50px;
 }
 
 
@@ -52,3 +48,6 @@ html {
     background-color: #444444;
 }
 
+.gray {
+    background-color: lightgray;
+}
