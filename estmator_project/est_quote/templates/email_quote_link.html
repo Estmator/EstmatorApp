@@ -9,9 +9,9 @@
 
 <body>
 
-<p style="font-size:20px; color:#f68620; font-weight:bold;">
+<p style="font-size:20px; font-weight:bold;">
 {% blocktrans %}
-&asymp; estmator
+<span style="color:#f68620;">&asymp;</span> estmator
 {% endblocktrans %}
 </p>
 
@@ -24,9 +24,10 @@
     Thank you for letting us estimate your relocation!
     {% endblocktrans %}
 </p>
+
 <p>
     {% blocktrans %}
-    To view your quote, please click the following link:
+    To view your quote, please use the following link:
     {% endblocktrans %}
 </p>
 
@@ -40,6 +41,7 @@
     {% blocktrans %}
     Sincerely,
     {% endblocktrans %}
+    <br>
     {% if user.get_full_name != "" %}
     {{ user.get_full_name }}
     {% else %}
@@ -49,7 +51,9 @@
 
 <p>
 {% blocktrans %}
-&asymp; count &asymp; quote &asymp; close.
+<span style="color:#f68620;">&asymp;</span> count
+<span style="color:#f68620;">&asymp;</span> quote
+<span style="color:#f68620;">&asymp;</span> close.
 {% endblocktrans %}
 </p>
 
