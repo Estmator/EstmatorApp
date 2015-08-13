@@ -71,6 +71,12 @@ html {
     padding-top: 100px;
 }
 
-#quote-totals-container {
-    position: fixed;
+@media (min-width: 992px) {
+    #quote-totals-container {
+        position: fixed;
+    }
+}
+
+.input-group .form-control {
+    z-index: 0;
 }
