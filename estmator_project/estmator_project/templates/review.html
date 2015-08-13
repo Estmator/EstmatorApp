@@ -68,12 +68,16 @@
         </section>
         <section class='quote_sig'>
         {% with qu=quote.user %}
+        {% if user.is_authenticated %}
             <section class='signature'></section>
             <h3>{{ qu.first_name }} {{ qu.last_name }}</h3>
             <p>degub user {{ qu.username }}</p>
             <p>c: {{ qu.cell }}</p>
             <p>d: {{ qu.desk }}</p>
-            <button type="submit">Send Email</button>
+            <a href="{% url 'send_quote' quote.pk %}">
+                <button type="button">Send Email</button>
+            </a>
+        {% endif %}
         {% endwith %}
         </section>
     </section><!-- /.container-fluid -->
