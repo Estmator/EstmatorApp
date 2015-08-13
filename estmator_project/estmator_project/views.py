@@ -1,19 +1,17 @@
-from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotAllowed
-from django.core.urlresolvers import reverse
-from est_quote.forms import QuoteCreateForm, ClientListForm, QuoteOptionsForm
-from est_client.models import Client, Company
-from est_client.forms import ClientCreateForm
-from est_quote.models import Quote, Category, Product, ProductProperties
-
 from django.conf import settings
-from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
-from django.template import RequestContext, TemplateDoesNotExist
 from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMultiAlternatives
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotAllowed
+from django.shortcuts import render, redirect
+from django.template import RequestContext, TemplateDoesNotExist
+from django.template.loader import render_to_string
+from django.views.generic import TemplateView
+
+from est_client.models import Client
+from est_client.forms import ClientCreateForm
+from est_quote.forms import QuoteCreateForm, ClientListForm, QuoteOptionsForm
+from est_quote.models import Quote, Category, Product, ProductProperties
 
 
 class IndexView(TemplateView):
@@ -192,7 +190,7 @@ def send_quote(request, **kwargs):
 
     email_message.send()
 
-    return HttpResponse("success?")
+    return redirect(quote_from_token, quote.token)
 
 
 def quote_from_token(request, **kwargs):
