@@ -24,7 +24,7 @@ class CompanyFactory(factory.django.DjangoModelFactory):
         model = Company
 
     company_name = fake.company()
-    phone = 9995550000
+    phone = fake.phone_number()
     address = fake.street_address()
     address2 = fake.building_number()
     city = fake.city()
@@ -40,8 +40,8 @@ class ClientFactory(factory.django.DjangoModelFactory):
     first_name = fake.first_name()
     last_name = fake.last_name()
     title = fake.job()
-    cell = 2221114444
-    desk = 3335557777
+    cell = fake.phone_number()
+    desk = fake.phone_number()
     email = fake.email()
 
 
@@ -87,7 +87,6 @@ class QuoteFactory(factory.django.DjangoModelFactory):
     name = fake.words()
     date = fake.date()
     sub_total = fake.random_number()
-    products = factory.SubFactory(ProductFactory)
     travel_time = fake.random_number()
     org_street_load = fake.boolean()
     org_midrise_elev_std = fake.boolean()

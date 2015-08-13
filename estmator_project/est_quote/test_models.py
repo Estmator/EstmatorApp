@@ -1,9 +1,8 @@
 from __future__ import unicode_literals
 from django.test import TestCase
-from est_quote.models import Category, Product, Quote, QuoteModifiers
+from est_quote.models import Category, Product, Quote
 from estmator_project.factories import (
-    UserFactory, ClientFactory, CompanyFactory, CategoryFactory,
-    ProductFactory, QuoteFactory, QuoteModsFactory)
+    CategoryFactory, ProductFactory, QuoteFactory)
 
 
 class TestCategoryModel(TestCase):
@@ -70,19 +69,3 @@ class TestProductModel(TestCase):
 
     def tearDown(self):
         Product.objects.all().delete()
-
-
-# class TestQuoteModel(TestCase):
-#     def setUp(self):
-#         quote_mods = QuoteModsFactory.create()
-#         quote_mods.save()
-
-#     def test_quote_add(self):
-#         pass
-
-#     def test_quote_delete(self):
-#         pass
-
-#     def tearDown(self):
-#         Quote.objects.all().delete()
-#         QuoteModifiers.objects.all().delete()

@@ -53,4 +53,3 @@ class UserProfileTestCase(TestCase):
 
     def tearDown(self):
         User.objects.all().delete()
-

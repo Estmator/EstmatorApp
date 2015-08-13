@@ -26,7 +26,7 @@ STATES = (
 @python_2_unicode_compatible
 class Company(models.Model):
     company_name = models.CharField(max_length=256)
-    phone = models.IntegerField()
+    phone = models.CharField(max_length=20)
     address = models.CharField(max_length=256)
     address2 = models.CharField(max_length=256,
                                 blank=True)
