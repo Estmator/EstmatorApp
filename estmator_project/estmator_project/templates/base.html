@@ -20,7 +20,7 @@
     {% endblock %}
 </head>
 <body>
-    <header id="header">
+    <header id="header" role="banner">
     {% block header %}
         <nav class="navbar navbar-inverse">
           <div class="container-fluid">
@@ -47,23 +47,22 @@
                 <li><a href="#">Some</a></li>
                 <li><a href="#">Nav</a></li>
                 <li><a href="#">Links</a></li>
+                {% endblock %}
+                
+                {% block user_menu %}
                 {% if user.is_authenticated %}
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ user }}<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="{% url 'auth_logout' %}" id="sign_out">Sign out</a></li>
                     <li><a href="{% url 'menu' %}">Menu</a></li>
-                    <li><a href="#">Something else here</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
+                    <li><a href="{% url 'auth_logout' %}" id="sign_out">Sign out</a></li>
                   </ul>
                 </li>
                 {% endif %}
                 {% endblock %}
+                
                 {% block header_buttons %}
-  <!--               <li>
-                    <button type="button" class="btn btn-default navbar-btn">Do it!</button>
-                </li> -->
                 {% endblock %}
               </ul>
             </div><!-- /.navbar-collapse -->
@@ -81,6 +80,7 @@
       <!--Bottom Navbar-->
       <div class="navbar navbar-inverse navbar-fixed-bottom">
           <div class="container-fluid">
+            {% block footer_full %}
               <div class="nav navbar-nav navbar-left">
                 {% block footer_left %}
                 {% endblock %}
@@ -89,6 +89,7 @@
                 {% block footer_right %}
                 {% endblock %}
               </div>
+            {% endblock %}
           </div>
       </div>
     {% endblock %}

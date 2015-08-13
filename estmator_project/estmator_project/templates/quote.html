@@ -56,26 +56,6 @@
     <script src="{% static './js/quote.js' %}"></script>
 
     <form id="quote_form" action="{% url 'review' %}" method="post">{% csrf_token %}
-    <!--Top Navbar-->
-    <!--<div class="navbar navbar-default navbar-fixed-top">-->
-        <!--<div class="container-fluid">-->
-            <!--<div class="nav navbar-nav navbar-left">-->
-                <!--<button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".reveal-left" data-canvas=".canvas" data-disable-scrolling="false">-->
-                    <!--<span class="icon-bar"></span>-->
-                    <!--<span class="icon-bar"></span>-->
-                    <!--<span class="icon-bar"></span>-->
-                <!--</button>-->
-            <!--</div>-->
-            <!--<div class="nav navbar-nav">-->
-                <!--<span class="navbar-brand">Estmator</span>-->
-            <!--</div>-->
-            <!--<div class="nav navbar-nav navbar-right">-->
-                <!--<button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".reveal-right" data-canvas=".canvas" data-disable-scrolling="false">-->
-                    <!--<span class="glyphicon glyphicon-option-horizontal"></span>-->
-                <!--</button>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
 
     <!--Main Content-->
     <div class="container-fluid">
@@ -191,20 +171,13 @@
 </div>
 {% endblock %}
 
-{% block footer %}
-    <!--Bottom Navbar-->
-    <div class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container-fluid">
-            <div class="nav navbar-nav navbar-left">
-                <button type="button" class="btn btn-default navbar-btn" id="calculate_btn">Calculate</button>
-            </div>
-            <div class="nav navbar-nav navbar-right">
-                <button type="submit" class="btn btn-default navbar-btn" id="review_btn">Review</button>
-            </div>
-        </div>
-    </div>
+{% block footer_left %}
+  <button type="button" class="btn btn-default navbar-btn" id="calculate_btn">Calculate</button>
 {% endblock %}
 
+{% block footer_right %}
+  <button type="submit" class="btn btn-default navbar-btn" id="review_btn">Review</button>
+{% endblock %}
 
 </form>
 
