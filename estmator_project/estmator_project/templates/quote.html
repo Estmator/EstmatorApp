@@ -52,7 +52,7 @@
         {% for category, pdict in categories.items %}
         <div class="row">
             <div class="col-md-12">
-                <h2 id="category_{{ category.id }}">{{ category.name }}</h2>
+                <h2 class="quote-category-header" id="category_{{ category.id }}">{{ category.name }}</h2>
             </div>
         </div>
         {% for product, count in pdict.items %}
