@@ -2,6 +2,9 @@
 # but don't track any files inside
 estmator_project/static/*
 
+# try not to load sql dumps to the internet
+*.json
+
 
 # Mac Thumbnails
 .DS_Store
