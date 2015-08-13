@@ -3,9 +3,8 @@
 {% load static from staticfiles %}
 
 
-
 {% block leftbutton %}
-<button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".reveal-left" data-canvas=".canvas" data-disable-scrolling="false">
+<button type="button" class="navbar-toggle hidden-md hidden-lg" data-toggle="offcanvas" data-target=".reveal-left" data-disable-scrolling="false">
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
@@ -13,40 +12,27 @@
 {% endblock %}
 
 {% block header_buttons %}
-<button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".reveal-right" data-canvas=".canvas" data-disable-scrolling="false">
+<button type="button" class="navbar-toggle hidden-lg" data-toggle="offcanvas" data-target=".reveal-right" data-disable-scrolling="false">
     <span class="glyphicon glyphicon-option-horizontal"></span>
 </button>
 {% endblock %}
 
 {% block content %}
 <!-- Left Reveal Menu -->
-<div class="navmenu navmenu-default navmenu-fixed-left reveal-left">
+<div class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm reveal-left">
     <br><br>
     <a class="navmenu-brand" href="#">Categories</a>
     <ul class="nav navmenu-nav">
         {% for c in categories %}
         <li class="category_btn"><a href="#category_{{ c.id }}">{{ c.name }}</a></li>
         {% endfor %}
-        <li><a href="{% url 'menu' %}">Back</a></li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-            <ul class="dropdown-menu navmenu-nav">
-                <li><a href="#">If</a></li>
-                <li><a href="#">We Need</a></li>
-                <li><a href="#">A Dropdown Menu</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-            </ul>
-        </li>
     </ul>
 </div>
 
 <form id="quote_form" action="{% url 'review' %}" method="post">{% csrf_token %}
 
 <!-- Right Reveal Menu -->
-<div class="navmenu navmenu-default navmenu-fixed-right reveal-right">
+<div class="navmenu navmenu-default navmenu-fixed-right offcanvas-md reveal-right">
     <br><br>
     <a class="navmenu-brand" href="#">Options</a>
     <ul class="nav navmenu-nav">
@@ -54,12 +40,12 @@
     </ul>
 </div>
 
-<div class="canvas">
+<div class="container-fluid">
     <script src="{% static './js/quote.js' %}"></script>
 
     <!--Main Content-->
-    <div class="container-fluid">
-        <br><br>
+    <div class="row">
+    <div class="col-md-offset-3 col-md-3 col-xs-12">
         <span id="companyvals" data-straight-time-rate="{{ client.company.st_rate }}" data-over-time-rate="{{ client.company.ot_rate }}"></span>
         <input type="hidden" name="quote_client" value="{{ client.id }}">
         <input type="hidden" name="quote_name" value="{{ quote_name }}">
@@ -74,99 +60,106 @@
             <div class="col-xs-12 col-md-12">
                 <label for="item_{{ product.id }}">{{ product.name }}</label>
             </div>
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <input type="hidden" name="product" value="{{ product.id }}">
                 <input class="spinner-box" id="item_{{ product.id }}" type="text" value="{{ count }}" name="product_count" data-mins="{{ product.mins_piece }}">
             </div>
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <span class="calc_mins" id="hour_for_item_{{ product.id }}"> -- </span>
             </div>
         </div>
         {% endfor %}
         {% endfor %}
+    </div>
+    <div class="col-md-4 col-xs-12">
+        <div id="quote-totals-container">
         <div class="row">
             <div class="col-md-12">
                 <h2>Totals</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <h4>Total Products: </h4>
             </div>
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <h4 id="genval_totalproducts">--</h4>
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <h4>Total Truck Loads: </h4>
             </div>
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <h4 id="genval_totaltruckloads">--</h4>
             </div>
         </div>
         <div class="row">
             <input type="hidden" id="quote_subtotal" name="sub_total" value="0">
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <h3>Sub-Total: </h3>
             </div>
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <h3 id="genval_subtotal">--</h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <h4>Total Drive Time: </h4>
             </div>
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <h4 id="genval_totaldrivetime">--</h4>
             </div>
         </div>
         <div class="row">
             <input type="hidden" id="quote_grandtotal" name="grand_total" value="0">
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <h3>Grand Total: </h3>
             </div>
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <h3 id="genval_grandtotal">--</h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <h4>Total Hours: </h4>
             </div>
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <h4 id="genval_totalhours">--</h4>
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <h4>Total Days: </h4>
             </div>
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <h4 id="genval_totaldays">--</h4>
             </div>
         </div>
         <div class="row">
             <input type="hidden" id="quote_straighttimecost" name="straight_time_cost" value="0">
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <h3>Straight Time Cost: </h3>
             </div>
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <h3 id="genval_straighttimecost">--</h3>
             </div>
         </div>
         <div class="row">
             <input type="hidden" id="quote_overtimecost" name="over_time_cost" value="0">
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <h3>Overtime Cost: </h3>
             </div>
-            <div class="col-xs-6 col-md-2">
+            <div class="col-xs-6 col-md-6">
                 <h3 id="genval_overtimecost">--</h3>
             </div>
         </div>
+        </div>
         <br><br>
-    </div><!-- /.container-fluid -->
+
+    </div>
+    </div>
+
 </div>
 {% endblock %}
 

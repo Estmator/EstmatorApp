@@ -29,7 +29,7 @@ html {
 
 @media (min-width: 992px) {
     .navmenu {
-        width: 300px;
+        width: 200px;
     }
 }
 
@@ -71,13 +71,21 @@ html {
     padding-top: 100px;
 }
 
+@media (min-width: 992px) {
+    #quote-totals-container {
+        position: fixed;
+    }
+}
 
-
+.input-group .form-control {
+    z-index: 0;
+}
 
 
 
 /* About page
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 img.media-object.img-circle {
     max-width: 5rem;
 }
