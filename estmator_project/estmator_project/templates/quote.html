@@ -53,6 +53,7 @@
 </div>
 
 <div class="canvas">
+    <script src="{% static './js/jquery.storageapi.min.js %}"></script>
     <script src="{% static './js/quote.js' %}"></script>
 
     <form id="quote_form" action="{% url 'review' %}" method="post">{% csrf_token %}
@@ -197,6 +198,9 @@
         <div class="container-fluid">
             <div class="nav navbar-nav navbar-left">
                 <button type="button" class="btn btn-default navbar-btn" id="calculate_btn">Calculate</button>
+            </div>
+            <div class="nav navbar-nav">
+                <button type="button" class="btn btn-default navbar-btn" id="save_btn">Save</button>
             </div>
             <div class="nav navbar-nav navbar-right">
                 <button type="submit" class="btn btn-default navbar-btn" id="review_btn">Review</button>

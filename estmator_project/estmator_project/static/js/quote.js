@@ -66,6 +66,7 @@ $(function () {
     //click listener for calculate button
     $('#calculate_btn').click(function () {
         calculateQuote();
+        enableSaveButton();
         enableReviewButton();
     });
 
@@ -74,6 +75,9 @@ $(function () {
     var reviewButtonInterval = null;
     //review button is disabled at start, available again upon calculation
     disableReviewButton();
+
+    var saveButton = $('#save_btn');
+    disableSaveButton();
 
     function disableReviewButton() {
         if (reviewButtonEnabled) {
@@ -110,5 +114,13 @@ $(function () {
         } else {
             enableReviewButton();
         }
+    }
+
+    function disableSaveButton() {
+        saveButton.prop('disabled', true);
+    }
+
+    function enableSaveButton() {
+        saveButton.prop('disabled', false);
     }
 });
