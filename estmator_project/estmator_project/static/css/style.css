@@ -4,19 +4,46 @@ html {
     overflow-x: hidden;
 }
 
-.navbar .navbar-tagline {
+body {
+    height: 100%;
+}
+
+#tagline {
     text-align: center;
+    float: none;
 }
 
 
 /* Positioning
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.pad_top_50 {
+.pad_top {
     padding-top: 50px;
+}
+
+.pad_bottom {
+    padding-bottom: 66px;
+}
+
+@media (min-width: 767px) {
+    .pad_bottom {
+        padding-bottom: 50px;
+    }
+}
+
+.pad_top_75 {
+    padding-top: 75px;
+}
+
+.pad_bottom_75 {
+    padding-bottom: 75px;
 }
 
 .margin_top_50 {
     margin-top: 50px;
+}
+
+.margin_bottom_50 {
+    margin-bottom: 50px;
 }
 
 
