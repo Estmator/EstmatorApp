@@ -35,7 +35,8 @@ urlpatterns = [
         r'^client/listform$',
         views.client_list_form_view,
         name='client_list_form'),
-    url(r'^menu/$', views.menu_view, name='menu')
+    url(r'^menu/$', views.menu_view, name='menu'),
+    url(r'^connection-test$', views.connection_test, name='connection_test')
 ]
 
 

@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMultiAlternatives
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotAllowed
+from django.http import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import render, redirect
 from django.template import RequestContext, TemplateDoesNotExist
 from django.template.loader import render_to_string
@@ -203,3 +203,7 @@ def quote_from_token(request, **kwargs):
     return render(
         request, 'review.html', context
     )
+
+
+def connection_test(request):
+    return HttpResponse(status=204)

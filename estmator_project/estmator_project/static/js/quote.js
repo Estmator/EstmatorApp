@@ -105,10 +105,10 @@ $(function () {
     }
 
     function checkIfOnline() {
-        if (!navigator.onLine) {
-            warningReviewButton();
-        } else {
-            enableReviewButton();
-        }
+        $.ajax({
+            url: '/connection-test',
+            success: enableReviewButton,
+            error: warningReviewButton
+        });
     }
 });
