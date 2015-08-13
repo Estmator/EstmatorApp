@@ -4,6 +4,10 @@ html {
     overflow-x: hidden;
 }
 
+body {
+    height: 100%;
+}
+
 .navbar .navbar-tagline {
     text-align: center;
 }
@@ -15,8 +19,24 @@ html {
     padding-top: 50px;
 }
 
+.pad_bottom_50 {
+    padding-bottom: 50px;
+}
+
+.pad_top_75 {
+    padding-top: 75px;
+}
+
+.pad_bottom_75 {
+    padding-bottom: 75px;
+}
+
 .margin_top_50 {
     margin-top: 50px;
+}
+
+.margin_bottom_50 {
+    margin-bottom: 50px;
 }
 
 
