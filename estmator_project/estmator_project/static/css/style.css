@@ -1,10 +1,25 @@
-@media (min-width: 0px) {
-    html {
-        overflow-x: hidden;
-    }
-    .navmenu {
-        width: 150px;
-    }
+/* Base Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+html {
+    overflow-x: hidden;
+}
+
+body {
+    margin-top: 40px;
+}
+
+
+/* Positioning
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.container {
+    padding-top: 75px;
+}
+
+
+/* Nav
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.navmenu {
+    width: 150px;
 }
 
 @media (min-width: 992px) {
@@ -23,19 +38,17 @@
     }
 }
 
-
-.container {
-    padding-top: 75px;
-}
-
 #navbar-header {
     font-size: 2em;
-}
-
-.bgcol {
-    background-color: #444444;
 }
 
 #logo_image {
     padding: 15px 5px 15px 15px;
 }
+
+/* Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.bgcol {
+    background-color: #444444;
+}
+
