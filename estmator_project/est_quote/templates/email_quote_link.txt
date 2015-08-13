@@ -12,7 +12,7 @@ Thank you for letting us estimate your relocation!
 {% endblocktrans %}
 
 {% blocktrans %}
-To view your quote, please click the following link:
+To view your quote, please use the following link:
 {% endblocktrans %}
 
 http://{{site.domain}}{% url 'quote_from_token' token %}

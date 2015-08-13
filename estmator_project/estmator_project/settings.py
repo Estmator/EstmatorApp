@@ -73,11 +73,12 @@ EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', None)
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', None)
 EMAIL_TIMEOUT = os.environ.get('EMAIL_TIMEOUT', None)
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+USE_HTML_TEMPLATES = os.environ.get('USE_HTML_TEMPLATES', True)
 
 # registration settings
 ACCOUNT_ACTIVATION_DAYS = 7
-REGISTRATION_EMAIL_HTML = False
-LOGIN_REDIRECT_URL = '/profile/'
+REGISTRATION_EMAIL_HTML = USE_HTML_TEMPLATES
+LOGIN_REDIRECT_URL = '/menu/'
 
 
 # Grappelli Settings
@@ -100,10 +101,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'estmator_project/templates'),
-            # os.path.join(BASE_DIR, 'est_client/templates'),
-            # os.path.join(BASE_DIR, 'est_profile/templates'),
-            # os.path.join(BASE_DIR, 'est_quote/templates'),
+            os.path.join(BASE_DIR, 'estmator_project/templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
