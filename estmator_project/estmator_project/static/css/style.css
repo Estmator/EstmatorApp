@@ -71,10 +71,18 @@ html {
     padding-top: 100px;
 }
 
+
+
+/* Quote Page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 @media (min-width: 992px) {
     #quote-totals-container {
         position: fixed;
     }
+}
+
+.quote-category-header {
+    padding-top: 50px;
 }
 
 .input-group .form-control {

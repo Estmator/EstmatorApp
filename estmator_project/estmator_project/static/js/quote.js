@@ -58,7 +58,9 @@ $(function () {
     //add click listeners to each category button
     $(".category_btn").each(function () {
         $(this).click(function () {
-            $('.reveal-left').offcanvas('toggle');
+            if ($('.reveal-left').css('width') == '150px') {
+                $('.reveal-left').offcanvas('toggle');
+            }
         });
     });
 
