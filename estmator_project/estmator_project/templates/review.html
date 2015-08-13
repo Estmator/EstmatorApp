@@ -38,7 +38,7 @@
             {% if qcc.address2 %}
                 <p>{{ qcc.address2 }}</p>
             {% endif %}
-                <p>{{ qcc.city }},{{ qcc.state }} {{ qcc.zipcode }}</p>
+                <p>{{ qcc.city }},{{ qcc.state }} {{ qcc.postal }}</p>
             </section>
             <img src="" alt'user logo'>
         {% endwith %}
@@ -47,26 +47,34 @@
             <p>{{ quote.user.profile.review_intro }}</p>
         </section>
         <section class='quote_info'>
+        <h2>Relocation Inventory:</h2>
         {% with pa=quote.products.all %}
             {% for c in categories %}
-                <h2 id="category_{{ c.id }}">{{ c.name }}</h2>
+                <h3 id="category_{{ c.id }}">{{ c.name }}</h3>
                 {% for p in pa %}
                     {% if p.category == c %}
-                        <p id="product_{{ p.id }}">{{ p.name }}</p>
+                    {% for k, v in p_cnt.items %}
+                        {% if p.id == k %}    
+                        <p id="product_{{ k }}">{{ p.name }} {{ v }}</p>
+                        {% endif %}
+                    {% endfor %}
                     {% endif %}
                 {% endfor %}
             {% endfor %}
             </div>
-            <p>ST Total Cost</p>
-            <p>OT Total Cost</p>
+            <p>ST: ${{ straight_time_cost }}</p>
+            <p>OT: ${{ over_time_cost }}</p>
         {% endwith %}
         </section>
         <section class='quote_sig'>
-            <section class='signature'>
-                <p>Client Signature</p>
-            </section>
-            <h3>User Information</h3>
+        {% with qu=quote.user %}
+            <section class='signature'></section>
+            <h3>{{ qu.first_name }} {{ qu.last_name }}</h3>
+            <p>degub user {{ qu.username }}</p>
+            <p>c: {{ qu.cell }}</p>
+            <p>d: {{ qu.desk }}</p>
             <button type="submit">Send Email</button>
+        {% endwith %}
         </section>
     </section><!-- /.container-fluid -->
 
