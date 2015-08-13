@@ -70,3 +70,26 @@ html {
 #est-menu {
     padding-top: 100px;
 }
+
+
+
+
+
+
+/* About page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+img.media-object.img-circle {
+    max-width: 5rem;
+}
+
+img.gh_img {
+    max-width: 2rem;
+}
+
+img.logo {
+    max-width: 7rem;
+}
+
+.about_intro {
+    margin-top: 1.5rem;
+}

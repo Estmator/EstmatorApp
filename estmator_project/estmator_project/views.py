@@ -22,6 +22,14 @@ class IndexView(TemplateView):
         return context
 
 
+class AboutView(TemplateView):
+    template_name = 'about.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(AboutView, self).get_context_data(**kwargs)
+        return context
+
+
 @login_required
 def quote_view(request):
     if request.method == 'POST':
