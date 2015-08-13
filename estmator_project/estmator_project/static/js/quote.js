@@ -24,12 +24,17 @@ function calculateQuote() {
     $('#genval_totalproducts').html(totalProducts);
     $('#genval_totaltruckloads').html(totalTruckLoads);
     $('#genval_subtotal').html(subTotal);
+    $('#quote_subtotal').val(subTotal);
     $('#genval_totaldrivetime').html(totalDriveTime);
+    $('#quote_traveltime').val(totalDriveTime);
     $('#genval_grandtotal').html(grandTotal);
+    $('#quote_grandtotal').val(grandTotal);
     $('#genval_totalhours').html(totalHours);
     $('#genval_totaldays').html(totalDays);
     $('#genval_straighttimecost').html(straightTimeCost);
+    $('#quote_straighttimecost').val(straightTimeCost);
     $('#genval_overtimecost').html(overTimeCost);
+    $('#quote_overtimecost').val(overTimeCost);
 }
 
 // executed after pageload completes
@@ -45,6 +50,10 @@ $(function () {
             boostat: 5,
             maxboostedstep: 10
         });
+
+        $(this).change(function () {
+            disableReviewButton();
+        });
     });
 
     //add click listeners to each category button
@@ -57,32 +66,49 @@ $(function () {
     //click listener for calculate button
     $('#calculate_btn').click(function () {
         calculateQuote();
+        enableReviewButton();
     });
 
-    //$('.quote-submit').click(function () {
-    //    var url = $(this).data('url');
-    //    $('#quote_form').ajaxSubmit({
-    //        url: url,
-    //        beforeSubmit: showRequest,
-    //        success: calcSuccess
-    //    });
-    //    //this prevents normal form submit page navigation
-    //    return false;
-    //});
-
     var reviewButton = $('#review_btn');
-    var reviewEnabled = true;
-    setInterval(function () {
-        if (reviewEnabled && !navigator.onLine) {
+    var reviewButtonEnabled = true;
+    var reviewButtonInterval = null;
+    //review button is disabled at start, available again upon calculation
+    disableReviewButton();
+
+    function disableReviewButton() {
+        if (reviewButtonEnabled) {
             reviewButton.prop('disabled', true);
-            reviewButton.removeClass('btn-default');
-            reviewButton.addClass('btn-warning');
-            reviewEnabled = false;
-        } else if (!reviewEnabled && navigator.onLine) {
+            reviewButton.removeClass('btn-warning');
+            reviewButton.addClass('btn-default');
+            reviewButtonEnabled = false;
+            clearInterval(reviewButtonInterval);
+        }
+    }
+
+    function enableReviewButton() {
+        if (!reviewButtonEnabled) {
             reviewButton.prop('disabled', false);
             reviewButton.removeClass('btn-warning');
             reviewButton.addClass('btn-default');
-            reviewEnabled = true;
+            reviewButtonEnabled = true;
+            reviewButtonInterval = setInterval(checkIfOnline, 2000);
         }
-    }, 2000);
+    }
+
+    function warningReviewButton() {
+        if (reviewButtonEnabled) {
+            reviewButton.prop('disabled', true);
+            reviewButton.removeClass('btn-default');
+            reviewButton.addClass('btn-warning');
+            reviewButtonEnabled = false;
+        }
+    }
+
+    function checkIfOnline() {
+        if (!navigator.onLine) {
+            warningReviewButton();
+        } else {
+            enableReviewButton();
+        }
+    }
 });

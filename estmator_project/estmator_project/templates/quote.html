@@ -1,14 +1,27 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load static from staticfiles %}
+
+
+
+{% block leftbutton %}
+<button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".reveal-left" data-canvas=".canvas" data-disable-scrolling="false">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+</button>
+{% endblock %}
+
+{% block header_buttons %}
+<button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".reveal-right" data-canvas=".canvas" data-disable-scrolling="false">
+    <span class="glyphicon glyphicon-option-horizontal"></span>
+</button>
+{% endblock %}
+
 {% block content %}
-
-<script src="{% static './js/quote.js' %}"></script>
-
-<form id="quote_form" action="{% url 'api_calc' %}" method="post">{% csrf_token %}
-
 <!-- Left Reveal Menu -->
 <div class="navmenu navmenu-default navmenu-fixed-left reveal-left">
+    <br><br>
     <a class="navmenu-brand" href="#">Categories</a>
     <ul class="nav navmenu-nav">
         {% for c in categories %}
@@ -32,6 +45,7 @@
 
 <!-- Right Reveal Menu -->
 <div class="navmenu navmenu-default navmenu-fixed-right reveal-right">
+    <br><br>
     <a class="navmenu-brand" href="#">Options</a>
     <ul class="nav navmenu-nav">
         {{ options_form }}
@@ -39,26 +53,29 @@
 </div>
 
 <div class="canvas">
+    <script src="{% static './js/quote.js' %}"></script>
+
+    <form id="quote_form" action="{% url 'review' %}" method="post">{% csrf_token %}
     <!--Top Navbar-->
-    <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="nav navbar-nav navbar-left">
-                <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".reveal-left" data-canvas=".canvas" data-disable-scrolling="false">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="nav navbar-nav">
-                <span class="navbar-brand">Estmator</span>
-            </div>
-            <div class="nav navbar-nav navbar-right">
-                <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".reveal-right" data-canvas=".canvas" data-disable-scrolling="false">
-                    <span class="glyphicon glyphicon-option-horizontal"></span>
-                </button>
-            </div>
-        </div>
-    </div>
+    <!--<div class="navbar navbar-default navbar-fixed-top">-->
+        <!--<div class="container-fluid">-->
+            <!--<div class="nav navbar-nav navbar-left">-->
+                <!--<button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".reveal-left" data-canvas=".canvas" data-disable-scrolling="false">-->
+                    <!--<span class="icon-bar"></span>-->
+                    <!--<span class="icon-bar"></span>-->
+                    <!--<span class="icon-bar"></span>-->
+                <!--</button>-->
+            <!--</div>-->
+            <!--<div class="nav navbar-nav">-->
+                <!--<span class="navbar-brand">Estmator</span>-->
+            <!--</div>-->
+            <!--<div class="nav navbar-nav navbar-right">-->
+                <!--<button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".reveal-right" data-canvas=".canvas" data-disable-scrolling="false">-->
+                    <!--<span class="glyphicon glyphicon-option-horizontal"></span>-->
+                <!--</button>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
     <!--Main Content-->
     <div class="container-fluid">
@@ -78,7 +95,8 @@
                 <label for="item_{{ p.id }}">{{ p.name }}</label>
             </div>
             <div class="col-xs-6 col-md-2">
-                <input class="spinner-box" id="item_{{ p.id }}" type="text" value="10" name="item_{{ p.id }}" data-mins="{{ p.mins_piece }}">
+                <input type="hidden" name="product" value="{{ p.id }}">
+                <input class="spinner-box" id="item_{{ p.id }}" type="text" value="10" name="product_count" data-mins="{{ p.mins_piece }}">
             </div>
             <div class="col-xs-6 col-md-2">
                 <span class="calc_mins" id="hour_for_item_{{ p.id }}"> -- </span>
@@ -108,6 +126,7 @@
             </div>
         </div>
         <div class="row">
+            <input type="hidden" id="quote_subtotal" name="sub_total" value="0">
             <div class="col-xs-6 col-md-2">
                 <h3>Sub-Total: </h3>
             </div>
@@ -116,6 +135,7 @@
             </div>
         </div>
         <div class="row">
+            <input type="hidden" id="quote_traveltime" name="travel_time" value="0">
             <div class="col-xs-6 col-md-2">
                 <h4>Total Drive Time: </h4>
             </div>
@@ -124,6 +144,7 @@
             </div>
         </div>
         <div class="row">
+            <input type="hidden" id="quote_grandtotal" name="grand_total" value="0">
             <div class="col-xs-6 col-md-2">
                 <h3>Grand Total: </h3>
             </div>
@@ -148,6 +169,7 @@
             </div>
         </div>
         <div class="row">
+            <input type="hidden" id="quote_straighttimecost" name="straight_time_cost" value="0">
             <div class="col-xs-6 col-md-2">
                 <h3>Straight Time Cost: </h3>
             </div>
@@ -156,6 +178,7 @@
             </div>
         </div>
         <div class="row">
+            <input type="hidden" id="quote_overtimecost" name="over_time_cost" value="0">
             <div class="col-xs-6 col-md-2">
                 <h3>Overtime Cost: </h3>
             </div>
@@ -165,7 +188,10 @@
         </div>
         <br><br>
     </div><!-- /.container-fluid -->
+</div>
+{% endblock %}
 
+{% block footer %}
     <!--Bottom Navbar-->
     <div class="navbar navbar-default navbar-fixed-bottom">
         <div class="container-fluid">
@@ -177,9 +203,8 @@
             </div>
         </div>
     </div>
+{% endblock %}
 
-</div>
 
 </form>
 
-{% endblock %}
