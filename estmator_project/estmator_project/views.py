@@ -124,7 +124,10 @@ def review_quote_view(request):
         quote.name = request.POST['quote_name']
         quote.sub_total = request.POST['sub_total']
         quote.grand_total = request.POST['grand_total']
-        quote.travel_time = request.POST['travel_time']
+        if 'travel_time' in request.POST and request.POST['travel_time'] != '':
+            quote.travel_time = request.POST['travel_time']
+        else:
+            quote.travel_time = 0
 
         quote.org_street_load = 'org_street_load' in request.POST
         quote.org_midrise_elev_std = 'org_midrise_elev_std' in request.POST
