@@ -133,8 +133,8 @@ def review_quote_view(request):
         quote.save()
         products = request.POST.getlist('product')
         counts = [int(x) for x in request.POST.getlist('product_count')]
-        p_cnt = dict(zip(products, counts))
 
+        context['categories'] = {c: [] for c in Category.objects.all()}
         for i, count in enumerate(counts):
             if count > 0:
                 prop = ProductProperties()
@@ -144,12 +144,10 @@ def review_quote_view(request):
                 prop.save()
 
                 quote.productproperties_set.add(prop)
+                context['categories'][prop.product.category].append((prop.product, count))
 
-        # import pdb; pdb.set_trace()
         quote.save()
         context['quote'] = quote
-        context['p_counts'] = p_cnt
-        context['categories'] = Category.objects.all()
         context['straight_time_cost'] = request.POST['straight_time_cost']
         context['over_time_cost'] = request.POST['over_time_cost']
 

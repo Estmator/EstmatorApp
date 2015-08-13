@@ -48,23 +48,14 @@
         </section>
         <section class='quote_info'>
         <h2>Relocation Inventory:</h2>
-        {% with pa=quote.products.all %}
-            {% for c in categories %}
-                <h3 id="category_{{ c.id }}">{{ c.name }}</h3>
-                {% for p in pa %}
-                    {% if p.category == c %}
-                    {% for k, v in p_cnt.items %}
-                        {% if p.id == k %}    
-                        <p id="product_{{ k }}">{{ p.name }} {{ v }}</p>
-                        {% endif %}
-                    {% endfor %}
-                    {% endif %}
-                {% endfor %}
+
+        {% for c, plist in categories.items %}
+            <h3 id="category_{{ c.id }}">{{ c.name }}</h3>
+            {% for p, count in plist %}
+                <p id="product_{{ p.id }}">{{ p.name }} {{ count }}</p>
             {% endfor %}
-            </div>
-            <p>ST: ${{ straight_time_cost }}</p>
-            <p>OT: ${{ over_time_cost }}</p>
-        {% endwith %}
+        {% endfor %}
+
         </section>
         <section class='quote_sig'>
         {% with qu=quote.user %}
