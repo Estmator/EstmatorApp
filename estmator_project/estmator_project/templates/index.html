@@ -5,7 +5,7 @@
 {% block header_buttons %}
 {% if user.is_authenticated %}
 {% else %}
-<a href="{% url 'auth_login' %}" class="btn btn-default navbar-btn">Log in</a>
+<a href="{% url 'auth_login' %}" class="btn btn-default navbar-btn">Sign in</a>
 {% endif %}
 {% endblock %}
 

@@ -13,6 +13,17 @@
     }
 }
 
+#left_menu_btn {
+    display: block;
+}
+
+@media (min-width: 767px) {
+    #left_menu_btn {
+        display: none !important;
+    }
+}
+
+
 .container {
     padding-top: 75px;
 }

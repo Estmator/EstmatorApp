@@ -136,3 +136,7 @@ TIME_ZONE = os.environ.get('TIME_ZONE', 'UTC')
 USE_I18N = os.environ.get('USE_I18N', True)
 USE_L10N = os.environ.get('USE_L10N', True)
 USE_TZ = os.environ.get('USE_TZ', True)
+
+# Login Behavior
+LOGIN_REDIRECT_URL = '/menu'
+
