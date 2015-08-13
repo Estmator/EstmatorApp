@@ -22,18 +22,18 @@
 <body>
     <header id="header">
     {% block header %}
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-inverse">
           <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                {% block leftbutton %}
+              {% block leftbutton %}
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-                {% endblock %}
+              {% endblock %}
               <img id="logo_image" class="navbar-brand" alt="Estmator" src="{% static 'images/est_logo_symbol.png' %}">
               <a class="navbar-brand" href="{% url 'index' %}">Estmator</a>
             </div>
@@ -76,7 +76,21 @@
     
     <footer id="footer">
     {% block footer %}
-        <p>{% trans "Estmator.com" %}</p>
+      <!--Bottom Navbar-->
+      <div class="navbar navbar-default navbar-fixed-bottom">
+          <div class="container-fluid">
+              <div class="nav navbar-nav navbar-left">
+                {% block footer_left %}
+                <button type="button" class="btn btn-default navbar-btn" id="calculate_btn">Calculate</button>
+                {% endblock %}
+              </div>
+              <div class="nav navbar-nav navbar-right">
+                {% block footer_right %}
+                <button type="submit" class="btn btn-default navbar-btn" id="review_btn">Review</button>
+                {% endblock %}
+              </div>
+          </div>
+      </div>
     {% endblock %}
     </footer>
 
