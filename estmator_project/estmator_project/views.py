@@ -22,15 +22,33 @@ class IndexView(TemplateView):
         return context
 
 
+class AboutView(TemplateView):
+    template_name = 'about.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(AboutView, self).get_context_data(**kwargs)
+        return context
+
+
 @login_required
 def quote_view(request):
     if request.method == 'POST':
-        options_form = QuoteOptionsForm()
+        categories = {c: {p: 0 for p in c.product_set.all()} for c in Category.objects.all()}
+        if 'quote' in request.POST:
+            quote = Quote.objects.get(id=request.POST['quote'])
+            quote_name = quote.name
+            for prop in quote.productproperties_set.all():
+                categories[prop.product.category][prop.product] = prop.count
+        else:
+            quote = None
+            quote_name = request.POST['name']
+
+        options_form = QuoteOptionsForm(instance=quote)
         context = {
-            'categories': Category.objects.all(),
+            'categories': categories,
             'options_form': options_form.as_ul,
             'client': Client.objects.get(id=request.POST['client']),
-            'quote_name': request.POST['name']
+            'quote_name': quote_name
         }
         return render(
             request, 'quote.html', context
@@ -114,7 +132,10 @@ def review_quote_view(request):
         quote.name = request.POST['quote_name']
         quote.sub_total = request.POST['sub_total']
         quote.grand_total = request.POST['grand_total']
-        quote.travel_time = request.POST['travel_time']
+        if 'travel_time' in request.POST and request.POST['travel_time'] != '':
+            quote.travel_time = request.POST['travel_time']
+        else:
+            quote.travel_time = 0
 
         quote.org_street_load = 'org_street_load' in request.POST
         quote.org_midrise_elev_std = 'org_midrise_elev_std' in request.POST

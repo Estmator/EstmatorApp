@@ -20,25 +20,25 @@
     {% endblock %}
 </head>
 <body>
-    <header id="header">
+    <header id="header" role="banner">
     {% block header %}
         <nav class="navbar navbar-inverse navbar-fixed-top">
           <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                {% block leftbutton %}
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              {% block leftbutton %}
+              <button id="left_menu_btn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-                {% endblock %}
+              {% endblock %}
               <img id="logo_image" class="navbar-brand" alt="Estmator" src="{% static 'images/est_logo_symbol.png' %}">
-              <a class="navbar-brand" href="{% url 'index' %}">Estmator</a>
+              <a class="navbar-brand" href="{% url 'index' %}">estmator</a>
             </div>
             
-            <p class="navbar-text">{% block header_text %}Scott Loves Andy{% endblock %}</p>
+            <p class="navbar-text">{% block header_text %}{% endblock %}</p>
             
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -47,21 +47,22 @@
                 <li><a href="#">Some</a></li>
                 <li><a href="#">Nav</a></li>
                 <li><a href="#">Links</a></li>
-<!--                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                  </ul>
-                </li> -->
                 {% endblock %}
-                {% block header_buttons %}
-                <li>
-                  <button type="button" class="btn btn-default navbar-btn">Do it!</button>
+                
+                {% block user_menu %}
+                {% if user.is_authenticated %}
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ user }}<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="{% url 'menu' %}">Menu</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="{% url 'auth_logout' %}?next={% url 'index' %}" id="sign_out">Sign out</a></li>
+                  </ul>
                 </li>
+                {% endif %}
+                {% endblock %}
+                
+                {% block header_buttons %}
                 {% endblock %}
               </ul>
             </div><!-- /.navbar-collapse -->
@@ -70,13 +71,32 @@
     {% endblock %}
     </header>
     
-    <main id="content">
+    <main id="content" class="pad_top_50 pad_bottom_50 container-fluid">
     {% block content %}{% endblock %}
     </main>
     
     <footer id="footer">
     {% block footer %}
-        <p>{% trans "Estmator.com" %}</p>
+      <!--Bottom Navbar-->
+      <div class="navbar navbar-inverse navbar-fixed-bottom">
+          <div class="container-fluid">
+            {% block footer_full %}
+              <div class="nav navbar-nav navbar-left">
+                {% block footer_left %}
+                {% endblock %}
+              </div>
+              <div class="nav navbar-nav navbar-text navbar-tagline">
+                  <span class="hilite_color">&asymp;</span> count
+                  <span class="hilite_color">&asymp;</span> quote
+                  <span class="hilite_color">&asymp;</span> close
+              </div>
+              <div class="nav navbar-nav navbar-right">
+                {% block footer_right %}
+                {% endblock %}
+              </div>
+            {% endblock %}
+          </div>
+      </div>
     {% endblock %}
     </footer>
 

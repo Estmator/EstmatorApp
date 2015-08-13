@@ -26,7 +26,6 @@ function calculateQuote() {
     $('#genval_subtotal').html(subTotal);
     $('#quote_subtotal').val(subTotal);
     $('#genval_totaldrivetime').html(totalDriveTime);
-    $('#quote_traveltime').val(totalDriveTime);
     $('#genval_grandtotal').html(grandTotal);
     $('#quote_grandtotal').val(grandTotal);
     $('#genval_totalhours').html(totalHours);
@@ -59,7 +58,9 @@ $(function () {
     //add click listeners to each category button
     $(".category_btn").each(function () {
         $(this).click(function () {
-            $('.reveal-left').offcanvas('toggle');
+            if ($('.reveal-left').css('width') == '150px') {
+                $('.reveal-left').offcanvas('toggle');
+            }
         });
     });
 

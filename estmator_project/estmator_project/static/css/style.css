@@ -1,30 +1,131 @@
-@media (min-width: 0px) {
-    html {
-        overflow-x: hidden;
-    }
-    .navmenu {
-        width: 150px;
-    }
+/* Base Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+html {
+    overflow-x: hidden;
+}
+
+body {
+    height: 100%;
+}
+
+.navbar .navbar-tagline {
+    text-align: center;
+}
+
+
+/* Positioning
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.pad_top_50 {
+    padding-top: 50px;
+}
+
+.pad_bottom_50 {
+    padding-bottom: 50px;
+}
+
+.pad_top_75 {
+    padding-top: 75px;
+}
+
+.pad_bottom_75 {
+    padding-bottom: 75px;
+}
+
+.margin_top_50 {
+    margin-top: 50px;
+}
+
+.margin_bottom_50 {
+    margin-bottom: 50px;
+}
+
+
+
+/* Nav
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.navmenu {
+    width: 150px;
 }
 
 @media (min-width: 992px) {
     .navmenu {
-        width: 300px;
+        width: 200px;
     }
 }
 
-.container {
-    padding-top: 75px;
+#left_menu_btn {
+    display: block;
+}
+
+@media (min-width: 767px) {
+    #left_menu_btn {
+        display: none !important;
+    }
 }
 
 #navbar-header {
     font-size: 2em;
 }
 
+#logo_image {
+    padding: 15px 5px 15px 15px;
+}
+
+/* Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 .bgcol {
     background-color: #444444;
 }
 
-#logo_image {
-    padding: 15px 5px 15px 15px;
+.gray {
+    background-color: lightgray;
+}
+
+.hilite_color {
+    color: #f68620;
+}
+
+/* Main Menu
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+#est-menu {
+    padding-top: 100px;
+}
+
+
+
+/* Quote Page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media (min-width: 992px) {
+    #quote-totals-container {
+        position: fixed;
+    }
+}
+
+.quote-category-header {
+    padding-top: 50px;
+}
+
+.input-group .form-control {
+    z-index: 0;
+}
+
+
+
+/* About page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+img.media-object.img-circle {
+    max-width: 5rem;
+}
+
+img.gh_img {
+    max-width: 2rem;
+}
+
+img.logo {
+    max-width: 7rem;
+}
+
+.about_intro {
+    margin-top: 1.5rem;
 }

@@ -2,12 +2,100 @@
 {% load static from staticfiles %}
 {% load i18n %}
 
+{% block nav_links %}
+<li><a href="{% url 'about' %}">About</a></li>
+{% endblock %}
+
+{% block header_buttons %}
+{% if user.is_authenticated %}
+{% else %}
+<a href="{% url 'auth_login' %}" class="btn btn-default navbar-btn">Sign in</a>
+{% endif %}
+{% endblock %}
+
 {% block content %}
-<!-- <div class="container center-block"> -->
-  <div class="jumbotron text-center">
-    <h1>Hello, World!</h1>
-    <p>Estmator is the best app ever because . . . </p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-  </div>
-<!-- </div> -->
+<section class="gray" lazy-background="">
+    <div class="row">
+      <div class="col-md-6">
+      
+      </div>
+      <div class="col-md-6">
+        <div class="jumbotron">
+          <h1>Hello, World!</h1>
+          <p>Estmator is the best app ever because . . . </p>
+          <p><a class="btn btn-primary btn-lg" href="{% url 'about' %}" role="button">Learn more</a></p>
+        </div>
+      </div>
+    </div><!-- end row -->
+</section>
+
+<section lazy-background="">
+  
+    <div class="row">
+    
+      <div class="col-md-8">
+        <div class="">
+          <h1>Count</h1>
+          <p class="lead">
+            Our quote functionality is based on years of industry experience,
+            abstracted down into a simple to use interface where you enter the
+            piece counts for the project, and we do the math for you. At any
+            point your team has the ability to adjust the products and piece
+            multipliers to better suit your success.
+           </p>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+      
+      </div>
+      
+    </div><!-- end row -->
+</section>
+
+<section lazy-background="">
+  
+    <div class="row">
+    
+      <div class="col-md-4">
+      
+      </div>
+      
+      <div class="col-md-8">
+        <div class="">
+          <h1>Quote</h1>
+          <p class="lead">
+            As soon as you've finished generating your quote, you have the option of
+            reviewing on-screen with your client or emailing them a secure link for
+            later review. You'll have a cumulative total for the project at hand, with
+             a summary review of inventories and rate options.
+          </p>
+        </div>
+      </div>
+      
+    </div><!-- end row -->
+</section>
+
+<section lazy-background="">
+  
+    <div class="row">
+    
+      <div class="col-md-8">
+        <div class="">
+          <h1>Close</h1>
+          <p class="lead">
+            If you choose to review on-demand, there is also a touch-screen
+            option to complete the quote by entering a digital signature onto
+            the quote, and then forwarding a copy of the completed document to
+            your client.
+          </p>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+      
+      </div>
+      
+    </div><!-- end row -->
+</section>
 {% endblock %}
