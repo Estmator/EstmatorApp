@@ -43,6 +43,8 @@
     </ul>
 </div>
 
+<form id="quote_form" action="{% url 'review' %}" method="post">{% csrf_token %}
+
 <!-- Right Reveal Menu -->
 <div class="navmenu navmenu-default navmenu-fixed-right reveal-right">
     <br><br>
@@ -54,8 +56,6 @@
 
 <div class="canvas">
     <script src="{% static './js/quote.js' %}"></script>
-
-    <form id="quote_form" action="{% url 'review' %}" method="post">{% csrf_token %}
 
     <!--Main Content-->
     <div class="container-fluid">
