@@ -1,12 +1,16 @@
-from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
+from django.conf import settings
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMultiAlternatives
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotAllowed
-from django.core.urlresolvers import reverse
-from est_quote.forms import QuoteCreateForm, ClientListForm, QuoteOptionsForm
-from est_client.models import Client, Company
+from django.shortcuts import render, redirect
+from django.template import RequestContext, TemplateDoesNotExist
+from django.template.loader import render_to_string
+from django.views.generic import TemplateView
+
+from est_client.models import Client
 from est_client.forms import ClientCreateForm
+from est_quote.forms import QuoteCreateForm, ClientListForm, QuoteOptionsForm
 from est_quote.models import Quote, Category, Product, ProductProperties
 
 
@@ -145,6 +149,55 @@ def review_quote_view(request):
         context['categories'] = Category.objects.all()
         # context['straight_time_cost'] = request.POST['straight_time_cost']
         # context['over_time_cost'] = request.POST['over_time_cost']
+
+    return render(
+        request, 'review.html', context
+    )
+
+
+@login_required
+def send_quote(request, **kwargs):
+    context = {}
+    if request is not None:
+        context = RequestContext(request, context)
+
+    quote = Quote.objects.get(pk=kwargs.get('pk'))
+    client = Client.objects.get(pk=quote.client.pk)
+
+    context['token'] = quote.token
+    context['site'] = get_current_site(request)
+
+    subject = "Yay, you have a quote!!"
+    from_email = settings.DEFAULT_FROM_EMAIL
+    to_email = client.email
+
+    message_txt = render_to_string('email_quote_link.txt', context)
+
+    email_message = EmailMultiAlternatives(
+        subject,
+        message_txt,
+        from_email,
+        [to_email]
+    )
+
+    if getattr(settings, 'REGISTRATION_EMAIL_HTML', True):
+        try:
+            message_html = render_to_string('email_quote_link.html', context)
+        except TemplateDoesNotExist:
+            pass
+        else:
+            email_message.attach_alternative(message_html, 'text/html')
+
+    email_message.send()
+
+    return redirect(quote_from_token, quote.token)
+
+
+def quote_from_token(request, **kwargs):
+    context = {}
+
+    context['quote'] = Quote.objects.get(token=kwargs.get('token'))
+    context['categories'] = Category.objects.all()
 
     return render(
         request, 'review.html', context

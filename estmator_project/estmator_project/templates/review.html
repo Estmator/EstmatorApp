@@ -65,8 +65,13 @@
             <section class='signature'>
                 <p>Client Signature</p>
             </section>
+
+            {% if user.is_authenticated %}
             <h3>User Information</h3>
-            <button type="submit">Send Email</button>
+            <a href="{% url 'send_quote' quote.pk %}">
+                <button type="button">Send Email</button>
+            </a>
+            {% endif %}
         </section>
     </section><!-- /.container-fluid -->
 
