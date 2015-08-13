@@ -1,3 +1,8 @@
+# keep static folder for deployment,
+# but don't track any files inside
+estmator_project/static/*
+
+
 # Mac Thumbnails
 .DS_Store
 
