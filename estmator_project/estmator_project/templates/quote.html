@@ -63,23 +63,23 @@
         <span id="companyvals" data-straight-time-rate="{{ client.company.st_rate }}" data-over-time-rate="{{ client.company.ot_rate }}"></span>
         <input type="hidden" name="quote_client" value="{{ client.id }}">
         <input type="hidden" name="quote_name" value="{{ quote_name }}">
-        {% for c in categories %}
+        {% for category, pdict in categories.items %}
         <div class="row">
             <div class="col-md-12">
-                <h2 id="category_{{ c.id }}">{{ c.name }}</h2>
+                <h2 id="category_{{ category.id }}">{{ category.name }}</h2>
             </div>
         </div>
-        {% for p in c.product_set.all %}
+        {% for product, count in pdict.items %}
         <div class="row item-row">
             <div class="col-xs-12 col-md-12">
-                <label for="item_{{ p.id }}">{{ p.name }}</label>
+                <label for="item_{{ product.id }}">{{ product.name }}</label>
             </div>
             <div class="col-xs-6 col-md-2">
-                <input type="hidden" name="product" value="{{ p.id }}">
-                <input class="spinner-box" id="item_{{ p.id }}" type="text" value="10" name="product_count" data-mins="{{ p.mins_piece }}">
+                <input type="hidden" name="product" value="{{ product.id }}">
+                <input class="spinner-box" id="item_{{ product.id }}" type="text" value="{{ count }}" name="product_count" data-mins="{{ product.mins_piece }}">
             </div>
             <div class="col-xs-6 col-md-2">
-                <span class="calc_mins" id="hour_for_item_{{ p.id }}"> -- </span>
+                <span class="calc_mins" id="hour_for_item_{{ product.id }}"> -- </span>
             </div>
         </div>
         {% endfor %}
@@ -115,7 +115,6 @@
             </div>
         </div>
         <div class="row">
-            <input type="hidden" id="quote_traveltime" name="travel_time" value="0">
             <div class="col-xs-6 col-md-2">
                 <h4>Total Drive Time: </h4>
             </div>

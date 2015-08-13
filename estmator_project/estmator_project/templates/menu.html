@@ -24,7 +24,6 @@
                         method: 'GET',
                         url: "{% url 'quote_form' %}"
                     }).done(function(response) {
-                        console.log(response);
                         $('#new_quote_form').html(response);
                         $('#new_quote').modal('toggle');
                     });
@@ -47,7 +46,6 @@
                                 url: "{% url 'quote_edit_form' %}",
                                 data: {pk: clientID}
                             }).done(function (response) {
-                                console.dir(response);
                                 $('#edit_quote_form_contents').html(response);
                             });
                         });
