@@ -1,0 +1,35 @@
+{% load i18n %}
+{% load url from future %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>{{ site.name }} {% trans "Quote" %}</title>
+</head>
+
+<body>
+<p>
+    {% blocktrans %}
+    blah blah blah, we made a quote, thanks!
+    {% endblocktrans %}
+</p>
+<p>
+    {% blocktrans %}
+    To view your quote, please click the following link:
+    {% endblocktrans %}
+</p>
+
+<p>
+    <a href="http://{{site.domain}}{% url 'quote_from_token' token %}">
+        http://{{site.domain}}{% url 'quote_from_token' token %}
+    </a>
+</p>
+<p>
+    {% blocktrans with site_name=site.name %}
+    Sincerely,
+    {{ site_name }} Management
+    {% endblocktrans %}
+</p>
+</body>
+
+</html>
