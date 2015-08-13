@@ -25,12 +25,22 @@ class IndexView(TemplateView):
 @login_required
 def quote_view(request):
     if request.method == 'POST':
-        options_form = QuoteOptionsForm()
+        categories = {c: {p: 0 for p in c.product_set.all()} for c in Category.objects.all()}
+        if 'quote' in request.POST:
+            quote = Quote.objects.get(id=request.POST['quote'])
+            quote_name = quote.name
+            for prop in quote.productproperties_set.all():
+                categories[prop.product.category][prop.product] = prop.count
+        else:
+            quote = None
+            quote_name = request.POST['name']
+
+        options_form = QuoteOptionsForm(instance=quote)
         context = {
-            'categories': Category.objects.all(),
+            'categories': categories,
             'options_form': options_form.as_ul,
             'client': Client.objects.get(id=request.POST['client']),
-            'quote_name': request.POST['name']
+            'quote_name': quote_name
         }
         return render(
             request, 'quote.html', context
