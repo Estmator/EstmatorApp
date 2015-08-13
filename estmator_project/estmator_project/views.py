@@ -184,7 +184,7 @@ def send_quote(request, **kwargs):
         [to_email]
     )
 
-    if getattr(settings, 'REGISTRATION_EMAIL_HTML', True):
+    if getattr(settings, 'USE_HTML_TEMPLATES', True):
         try:
             message_html = render_to_string('email_quote_link.html', context)
         except TemplateDoesNotExist:
