@@ -14,10 +14,10 @@ urlpatterns = [
     url(r'^quote/$', views.quote_view, name='quote'),
     url(r'^quote/review$', views.review_quote_view, name='review'),
     url(r'^quote/form$', views.quote_form_view, name='quote_form'),
-    url(r'^quote/send/(?P<pk>\d+)$', views.quote_email, name='send_quote'),
+    url(r'^quote/send/(?P<pk>\d+)', views.send_quote, name='send_quote'),
     url(
         r'^quote/(?P<token>[a-z0-9]{8}(-[a-z0-9]{4}){3}-[a-z0-9]{12})$',
-        views.review_quote_view,
+        views.quote_from_token,
         name='quote_from_token'),
     url(
         r'^quote/form/edit$',

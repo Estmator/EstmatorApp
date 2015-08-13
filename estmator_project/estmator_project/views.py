@@ -158,13 +158,13 @@ def review_quote_view(request):
 
 
 @login_required
-def send_quote(request):
+def send_quote(request, **kwargs):
     context = {}
     if request is not None:
         context = RequestContext(request, context)
 
-    quote = Quote.objects.filter(pk=request.pk)
-    client = Client.objects.filter(pk=request.quote.client)
+    quote = Quote.objects.get(pk=kwargs.get('pk'))
+    client = Client.objects.get(pk=quote.client.pk)
 
     context['token'] = quote.token
     context['site'] = get_current_site(request)
@@ -192,11 +192,14 @@ def send_quote(request):
 
     email_message.send()
 
+    return HttpResponse("success?")
 
-def quote_from_token(request):
+
+def quote_from_token(request, **kwargs):
     context = {}
 
-    context['quote'] = Quote.objects.get(token=request.token)
+    context['quote'] = Quote.objects.get(token=kwargs.get('token'))
+    context['categories'] = Category.objects.all()
 
     return render(
         request, 'review.html', context
