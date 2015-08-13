@@ -167,6 +167,9 @@ def send_quote(request, **kwargs):
 
     context['token'] = quote.token
     context['site'] = get_current_site(request)
+    context['client'] = client
+    context['quote'] = quote
+    context['user'] = quote.user
 
     subject = "Yay, you have a quote!!"
     from_email = settings.DEFAULT_FROM_EMAIL
