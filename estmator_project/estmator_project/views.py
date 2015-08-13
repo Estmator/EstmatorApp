@@ -171,7 +171,7 @@ def send_quote(request, **kwargs):
     context['quote'] = quote
     context['user'] = quote.user
 
-    subject = "Yay, you have a quote!!"
+    subject = "Your estmator quote!"
     from_email = settings.DEFAULT_FROM_EMAIL
     to_email = client.email
 
