@@ -2,6 +2,13 @@
 {% load static from staticfiles %}
 {% load i18n %}
 
+{% block header_buttons %}
+{% if user.is_authenticated %}
+{% else %}
+<a href="{% url 'auth_login' %}" class="btn btn-default navbar-btn">Log in</a>
+{% endif %}
+{% endblock %}
+
 {% block content %}
 <div class="container center-block">
   <div class="jumbotron text-center">
