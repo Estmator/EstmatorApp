@@ -223,13 +223,22 @@ def quote_from_token(request, **kwargs):
 
     quote = Quote.objects.get(token=kwargs.get('token'))
     context['quote'] = quote
-    context['categories'] = Category.objects.all()
 
-    # categories = {}
-    # products = Products.objects.get()
+    quote_products = ProductProperties.objects.filter(quote=quote)
+    categories = {}
+    # products = quote.products.all()  #.prefetch_related()
 
-    # for c in Category.objects.all():
-    #     pass
+    for c in Category.objects.all():
+        for qp in quote_products:
+            if qp.product.category == c:
+                categories[c] = qp
+
+        # for p in products:
+        #     if p.category == c:
+        #         categories[c.name] = p
+
+    context['categories'] = categories
+    # import pdb; pdb.set_trace()
 
     return render(
         request, 'review.html', context

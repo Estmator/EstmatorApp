@@ -58,35 +58,21 @@
 
         <div>
 
+
             <h2>Relocation Inventory:</h3>
 
-            {% for c, plist in categories.items %}
+            {% for c in categories.iteritems %}
             <div class='panel panel-default'>
                 <div class="panel-heading">
-                    <h3 id="category_{{ c.id }}" class="panel-title">{{ c.name }}</h3>
+                    <h3 class="panel-title">{{ c.0.name }}</h3>
                 </div>
                 <div class="panel-body">
-                {% for p, count in plist %}
-                    <p id="product_{{ p.id }}">{{ p.name }} {{ count }}</p>
+                {% for p in c %}
+                    <p id="product_{{ p.id }}">{{ p.product.name }} {{ p.count }}</p>
                 {% endfor %}
                 </div>
             </div>
             {% endfor %}
-
-<!--             <h2>Relocation Inventory:</h3>
-
-            {% for c in categories %}
-            <div class='panel panel-default'>
-                <div class="panel-heading">
-                    <h3 id="category_{{ c.id }}" class="panel-title">{{ c.name }}</h3>
-                </div>
-                <div class="panel-body">
-                {% for p, count in plist %}
-                    <p id="product_{{ p.id }}">{{ p.name }} {{ count }}</p>
-                {% endfor %}
-                </div>
-            </div>
-            {% endfor %} -->
 
         </div>
 
