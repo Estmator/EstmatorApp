@@ -103,6 +103,32 @@ body {
     padding: 5%;
 }
 
+.index_jumbo {
+    margin: 2rem;
+    background-color:rgba(0,0,0,0.75);
+    color: white;
+}
+
+.tag_logo {
+    max-width: 10%
+}
+
+.tag_line {
+    font-size: 5rem;
+}
+
+.index_header {
+    text-align: center;
+}
+
+.header_splash {
+    background-image: url('../images/furniture.jpg')
+}
+
+main.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
 
 /* Main Menu
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

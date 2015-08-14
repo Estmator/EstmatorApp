@@ -7,16 +7,22 @@
 {% endblock %}
 
 {% block content %}
-<section class="gray" lazy-background="">
+<section class="header_splash" lazy-background="">
     <div class="row">
-      <div class="col-md-6">
-      
+      <div class="col-md-6 index_header">
+        <h1 class='tag_line'>
+          <img class='tag_logo' src="{% static 'images/est_logo_symbol.png' %}" alt="">Count 
+          <img class='tag_logo' src="{% static 'images/est_logo_symbol.png' %}" alt="">Quote  
+          <img class='tag_logo' src="{% static 'images/est_logo_symbol.png' %}" alt="">Close
+        </h1>
       </div>
       <div class="col-md-6">
-        <div class="jumbotron">
-          <h1>Hello, World!</h1>
-          <p>Estmator is the best app ever because . . . </p>
-          <p><a class="btn btn-primary btn-lg" href="{% url 'about' %}" role="button">Learn more</a></p>
+        <div class="jumbotron index_jumbo">
+          <div>
+            <h1>Estmator</h1>
+            <p>Too simple not to use</p>
+            <p><a class="btn btn-primary btn-lg" href="{% url 'about' %}" role="button">Learn more</a></p>
+          </div>
         </div>
       </div>
     </div><!-- end row -->
