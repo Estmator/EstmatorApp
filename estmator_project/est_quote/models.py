@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
-from django.db import models
+from uuid import uuid4
+from django.db import IntegrityError, models
 from django.utils.encoding import python_2_unicode_compatible
 from django.contrib.auth.models import User
 from est_client.models import Client
@@ -32,6 +33,8 @@ class Product(models.Model):
 
 
 class QuoteModifiers(models.Model):
+    # Company Logo
+    logo = models.ImageField(upload_to='photo_files/%Y-%m-%d')
     # Location multipliers
     street_load = models.FloatField()
     midrise_elev_std = models.FloatField()
@@ -41,10 +44,19 @@ class QuoteModifiers(models.Model):
     lng_psh = models.FloatField()
 
 
+def make_token():
+    """
+    Generate a unique token for each quote.
+
+    Token is used to reference a client's quote in an email link.
+    """
+    return str(uuid4())
+
+
 @python_2_unicode_compatible
 class Quote(models.Model):
-    user = models.ForeignKey(User, related_name='user')
-    client = models.ForeignKey(Client, related_name='client')
+    user = models.ForeignKey(User, related_name='quotes')
+    client = models.ForeignKey(Client, related_name='quotes')
     name = models.CharField(max_length=256)
     date = models.DateField(auto_now_add=True)
     sub_total = models.IntegerField(blank=True, null=True)
@@ -55,6 +67,8 @@ class Quote(models.Model):
         through='ProductProperties',
         blank=True
     )
+
+    token = models.CharField(max_length=36, editable=False, default=make_token)
 
     travel_time = models.IntegerField()
 
