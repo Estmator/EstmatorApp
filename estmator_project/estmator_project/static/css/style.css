@@ -236,6 +236,12 @@ img.logo {
     max-width: 7rem;
 }
 
+.ul_foot {
+    font-weight: bolder;
+    text-decoration: underline;
+    color: #f68620;
+    font-size: large;
+}
 
 
 /* Review page
