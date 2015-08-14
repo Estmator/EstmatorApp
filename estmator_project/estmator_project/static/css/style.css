@@ -197,6 +197,28 @@ a.lrn_more:hover {
     z-index: 0;
 }
 
+#calculate_btn {
+    position: absolute;
+    left: 2rem;
+}
+
+#tagline {
+    position: absolute;
+    left: 35%;
+    right: 35%;
+}
+
+
+@media (max-width: 400px) {
+    #tagline {
+        display: none;
+    }
+}
+
+#review_btn {
+    position: absolute;
+    right: 2rem;
+}
 
 
 /* About page
