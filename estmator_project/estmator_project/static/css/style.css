@@ -92,6 +92,18 @@ body {
     color: #f68620;
 }
 
+/* Index page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.home_hero_icons {
+    max-height: 20rem;
+}
+
+.home_hero_sections {
+    max-height: 35rem;
+    padding: 5%;
+}
+
+
 /* Main Menu
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 #est-menu {
