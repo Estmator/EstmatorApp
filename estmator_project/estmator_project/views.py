@@ -206,6 +206,8 @@ def review_quote_view(request):
                 del categories[c]
 
         context['categories'] = categories
+        context['st'] = quote.grand_total / 60 * quote.client.company.st_rate
+        context['ot'] = quote.grand_total / 60 * quote.client.company.ot_rate
 
     return render(
         request, 'review.html', context
