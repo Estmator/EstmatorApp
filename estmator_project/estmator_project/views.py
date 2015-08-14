@@ -221,8 +221,15 @@ def send_quote(request, **kwargs):
 def quote_from_token(request, **kwargs):
     context = {}
 
-    context['quote'] = Quote.objects.get(token=kwargs.get('token'))
+    quote = Quote.objects.get(token=kwargs.get('token'))
+    context['quote'] = quote
     context['categories'] = Category.objects.all()
+
+    # categories = {}
+    # products = Products.objects.get()
+
+    # for c in Category.objects.all():
+    #     pass
 
     return render(
         request, 'review.html', context

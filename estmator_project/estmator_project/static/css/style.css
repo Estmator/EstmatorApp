@@ -125,3 +125,23 @@ img.gh_img {
 img.logo {
     max-width: 7rem;
 }
+
+
+
+/* Review page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+#review-container {
+    width:960px;
+}
+
+#client-panel {
+    padding-top: 2em;
+}
+
+#client-panel img {
+    max-height: 9em;
+}
+
+.unicode-label {
+    color:#f68620;;
+}
