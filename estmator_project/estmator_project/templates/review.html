@@ -2,6 +2,12 @@
 {% load i18n %}
 {% load static from staticfiles %}
 
+{% block header_text %}
+<span class="hidden-xs hidden-sm">
+Quote for {{ quote.client.first_name }} {{ quote.client.last_name }}
+</span>
+{% endblock %}
+
 {% block content %}
 <script src="{% static './js/quote.js' %}"></script>
 
@@ -14,7 +20,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">{{ quote.client.name|default:"Client" }}</h3>
+                    <h3 class="panel-title">{{ quote.client.first_name }} {{ quote.client.last_name }}</h3>
                 </div>
                 <div class="panel-body">
                     <div class="pull-left">
@@ -66,8 +72,8 @@
             <table class="table">
             {% for p in products %}
                 <tr class="item-row">
-                    <td class="col-md-7">{{ p.name }}</td>
-                    <td class="col-md-5 pull-right">{{ p.count }}</td>
+                    <td>{{ p.name }}</td>
+                    <td class="text-right">{{ p.count }}</td>
                 </tr>
             {% endfor %}
             </table>
@@ -83,30 +89,22 @@
             </div> -->
             <table class="table">
                 <tr class="item-row">
-                    <td class="col-md-6">Sub-Total:</td>
-                    <td class="col-md-6 pull-right">{{ quote.sub_total }}</td>
+                    <td>Total (minutes)</td>
+                    <td class="text-right">{{ quote.grand_total }}</td>
                 </tr>
                 <tr class="item-row">
-                    <td class="col-md-6">Grand Total:</td>
-                    <td class="col-md-6 pull-right">{{ quote.grand_total }}</td>
+                <td>Standard Rate (8 AM - 5 PM):</td>
+                <td class="text-right">${{ st }}</td>
+                </tr>
+                <tr class="item-row">
+                <td>Overtime Rate:</td>
+                <td class="text-right">${{ ot }}</td>
                 </tr>
             </table>
 
         </div>
 
-        {% if user.is_authenticated %}
-        {% comment %}
-
-        Only show this block when a user is not logged in
-
-        Assuming that it would only be used when someone is printing
-        the form?
-
-        So they can sign it and return it.
-
-        {% endcomment %}
-
-        <h2>Signatures</h3>
+        <h2>Signatures</h2>
 
         <div class='panel panel-default'>
             <div class="panel-heading clear-fix">
@@ -126,7 +124,6 @@
             </table>
 
         </div>
-        {% endif %}
 
     </div><!-- /.container-fluid -->
 {% endblock %}

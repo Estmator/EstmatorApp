@@ -26,5 +26,5 @@ Sincerely,
 {% trans 'estmator management' %}
 {% endif %}
 {% blocktrans %}
-≈ count ≈ quote ≈ close.
+≈ count ≈ quote ≈ close
 {% endblocktrans %}
