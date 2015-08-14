@@ -67,5 +67,6 @@ class LiveServerSplinterAuthTest(LiveServerTestCase):
         self.assertTrue(self.browser.is_text_present('New Quote'))
 
         new_quote_visible = self.browser.find_by_id('new_quote').visible
+        sleep(1)
         self.assertTrue(new_quote_visible)
 
