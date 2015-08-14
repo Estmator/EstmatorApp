@@ -45,7 +45,7 @@ Quote for {{ client.first_name }} {{ client.last_name }}
     <br><br>
     <a class="navmenu-brand" href="#">Options</a>
     <ul class="nav navmenu-nav">
-        {{ options_form }}
+        {{ options_form | safe }}
     </ul>
 </div>
 
