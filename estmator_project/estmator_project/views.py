@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMultiAlternatives
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotAllowed
+from django.http import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import render, redirect
 from django.template import RequestContext, TemplateDoesNotExist
 from django.template.loader import render_to_string
@@ -188,8 +188,11 @@ def send_quote(request, **kwargs):
 
     context['token'] = quote.token
     context['site'] = get_current_site(request)
+    context['client'] = client
+    context['quote'] = quote
+    context['user'] = quote.user
 
-    subject = "Yay, you have a quote!!"
+    subject = "Your estmator quote!"
     from_email = settings.DEFAULT_FROM_EMAIL
     to_email = client.email
 
@@ -202,7 +205,7 @@ def send_quote(request, **kwargs):
         [to_email]
     )
 
-    if getattr(settings, 'REGISTRATION_EMAIL_HTML', True):
+    if getattr(settings, 'USE_HTML_TEMPLATES', True):
         try:
             message_html = render_to_string('email_quote_link.html', context)
         except TemplateDoesNotExist:
@@ -224,3 +227,7 @@ def quote_from_token(request, **kwargs):
     return render(
         request, 'review.html', context
     )
+
+
+def connection_test(request):
+    return HttpResponse(status=204)
