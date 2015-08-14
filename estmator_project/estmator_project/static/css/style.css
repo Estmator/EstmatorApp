@@ -214,3 +214,9 @@ img.logo {
 .unicode-label {
     color:#f68620;;
 }
+
+/* Registration pages
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.reg_form {
+    padding: 10rem;
+}
