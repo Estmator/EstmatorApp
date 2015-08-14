@@ -142,11 +142,21 @@ Quote for {{ client.first_name }} {{ client.last_name }}
 </div>
 {% endblock %}
 
-{% block footer_left %}
+<!-- {% block footer_left %}
   <button type="button" class="btn btn-default navbar-btn" id="calculate_btn">Calculate</button>
 {% endblock %}
 
 {% block footer_right %}
+  <button type="submit" class="btn btn-default navbar-btn" id="review_btn">Review</button>
+{% endblock %} -->
+
+{% block footer_full %}
+  <button type="button" class="btn btn-default navbar-btn" id="calculate_btn">Calculate</button>
+  <div id="tagline" class="nav navbar-nav navbar-text navbar-tagline">
+    <span class="hilite_color">&asymp;</span> count
+    <span class="hilite_color">&asymp;</span> quote
+    <span class="hilite_color">&asymp;</span> close
+  </div>
   <button type="submit" class="btn btn-default navbar-btn" id="review_btn">Review</button>
 {% endblock %}
 
