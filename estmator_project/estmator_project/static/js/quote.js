@@ -23,16 +23,16 @@ function calculateQuote() {
 
     $('#genval_totalproducts').html(totalProducts);
     $('#genval_totaltruckloads').html(totalTruckLoads);
-    $('#genval_subtotal').html(subTotal);
+    $('#genval_subtotal').html(subTotal + ' mins');
     $('#quote_subtotal').val(subTotal);
-    $('#genval_totaldrivetime').html(totalDriveTime);
-    $('#genval_grandtotal').html(grandTotal);
+    $('#genval_totaldrivetime').html(totalDriveTime + ' mins');
+    $('#genval_grandtotal').html(grandTotal + ' mins');
     $('#quote_grandtotal').val(grandTotal);
     $('#genval_totalhours').html(totalHours);
     $('#genval_totaldays').html(totalDays);
-    $('#genval_straighttimecost').html(straightTimeCost);
+    $('#genval_straighttimecost').html('$' + straightTimeCost);
     $('#quote_straighttimecost').val(straightTimeCost);
-    $('#genval_overtimecost').html(overTimeCost);
+    $('#genval_overtimecost').html('$' + overTimeCost);
     $('#quote_overtimecost').val(overTimeCost);
 }
 
@@ -58,7 +58,12 @@ $(function () {
     //add click listeners to each category button
     $(".category_btn").each(function () {
         $(this).click(function () {
-            if ($('.reveal-left').css('width') == '150px') {
+            var category_id = $(this).data('category-id');
+            var offset = $(category_id).offset();
+            setTimeout(function () {
+                $(window).scrollTop(offset.top - 50);
+            }, 500);
+            if ($('.reveal-left').css('width') == '180px') {
                 $('.reveal-left').offcanvas('toggle');
             }
         });

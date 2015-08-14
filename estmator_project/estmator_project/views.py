@@ -43,10 +43,18 @@ def quote_view(request):
             quote = None
             quote_name = request.POST['name']
 
+        form_html = ''
         options_form = QuoteOptionsForm(instance=quote)
+
+        for fieldname, field in options_form.fields.items():
+            form_html += '<li><a>'
+            form_html += str(options_form[fieldname]) + ' '
+            form_html += options_form[fieldname].label
+            form_html += '</a></li>'
+
         context = {
             'categories': categories,
-            'options_form': options_form.as_ul,
+            'options_form': form_html,
             'client': Client.objects.get(id=request.POST['client']),
             'quote_name': quote_name
         }

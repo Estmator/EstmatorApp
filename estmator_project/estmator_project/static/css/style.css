@@ -8,19 +8,30 @@ body {
     height: 100%;
 }
 
-.navbar .navbar-tagline {
+#tagline {
     text-align: center;
+    float: none;
 }
 
+#content {
+    padding-left: 0;
+    padding-right: 0;
+}
 
 /* Positioning
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.pad_top_50 {
+.pad_top {
     padding-top: 50px;
 }
 
-.pad_bottom_50 {
-    padding-bottom: 50px;
+.pad_bottom {
+    padding-bottom: 66px;
+}
+
+@media (min-width: 767px) {
+    .pad_bottom {
+        padding-bottom: 50px;
+    }
 }
 
 .pad_top_75 {
@@ -44,7 +55,7 @@ body {
 /* Nav
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .navmenu {
-    width: 150px;
+    width: 180px;
 }
 
 @media (min-width: 992px) {
@@ -81,8 +92,49 @@ body {
     background-color: lightgray;
 }
 
+.white, .white a {
+    color: white;
+}
+
 .hilite_color {
     color: #f68620;
+}
+
+/* Index page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.home_hero_icons {
+}
+
+.home_hero_sections {
+    max-height: 35rem;
+    padding: 5%;
+}
+
+.index_jumbo {
+    margin: 2rem;
+    background-color:rgba(0,0,0,0.75);
+    color: white;
+}
+
+.tag_logo {
+    max-width: 10%
+}
+
+.tag_line {
+    font-size: 5rem;
+}
+
+.index_header {
+    text-align: center;
+}
+
+.header_splash {
+    background-image: url('../images/furniture.jpg')
+}
+
+main.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /* Main Menu
@@ -101,11 +153,8 @@ body {
     }
 }
 
-.quote-category-header {
-    /*padding-top: 50px;*/
-}
-
-.input-group .form-control {
+/*keeps spinner inputs under the reveal menus*/
+.input-group .form-control, .input-group-btn:last-child>.btn {
     z-index: 0;
 }
 

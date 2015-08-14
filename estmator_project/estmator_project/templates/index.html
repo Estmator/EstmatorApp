@@ -7,26 +7,36 @@
 {% endblock %}
 
 {% block content %}
-<section class="gray" lazy-background="">
+<section class="header_splash" lazy-background="">
     <div class="row">
-      <div class="col-md-6">
-      
+      <div class="col-md-6 index_header">
+        <h1 class='tag_line'>
+          <img class='tag_logo' src="{% static 'images/est_logo_symbol.png' %}" alt="">Count 
+          <img class='tag_logo' src="{% static 'images/est_logo_symbol.png' %}" alt="">Quote  
+          <img class='tag_logo' src="{% static 'images/est_logo_symbol.png' %}" alt="">Close
+        </h1>
       </div>
       <div class="col-md-6">
-        <div class="jumbotron">
-          <h1>Hello, World!</h1>
-          <p>Estmator is the best app ever because . . . </p>
-          <p><a class="btn btn-primary btn-lg" href="{% url 'about' %}" role="button">Learn more</a></p>
+        <div class="jumbotron index_jumbo">
+          <div>
+            <h1>Estmator</h1>
+            <p>Too simple not to use</p>
+            <p><a class="btn btn-primary btn-lg" href="{% url 'about' %}" role="button">Learn more</a></p>
+          </div>
         </div>
       </div>
     </div><!-- end row -->
 </section>
 
-<section lazy-background="">
+<section class="home_hero_sections" lazy-background="">
   
     <div class="row">
     
-      <div class="col-md-8">
+      <div class="col-md-4 col-md-push-8">
+        <img src="{% static 'images/calc.png' %}" class="home_hero_icons img-responsive" alt="calculator">
+      </div>
+      
+      <div class="col-md-8 col-md-pull-4">
         <div class="">
           <h1>Count</h1>
           <p class="lead">
@@ -37,21 +47,17 @@
             multipliers to better suit your success.
            </p>
         </div>
-      </div>
-      
-      <div class="col-md-4">
-      
-      </div>
+      </div><!-- end column -->
       
     </div><!-- end row -->
 </section>
 
-<section lazy-background="">
+<section class="home_hero_sections" lazy-background="">
   
     <div class="row">
     
       <div class="col-md-4">
-      
+        <img src="{% static 'images/quote.png' %}" class="home_hero_icons img-responsive" alt="calculator">
       </div>
       
       <div class="col-md-8">
@@ -64,16 +70,20 @@
              a summary review of inventories and rate options.
           </p>
         </div>
-      </div>
+      </div><!-- end column -->
       
     </div><!-- end row -->
 </section>
 
-<section lazy-background="">
+<section class="home_hero_sections" lazy-background="">
   
     <div class="row">
+      
+      <div class="col-md-4 col-md-push-8">
+        <img src="{% static 'images/close.png' %}" class="home_hero_icons img-responsive" alt="calculator">
+      </div>
     
-      <div class="col-md-8">
+      <div class="col-md-8 col-md-pull-4">
         <div class="">
           <h1>Close</h1>
           <p class="lead">
@@ -83,11 +93,7 @@
             your client.
           </p>
         </div>
-      </div>
-      
-      <div class="col-md-4">
-      
-      </div>
+      </div><!-- end column -->
       
     </div><!-- end row -->
 </section>
