@@ -8,19 +8,30 @@ body {
     height: 100%;
 }
 
-.navbar .navbar-tagline {
+#tagline {
     text-align: center;
+    float: none;
 }
 
+#content {
+    padding-left: 0;
+    padding-right: 0;
+}
 
 /* Positioning
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.pad_top_50 {
+.pad_top {
     padding-top: 50px;
 }
 
-.pad_bottom_50 {
-    padding-bottom: 50px;
+.pad_bottom {
+    padding-bottom: 66px;
+}
+
+@media (min-width: 767px) {
+    .pad_bottom {
+        padding-bottom: 50px;
+    }
 }
 
 .pad_top_75 {
@@ -88,6 +99,17 @@ body {
 .hilite_color {
     color: #f68620;
 }
+
+/* Index page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.home_hero_icons {
+}
+
+.home_hero_sections {
+    max-height: 35rem;
+    padding: 5%;
+}
+
 
 /* Main Menu
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

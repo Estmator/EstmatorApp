@@ -15,6 +15,10 @@
     <link href="{% static 'css/jquery.bootstrap-touchspin.css' %}" rel="stylesheet">
     <link href="{% static 'css/navmenu-reveal.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'images/icons/apple-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'images/icons/apple-icon-60x60.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/icons/favicon-16x16.png' %}">
     {% block title %}
     <title>Estmator</title>
     {% endblock %}
@@ -70,7 +74,7 @@
     {% endblock %}
     </header>
     
-    <main id="content" class="pad_top_50 pad_bottom_50 container-fluid">
+    <main id="content" class="pad_top pad_bottom container-fluid">
     {% block content %}{% endblock %}
     </main>
     
@@ -84,7 +88,7 @@
                 {% block footer_left %}
                 {% endblock %}
               </div>
-              <div class="nav navbar-nav navbar-text navbar-tagline">
+              <div id="tagline" class="nav navbar-nav navbar-text navbar-tagline">
                   <span class="hilite_color">&asymp;</span> count
                   <span class="hilite_color">&asymp;</span> quote
                   <span class="hilite_color">&asymp;</span> close
