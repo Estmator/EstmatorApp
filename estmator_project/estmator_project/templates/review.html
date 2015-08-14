@@ -66,8 +66,8 @@
             <table class="table">
             {% for p in products %}
                 <tr class="item-row">
-                    <td class="col-md-7">{{ p.name }}</td>
-                    <td class="col-md-5 pull-right">{{ p.count }}</td>
+                    <td>{{ p.name }}</td>
+                    <td class="text-right">{{ p.count }}</td>
                 </tr>
             {% endfor %}
             </table>
@@ -83,12 +83,12 @@
             </div> -->
             <table class="table">
                 <tr class="item-row">
-                    <td class="col-md-6">Sub-Total:</td>
-                    <td class="col-md-6 pull-right">{{ quote.sub_total }}</td>
+                    <td>Sub-Total:</td>
+                    <td class="text-right">{{ quote.sub_total }}</td>
                 </tr>
                 <tr class="item-row">
-                    <td class="col-md-6">Grand Total:</td>
-                    <td class="col-md-6 pull-right">{{ quote.grand_total }}</td>
+                    <td>Grand Total:</td>
+                    <td class="text-right">{{ quote.grand_total }}</td>
                 </tr>
             </table>
 
@@ -106,7 +106,7 @@
 
         {% endcomment %}
 
-        <h2>Signatures</h3>
+        <h2>Signatures</h2>
 
         <div class='panel panel-default'>
             <div class="panel-heading clear-fix">
