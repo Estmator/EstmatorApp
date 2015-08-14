@@ -2,8 +2,9 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseNotAllowed
 
 @login_required
-def calc_view(request):
+def quote_view(request):
     if request.method == 'POST':
-        return HttpResponse('yup')
+        print request.POST
+        return HttpResponse()
     else:
         return HttpResponseNotAllowed(['POST'])

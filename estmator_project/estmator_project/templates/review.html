@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static from staticfiles %}
+{% block content %}
+
+<script src="{% static './js/quote.js' %}"></script>
+
+    <!--Main Content-->
+    <section class="container-fluid">
+        <section class='review_header'>
+        {% with qcc=quote.client.company %}
+            <section class='client_info'>
+                <h3>{{ quote.client.name }}</h3>
+                <p>{{ qcc.company_name }}</p>
+                <p>{{ qcc.address }}</p>
+            {% if qcc.address2 %}
+                <p>{{ qcc.address2 }}</p>
+            {% endif %}
+                <p>{{ qcc.city }},{{ qcc.state }} {{ qcc.postal }}</p>
+            </section>
+            <img src="" alt'user logo'>
+        {% endwith %}
+        </section>
+        <section class='user_intro'>
+            <p>{{ quote.user.profile.review_intro }}</p>
+        </section>
+        <section class='quote_info'>
+        <h2>Relocation Inventory:</h2>
+
+        {% for c, plist in categories.items %}
+            <h3 id="category_{{ c.id }}">{{ c.name }}</h3>
+            {% for p, count in plist %}
+                <p id="product_{{ p.id }}">{{ p.name }} {{ count }}</p>
+            {% endfor %}
+        {% endfor %}
+
+        </section>
+        <section class='quote_sig'>
+        {% with qu=quote.user %}
+        {% if user.is_authenticated %}
+            <section class='signature'></section>
+            <h3>{{ qu.first_name }} {{ qu.last_name }}</h3>
+            <p>degub user {{ qu.username }}</p>
+            <p>c: {{ qu.cell }}</p>
+            <p>d: {{ qu.desk }}</p>
+            <a href="{% url 'send_quote' quote.pk %}">
+                <button type="button">Send Email</button>
+            </a>
+        {% endif %}
+        {% endwith %}
+        </section>
+    </section><!-- /.container-fluid -->
+
+{% endblock %}
+
+{% block footer_right %}
+    {% if user.is_authenticated %}
+        <a href="{% url 'send_quote' quote.pk %}">
+            <button type="button" class="btn btn-default navbar-btn">Send Email</button>
+        </a>
+    {% endif %}
+{% endblock %}

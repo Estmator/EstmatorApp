@@ -1,107 +1,154 @@
 {% extends "base.html" %}
-{% load i18n %}f]-->
+{% load i18n %}
 {% load static from staticfiles %}
+
+
+{% block leftbutton %}
+<button type="button" class="navbar-toggle hidden-md hidden-lg" data-toggle="offcanvas" data-target=".reveal-left" data-disable-scrolling="false">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+</button>
+{% endblock %}
+
+{% block header_buttons %}
+<button type="button" class="navbar-toggle hidden-lg" data-toggle="offcanvas" data-target=".reveal-right" data-disable-scrolling="false">
+    <span class="glyphicon glyphicon-option-horizontal white"></span>
+</button>
+{% endblock %}
+
+{% block nav_links %}
+{% endblock %}
+
+{% block header_text %}
+<span class="hidden-xs hidden-sm">
+Quote for {{ client.first_name }} {{ client.last_name }}
+</span>
+{% endblock %}
+
 {% block content %}
-
-<script src="{% static './js/quote.js' %}"></script>
-
-<form id="quote_form" action="{% url 'api_calc' %}" method="post">{% csrf_token %}
-
 <!-- Left Reveal Menu -->
-<div class="navmenu navmenu-default navmenu-fixed-left reveal-left">
+<div class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm reveal-left">
+    <br><br>
     <a class="navmenu-brand" href="#">Categories</a>
     <ul class="nav navmenu-nav">
         {% for c in categories %}
-        <li class="category_btn"><a href="#category_{{ c.id }}">{{ c.name }}</a></li>
+        <li class="category_btn" data-category-id="#category_{{ c.id }}"><a>{{ c.name }}</a></li>
         {% endfor %}
-        <li><a href="{% url 'menu' %}">Back</a></li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-            <ul class="dropdown-menu navmenu-nav">
-                <li><a href="#">If</a></li>
-                <li><a href="#">We Need</a></li>
-                <li><a href="#">A Dropdown Menu</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-            </ul>
-        </li>
     </ul>
 </div>
+
+<form id="quote_form" action="{% url 'review' %}" method="post">{% csrf_token %}
 
 <!-- Right Reveal Menu -->
-<div class="navmenu navmenu-default navmenu-fixed-right reveal-right">
+<div class="navmenu navmenu-default navmenu-fixed-right offcanvas-md reveal-right">
+    <br><br>
     <a class="navmenu-brand" href="#">Options</a>
     <ul class="nav navmenu-nav">
-        {{ options_form }}
+        {{ options_form | safe }}
     </ul>
 </div>
 
-<div class="canvas">
-    <!--Top Navbar-->
-    <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="nav navbar-nav navbar-left">
-                <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".reveal-left" data-canvas=".canvas" data-disable-scrolling="false">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+<div class="container-fluid">
+    <script src="{% static './js/quote.js' %}"></script>
+
+    <!--Main Content-->
+    <div class="row">
+    <div class="col-md-offset-3 col-md-4 col-xs-12">
+        <span id="companyvals" data-straight-time-rate="{{ client.company.st_rate }}" data-over-time-rate="{{ client.company.ot_rate }}"></span>
+        <input type="hidden" name="quote_client" value="{{ client.id }}">
+        <input type="hidden" name="quote_name" value="{{ quote_name }}">
+        {% for category, pdict in categories.items %}
+        <div class="panel panel-default" id="category_{{ category.id }}">
+            <div class="panel-heading">
+                <h3 class="quote-category-header">{{ category.name }}</h3>
             </div>
-            <div class="nav navbar-nav">
-                <span class="navbar-brand">Estmator</span>
+
+            <table class="table table-striped">
+            {% for product, count in pdict.items %}
+                <tr class="item-row">
+                    <td><label for="item_{{ product.id }}">{{ product.name }}</label></td>
+                    <td>
+                        <input type="hidden" name="product" value="{{ product.id }}">
+                        <input class="spinner-box" id="item_{{ product.id }}" type="text" value="{{ count }}" name="product_count" data-mins="{{ product.mins_piece }}">
+                    </td>
+                    <td><span class="calc_mins" id="hour_for_item_{{ product.id }}"> - </span></td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col-md-4 col-xs-12">
+        <div id="quote-totals-container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>Totals</h3>
+                </div>
+                <table class="table">
+                    <tr>
+                        <td>Total Products:</td>
+                        <td><span id="genval_totalproducts"> - </span></td>
+                    </tr>
+                    <tr>
+                        <td>Total Truck Loads:</td>
+                        <td><span id="genval_totaltruckloads"> - </span></td>
+                    </tr>
+                    <tr class="active">
+                        <input type="hidden" id="quote_subtotal" name="sub_total" value="0">
+                        <td>Sub-Total:</td>
+                        <td><span id="genval_subtotal"> - </span></td>
+                    </tr>
+                    <tr>
+                        <td>Total Drive Time:</td>
+                        <td><span id="genval_totaldrivetime"> - </span></td>
+                    </tr>
+                    <tr>
+                        <td>Total Hours:</td>
+                        <td><span id="genval_totalhours"> - </span></td>
+                    </tr>
+                    <tr>
+                        <td>Total Days:</td>
+                        <td><span id="genval_totaldays"> - </span></td>
+                    </tr>
+                    <tr class="active">
+                        <input type="hidden" id="quote_grandtotal" name="grand_total" value="0">
+                        <td>Grand Total:</td>
+                        <td><span id="genval_grandtotal"> - </span></td>
+                    </tr>
+                </table>
             </div>
-            <div class="nav navbar-nav navbar-right">
-                <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".reveal-right" data-canvas=".canvas" data-disable-scrolling="false">
-                    <span class="glyphicon glyphicon-option-horizontal"></span>
-                </button>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>Cost Options</h3>
+                </div>
+                <table class="table">
+                    <tr>
+                        <input type="hidden" id="quote_straighttimecost" name="straight_time_cost" value="0">
+                        <td>Straight Time Cost:</td>
+                        <td><span id="genval_straighttimecost"> - </span></td>
+                    </tr>
+                    <tr>
+                        <input type="hidden" id="quote_overtimecost" name="over_time_cost" value="0">
+                        <td>Overtime Cost:</td>
+                        <td><span id="genval_overtimecost"> - </span></td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
-
-    <!--Main Content-->
-    <div class="container-fluid">
-        <br><br>
-        <input type="hidden" name="quote_client" value="{{ quote_client }}">
-        <input type="hidden" name="quote_name" value="{{ quote_name }}">
-        {% for c in categories %}
-        <div class="row">
-            <div class="col-md-12">
-                <h2 id="category_{{ c.id }}">{{ c.name }}</h2>
-            </div>
-        </div>
-        {% for p in c.product_set.all %}
-        <div class="row">
-            <div class="col-xs-12 col-md-12">
-                <label for="item_{{ p.id }}">{{ p.name }}</label>
-            </div>
-            <div class="col-xs-6 col-md-2">
-                <input class="spinner-box" id="item_{{ p.id }}" type="text" value="10" name="item_{{ p.id }}">
-            </div>
-            <div class="col-xs-6 col-md-2">
-                <span class="calc_hours" id="hour_for_item_{{ p.id }}"> -- </span>
-            </div>
-        </div>
-        {% endfor %}
-        {% endfor %}
-        <br><br>
-    </div><!-- /.container-fluid -->
-
-    <!--Bottom Navbar-->
-    <div class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container-fluid">
-            <div class="nav navbar-nav navbar-left">
-                <button class="btn btn-default navbar-btn quote-submit" id="calculate_btn" data-url="{% url 'api_calc' %}">Calculate</button>
-            </div>
-            <div class="nav navbar-nav navbar-right">
-                <button class="btn btn-default navbar-btn quote-submit" id="review_btn" data-url="{% url 'api_calc' %}">Review</button>
-            </div>
-        </div>
     </div>
 
 </div>
+{% endblock %}
+
+{% block footer_left %}
+  <button type="button" class="btn btn-default navbar-btn" id="calculate_btn">Calculate</button>
+{% endblock %}
+
+{% block footer_right %}
+  <button type="submit" class="btn btn-default navbar-btn" id="review_btn">Review</button>
+{% endblock %}
 
 </form>
 
-{% endblock %}

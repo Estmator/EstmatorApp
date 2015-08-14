@@ -1,26 +1,180 @@
-@media (min-width: 0px) {
-    html {
-        overflow-x: hidden;
+/* Base Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+html {
+    overflow-x: hidden;
+}
+
+body {
+    height: 100%;
+}
+
+#tagline {
+    text-align: center;
+    float: none;
+}
+
+#content {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Positioning
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.pad_top {
+    padding-top: 50px;
+}
+
+.pad_bottom {
+    padding-bottom: 66px;
+}
+
+@media (min-width: 767px) {
+    .pad_bottom {
+        padding-bottom: 50px;
     }
-    .navmenu {
-        width: 150px;
-    }
+}
+
+.pad_top_75 {
+    padding-top: 75px;
+}
+
+.pad_bottom_75 {
+    padding-bottom: 75px;
+}
+
+.margin_top_50 {
+    margin-top: 50px;
+}
+
+.margin_bottom_50 {
+    margin-bottom: 50px;
+}
+
+
+
+/* Nav
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.navmenu {
+    width: 180px;
 }
 
 @media (min-width: 992px) {
     .navmenu {
-        width: 300px;
+        width: 200px;
     }
 }
 
-.container {
-    padding-top: 75px;
+#left_menu_btn {
+    display: block;
+}
+
+@media (min-width: 767px) {
+    #left_menu_btn {
+        display: none !important;
+    }
 }
 
 #navbar-header {
     font-size: 2em;
 }
 
+#logo_image {
+    padding: 15px 5px 15px 15px;
+}
+
+/* Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 .bgcol {
     background-color: #444444;
+}
+
+.gray {
+    background-color: lightgray;
+}
+
+.white, .white a {
+    color: white;
+}
+
+.hilite_color {
+    color: #f68620;
+}
+
+/* Index page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.home_hero_icons {
+}
+
+.home_hero_sections {
+    max-height: 35rem;
+    padding: 5%;
+}
+
+#section_quote {
+    background-color: lightgray;
+}
+
+.index_jumbo {
+    margin: 2rem;
+    background-color:rgba(0,0,0,0.75);
+    color: white;
+}
+
+.tag_logo {
+    max-width: 10%
+}
+
+.tag_line {
+    font-size: 5rem;
+}
+
+.index_header {
+    text-align: center;
+}
+
+.header_splash {
+    background-image: url('../images/furniture.jpg')
+}
+
+main.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Main Menu
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+#est-menu {
+    padding-top: 100px;
+}
+
+
+
+/* Quote Page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media (min-width: 992px) {
+    #quote-totals-container {
+        position: fixed;
+    }
+}
+
+/*keeps spinner inputs under the reveal menus*/
+.input-group .form-control, .input-group-btn:last-child>.btn {
+    z-index: 0;
+}
+
+
+
+/* About page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+img.media-object.img-circle {
+    max-width: 5rem;
+}
+
+img.gh_img {
+    max-width: 2rem;
+}
+
+img.logo {
+    max-width: 7rem;
 }

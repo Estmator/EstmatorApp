@@ -12,6 +12,7 @@ class ActiveProfileManager(models.Manager):
 
 @python_2_unicode_compatible
 class UserProfile(models.Model):
+    # Add field for User Blurb which will be used on Quote.
     user = models.OneToOneField(
         User,
         related_name='profile',
@@ -20,6 +21,7 @@ class UserProfile(models.Model):
     cell = models.CharField(max_length=20)
     desk = models.CharField(max_length=20,
                             blank=True)
+    review_intro = models.TextField()
 
     objects = models.Manager()
     active = ActiveProfileManager()
