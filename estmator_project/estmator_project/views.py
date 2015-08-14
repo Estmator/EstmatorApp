@@ -191,21 +191,23 @@ def review_quote_view(request):
         categories = {}
 
         for c in Category.objects.all():
+            categories[c.name] = []
             for qp in quote_products:
                 if qp.product.category == c:
-                    categories[c.name] = [{
+                    categories[c.name].append({
                         'name': qp.product.name,
                         'count': qp.count
-                    }]
-
-        context['categories'] = categories
-
+                    })
         """
         figure out better way to only include the needed categories
         """
         for c in categories.keys():
             if categories[c] == []:
                 del categories[c]
+
+        context['categories'] = categories
+        context['st'] = quote.grand_total / 60 * quote.client.company.st_rate
+        context['ot'] = quote.grand_total / 60 * quote.client.company.ot_rate
 
     return render(
         request, 'review.html', context
@@ -278,6 +280,8 @@ def quote_from_token(request, **kwargs):
             del categories[c]
 
     context['categories'] = categories
+    context['st'] = quote.grand_total / 60 * quote.client.company.st_rate
+    context['ot'] = quote.grand_total / 60 * quote.client.company.ot_rate
     return render(
         request, 'review.html', context
     )
