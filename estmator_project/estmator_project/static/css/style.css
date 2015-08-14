@@ -13,6 +13,10 @@ body {
     float: none;
 }
 
+#content {
+    padding-left: 0;
+    padding-right: 0;
+}
 
 /* Positioning
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -51,7 +55,7 @@ body {
 /* Nav
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .navmenu {
-    width: 150px;
+    width: 180px;
 }
 
 @media (min-width: 992px) {
@@ -88,6 +92,10 @@ body {
     background-color: lightgray;
 }
 
+.white, .white a {
+    color: white;
+}
+
 .hilite_color {
     color: #f68620;
 }
@@ -95,7 +103,6 @@ body {
 /* Index page
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .home_hero_icons {
-    max-height: 20rem;
 }
 
 .home_hero_sections {
@@ -144,10 +151,6 @@ main.container-fluid {
     #quote-totals-container {
         position: fixed;
     }
-}
-
-.quote-category-header {
-    /*padding-top: 50px;*/
 }
 
 /*keeps spinner inputs under the reveal menus*/
