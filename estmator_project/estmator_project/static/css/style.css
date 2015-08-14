@@ -102,12 +102,14 @@ body {
 
 /* Index page
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.home_hero_icons {
+@media (max-width: 767px) {
+    .home_hero_icons {
+        height: 5rem;
+    }
 }
 
 .home_hero_sections {
-    max-height: 35rem;
-    padding: 5%;
+    padding: 15%;
 }
 
 #section_quote {
@@ -195,4 +197,26 @@ img.gh_img {
 
 img.logo {
     max-width: 7rem;
+}
+
+
+
+/* Review page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+#review-container {
+    width:960px;
+}
+
+#client-panel img {
+    max-height: 9em;
+}
+
+.unicode-label {
+    color:#f68620;;
+}
+
+/* Registration pages
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.reg_form {
+    padding: 10rem;
 }
