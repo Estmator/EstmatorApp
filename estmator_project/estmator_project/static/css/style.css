@@ -105,7 +105,8 @@ body {
     /*padding-top: 50px;*/
 }
 
-.input-group .form-control {
+/*keeps spinner inputs under the reveal menus*/
+.input-group .form-control, .input-group-btn:last-child>.btn {
     z-index: 0;
 }
 
