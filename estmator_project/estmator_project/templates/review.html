@@ -94,11 +94,11 @@ Quote for {{ quote.client.first_name }} {{ quote.client.last_name }}
                 </tr>
                 <tr class="item-row">
                 <td>Standard Rate (8 AM - 5 PM):</td>
-                <td class="text-right">${{ st }}</td>
+                <td class="text-right">${{ st|floatformat:2 }}</td>
                 </tr>
                 <tr class="item-row">
                 <td>Overtime Rate:</td>
-                <td class="text-right">${{ ot }}</td>
+                <td class="text-right">${{ ot|floatformat:2 }}</td>
                 </tr>
             </table>
 
