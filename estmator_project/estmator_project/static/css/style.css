@@ -44,7 +44,7 @@ body {
 /* Nav
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .navmenu {
-    width: 150px;
+    width: 180px;
 }
 
 @media (min-width: 992px) {
@@ -99,10 +99,6 @@ body {
     #quote-totals-container {
         position: fixed;
     }
-}
-
-.quote-category-header {
-    /*padding-top: 50px;*/
 }
 
 /*keeps spinner inputs under the reveal menus*/
