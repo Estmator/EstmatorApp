@@ -2,6 +2,12 @@
 {% load i18n %}
 {% load static from staticfiles %}
 
+{% block header_text %}
+<span class="hidden-xs hidden-sm">
+Quote for {{ quote.client.first_name }} {{ quote.client.last_name }}
+</span>
+{% endblock %}
+
 {% block content %}
 <script src="{% static './js/quote.js' %}"></script>
 
@@ -14,7 +20,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">{{ quote.client.name|default:"Client" }}</h3>
+                    <h3 class="panel-title">{{ quote.client.first_name }} {{ quote.client.last_name }}</h3>
                 </div>
                 <div class="panel-body">
                     <div class="pull-left">
@@ -83,28 +89,20 @@
             </div> -->
             <table class="table">
                 <tr class="item-row">
-                    <td>Sub-Total:</td>
-                    <td class="text-right">{{ quote.sub_total }}</td>
+                    <td>Total (minutes)</td>
+                    <td class="text-right">{{ quote.grand_total }}</td>
                 </tr>
                 <tr class="item-row">
-                    <td>Grand Total:</td>
-                    <td class="text-right">{{ quote.grand_total }}</td>
+                <td>Standard Rate (8 AM - 5 PM):</td>
+                <td class="text-right">${{ st }}</td>
+                </tr>
+                <tr class="item-row">
+                <td>Overtime Rate:</td>
+                <td class="text-right">${{ ot }}</td>
                 </tr>
             </table>
 
         </div>
-
-        {% if user.is_authenticated %}
-        {% comment %}
-
-        Only show this block when a user is not logged in
-
-        Assuming that it would only be used when someone is printing
-        the form?
-
-        So they can sign it and return it.
-
-        {% endcomment %}
 
         <h2>Signatures</h2>
 
@@ -126,7 +124,6 @@
             </table>
 
         </div>
-        {% endif %}
 
     </div><!-- /.container-fluid -->
 {% endblock %}
