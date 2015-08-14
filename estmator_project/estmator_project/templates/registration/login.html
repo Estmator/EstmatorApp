@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block content %}
-<div class="container pad_top_50">
+<div class="container reg_form">
     <form class="form-horizontal" method="post" action="">
         {% csrf_token %}
         {{ form.as_p }}
