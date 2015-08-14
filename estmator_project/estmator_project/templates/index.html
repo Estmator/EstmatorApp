@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 {% load i18n %}
-
 {% block nav_links %}
 <li><a href="{% url 'about' %}">About</a></li>
 {% endblock %}
-
 {% block content %}
 <section class="header_splash" lazy-background="">
     <div class="row">
@@ -27,15 +25,11 @@
       </div>
     </div><!-- end row -->
 </section>
-
 <section id="section_count" class="home_hero_sections" lazy-background="">
-  
     <div class="row">
-    
       <div class="col-md-4 col-md-push-8">
         <img src="{% static 'images/calc.png' %}" class="home_hero_icons img-responsive" alt="calculator">
       </div>
-      
       <div class="col-md-8 col-md-pull-4">
         <div class="">
           <h1>Count</h1><a class='home_hero_links' href="#" title="">Learn More...</a>
@@ -48,18 +42,13 @@
            </p>
         </div>
       </div><!-- end column -->
-      
     </div><!-- end row -->
 </section>
-
 <section id="section_quote" class="home_hero_sections" lazy-background="">
-  
     <div class="row">
-    
       <div class="col-md-4">
         <img src="{% static 'images/quote.png' %}" class="home_hero_icons img-responsive" alt="calculator">
       </div>
-      
       <div class="col-md-8">
         <div class="">
           <h1>Quote</h1><a class='home_hero_links' href="#" title="">Learn More...</a>
@@ -71,10 +60,8 @@
           </p>
         </div>
       </div><!-- end column -->
-      
     </div><!-- end row -->
 </section>
-
 <section id="section_close" class="home_hero_sections" lazy-background="">
     <div class="row">
       <div class="col-md-4 col-md-push-8">
