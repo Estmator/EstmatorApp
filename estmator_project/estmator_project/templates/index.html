@@ -1,44 +1,40 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 {% load i18n %}
-
 {% block nav_links %}
 <li><a href="{% url 'about' %}">About</a></li>
 {% endblock %}
-
 {% block content %}
 <section class="header_splash" lazy-background="">
     <div class="row">
       <div class="col-md-6 index_header">
         <h1 class='tag_line'>
-          <img class='tag_logo' src="{% static 'images/est_logo_symbol.png' %}" alt="">Count 
-          <img class='tag_logo' src="{% static 'images/est_logo_symbol.png' %}" alt="">Quote  
-          <img class='tag_logo' src="{% static 'images/est_logo_symbol.png' %}" alt="">Close
+          <img class='tag_logo' src="{% static 'images/est_logo_symbol.png' %}" alt=""><a class='tag_link' href="#count" title="">Count </a>
+          <img class='tag_logo' src="{% static 'images/est_logo_symbol.png' %}" alt=""><a class='tag_link' href="#quote" title="">Quote </a>
+          <img class='tag_logo' src="{% static 'images/est_logo_symbol.png' %}" alt=""><a class='tag_link' href="#close" title="">Close </a>
         </h1>
       </div>
       <div class="col-md-6">
         <div class="jumbotron index_jumbo">
           <div>
             <h1>Estmator</h1>
-            <p>Too simple not to use</p>
-            <p><a class="btn btn-primary btn-lg" href="{% url 'about' %}" role="button">Learn more</a></p>
-          </div>
+            <p>For the sales team that needs a simple solution to a traditionally complex problem.</p>
+            <p><a class="btn btn-primary btn-lg lrn_more" href="{% url 'about' %}" role="button">Learn more</a></p>
+          </div><a name='count'></a>
         </div>
       </div>
     </div><!-- end row -->
 </section>
-
 <section id="section_count" class="home_hero_sections" lazy-background="">
-  
     <div class="row">
-    
       <div class="col-md-4 col-md-push-8">
         <img src="{% static 'images/calc.png' %}" class="home_hero_icons img-responsive" alt="calculator">
       </div>
-      
       <div class="col-md-8 col-md-pull-4">
         <div class="">
-          <h1>Count</h1>
+          <h1>
+            <img class='tag_logo' src="{% static 'images/est_logo_symbol.png' %}" alt="">Count 
+          </h1><a class='home_hero_links' href="#" title="">Learn More...</a>
           <p class="lead">
             Our quote functionality is based on years of industry experience,
             abstracted down into a simple to use interface where you enter the
@@ -46,46 +42,40 @@
             point your team has the ability to adjust the products and piece
             multipliers to better suit your success.
            </p>
-        </div>
+        </div><a name='quote'></a>
       </div><!-- end column -->
-      
     </div><!-- end row -->
 </section>
-
 <section id="section_quote" class="home_hero_sections" lazy-background="">
-  
     <div class="row">
-    
       <div class="col-md-4">
         <img src="{% static 'images/quote.png' %}" class="home_hero_icons img-responsive" alt="calculator">
       </div>
-      
       <div class="col-md-8">
         <div class="">
-          <h1>Quote</h1>
+          <h1>
+            <img class='tag_logo' src="{% static 'images/est_logo_symbol.png' %}" alt="">Quote 
+          </h1><a class='home_hero_links' href="#" title="">Learn More...</a>
           <p class="lead">
             As soon as you've finished generating your quote, you have the option of
             reviewing on-screen with your client or emailing them a secure link for
             later review. You'll have a cumulative total for the project at hand, with
              a summary review of inventories and rate options.
           </p>
-        </div>
+        </div><a name='close'></a>
       </div><!-- end column -->
-      
     </div><!-- end row -->
 </section>
-
 <section id="section_close" class="home_hero_sections" lazy-background="">
-  
     <div class="row">
-      
       <div class="col-md-4 col-md-push-8">
         <img src="{% static 'images/close.png' %}" class="home_hero_icons img-responsive" alt="calculator">
       </div>
-    
       <div class="col-md-8 col-md-pull-4">
         <div class="">
-          <h1>Close</h1>
+          <h1>
+            <img class='tag_logo' src="{% static 'images/est_logo_symbol.png' %}" alt="">Close 
+            </h1><a class='home_hero_links' href="#" title="">Learn More...</a>
           <p class="lead">
             If you choose to review on-demand, there is also a touch-screen
             option to complete the quote by entering a digital signature onto
@@ -94,7 +84,6 @@
           </p>
         </div>
       </div><!-- end column -->
-      
     </div><!-- end row -->
 </section>
 {% endblock %}

@@ -180,6 +180,33 @@ def review_quote_view(request):
         context['straight_time_cost'] = request.POST['straight_time_cost']
         context['over_time_cost'] = request.POST['over_time_cost']
 
+        """
+        Duplicating getting the categories/products/counts for the
+        context because I can't figure out what the above is doing?
+
+        Will try again when I get some sleep.
+        """
+        context['categories'] = None
+        quote_products = ProductProperties.objects.filter(quote=quote)
+        categories = {}
+
+        for c in Category.objects.all():
+            for qp in quote_products:
+                if qp.product.category == c:
+                    categories[c.name] = [{
+                        'name': qp.product.name,
+                        'count': qp.count
+                    }]
+
+        context['categories'] = categories
+
+        """
+        figure out better way to only include the needed categories
+        """
+        for c in categories.keys():
+            if categories[c] == []:
+                del categories[c]
+
     return render(
         request, 'review.html', context
     )
@@ -229,9 +256,28 @@ def send_quote(request, **kwargs):
 def quote_from_token(request, **kwargs):
     context = {}
 
-    context['quote'] = Quote.objects.get(token=kwargs.get('token'))
-    context['categories'] = Category.objects.all()
+    quote = Quote.objects.get(token=kwargs.get('token'))
+    context['quote'] = quote
 
+    quote_products = ProductProperties.objects.filter(quote=quote)
+    categories = {}
+
+    for c in Category.objects.all():
+        categories[c.name] = []
+        for qp in quote_products:
+            if qp.product.category == c:
+                categories[c.name].append({
+                    'name': qp.product.name,
+                    'count': qp.count
+                })
+    """
+    figure out better way to only include the needed categories
+    """
+    for c in categories.keys():
+        if categories[c] == []:
+            del categories[c]
+
+    context['categories'] = categories
     return render(
         request, 'review.html', context
     )
