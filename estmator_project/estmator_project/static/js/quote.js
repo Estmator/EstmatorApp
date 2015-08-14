@@ -58,6 +58,11 @@ $(function () {
     //add click listeners to each category button
     $(".category_btn").each(function () {
         $(this).click(function () {
+            var category_id = $(this).data('category-id');
+            var offset = $(category_id).offset();
+            setTimeout(function () {
+                $(window).scrollTop(offset.top - 50);
+            }, 500);
             if ($('.reveal-left').css('width') == '180px') {
                 $('.reveal-left').offcanvas('toggle');
             }
