@@ -79,90 +79,61 @@ Quote for {{ client.first_name }} {{ client.last_name }}
     </div>
     <div class="col-md-4 col-xs-12">
         <div id="quote-totals-container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Totals</h2>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>Totals</h3>
+                </div>
+                <table class="table">
+                    <tr>
+                        <td>Total Products:</td>
+                        <td><span id="genval_totalproducts"> - </span></td>
+                    </tr>
+                    <tr>
+                        <td>Total Truck Loads:</td>
+                        <td><span id="genval_totaltruckloads"> - </span></td>
+                    </tr>
+                    <tr class="active">
+                        <input type="hidden" id="quote_subtotal" name="sub_total" value="0">
+                        <td>Sub-Total:</td>
+                        <td><span id="genval_subtotal"> - </span></td>
+                    </tr>
+                    <tr>
+                        <td>Total Drive Time:</td>
+                        <td><span id="genval_totaldrivetime"> - </span></td>
+                    </tr>
+                    <tr>
+                        <td>Total Hours:</td>
+                        <td><span id="genval_totalhours"> - </span></td>
+                    </tr>
+                    <tr>
+                        <td>Total Days:</td>
+                        <td><span id="genval_totaldays"> - </span></td>
+                    </tr>
+                    <tr class="active">
+                        <input type="hidden" id="quote_grandtotal" name="grand_total" value="0">
+                        <td>Grand Total:</td>
+                        <td><span id="genval_grandtotal"> - </span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>Cost Options</h3>
+                </div>
+                <table class="table">
+                    <tr>
+                        <input type="hidden" id="quote_straighttimecost" name="straight_time_cost" value="0">
+                        <td>Straight Time Cost:</td>
+                        <td><span id="genval_straighttimecost"> - </span></td>
+                    </tr>
+                    <tr>
+                        <input type="hidden" id="quote_overtimecost" name="over_time_cost" value="0">
+                        <td>Overtime Cost:</td>
+                        <td><span id="genval_overtimecost"> - </span></td>
+                    </tr>
+                </table>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-6 col-md-6">
-                <h4>Total Products: </h4>
-            </div>
-            <div class="col-xs-6 col-md-6">
-                <h4 id="genval_totalproducts">--</h4>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-6 col-md-6">
-                <h4>Total Truck Loads: </h4>
-            </div>
-            <div class="col-xs-6 col-md-6">
-                <h4 id="genval_totaltruckloads">--</h4>
-            </div>
-        </div>
-        <div class="row">
-            <input type="hidden" id="quote_subtotal" name="sub_total" value="0">
-            <div class="col-xs-6 col-md-6">
-                <h3>Sub-Total: </h3>
-            </div>
-            <div class="col-xs-6 col-md-6">
-                <h3 id="genval_subtotal">--</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-6 col-md-6">
-                <h4>Total Drive Time: </h4>
-            </div>
-            <div class="col-xs-6 col-md-6">
-                <h4 id="genval_totaldrivetime">--</h4>
-            </div>
-        </div>
-        <div class="row">
-            <input type="hidden" id="quote_grandtotal" name="grand_total" value="0">
-            <div class="col-xs-6 col-md-6">
-                <h3>Grand Total: </h3>
-            </div>
-            <div class="col-xs-6 col-md-6">
-                <h3 id="genval_grandtotal">--</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-6 col-md-6">
-                <h4>Total Hours: </h4>
-            </div>
-            <div class="col-xs-6 col-md-6">
-                <h4 id="genval_totalhours">--</h4>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-6 col-md-6">
-                <h4>Total Days: </h4>
-            </div>
-            <div class="col-xs-6 col-md-6">
-                <h4 id="genval_totaldays">--</h4>
-            </div>
-        </div>
-        <div class="row">
-            <input type="hidden" id="quote_straighttimecost" name="straight_time_cost" value="0">
-            <div class="col-xs-6 col-md-6">
-                <h3>Straight Time Cost: </h3>
-            </div>
-            <div class="col-xs-6 col-md-6">
-                <h3 id="genval_straighttimecost">--</h3>
-            </div>
-        </div>
-        <div class="row">
-            <input type="hidden" id="quote_overtimecost" name="over_time_cost" value="0">
-            <div class="col-xs-6 col-md-6">
-                <h3>Overtime Cost: </h3>
-            </div>
-            <div class="col-xs-6 col-md-6">
-                <h3 id="genval_overtimecost">--</h3>
-            </div>
-        </div>
-        </div>
-        <br><br>
-
     </div>
     </div>
 
