@@ -131,7 +131,7 @@ img.logo {
 /* Review page
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 #review-container {
-    width:960px;
+    max-width:960px;
 }
 
 #client-panel img {

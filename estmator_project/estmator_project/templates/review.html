@@ -56,25 +56,77 @@
         {% endwith %}
         </div>
 
-        <div>
+        <h2>Relocation Inventory:</h3>
 
-
-            <h2>Relocation Inventory:</h3>
-
-            {% for c in categories.iteritems %}
-            <div class='panel panel-default'>
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{ c.0.name }}</h3>
-                </div>
-                <div class="panel-body">
-                {% for p in c %}
-                    <p id="product_{{ p.id }}">{{ p.product.name }} {{ p.count }}</p>
-                {% endfor %}
-                </div>
+        {% for category, products in categories.iteritems %}
+        <div class='panel panel-default'>
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ category }}</h3>
             </div>
+            <table class="table">
+            {% for p in products %}
+                <tr class="item-row">
+                    <td class="col-md-7">{{ p.name }}</td>
+                    <td class="col-md-5 pull-right">{{ p.count }}</td>
+                </tr>
             {% endfor %}
+            </table>
 
         </div>
+        {% endfor %}
+
+        <h2>Totals</h3>
+
+        <div class='panel panel-default'>
+            <!-- <div class="panel-heading">
+                <h3 class="panel-title"></h3>
+            </div> -->
+            <table class="table">
+                <tr class="item-row">
+                    <td class="col-md-6">Sub-Total:</td>
+                    <td class="col-md-6 pull-right">{{ quote.sub_total }}</td>
+                </tr>
+                <tr class="item-row">
+                    <td class="col-md-6">Grand Total:</td>
+                    <td class="col-md-6 pull-right">{{ quote.grand_total }}</td>
+                </tr>
+            </table>
+
+        </div>
+
+        {% if user.is_authenticated %}
+        {% comment %}
+
+        Only show this block when a user is not logged in
+
+        Assuming that it would only be used when someone is printing
+        the form?
+
+        So they can sign it and return it.
+
+        {% endcomment %}
+
+        <h2>Signatures</h3>
+
+        <div class='panel panel-default'>
+            <div class="panel-heading clear-fix">
+                <div class="pull-right">
+                    <strong>Quote Date:</strong> {{ quote.date }}
+                </div>
+                <div>
+                    <strong class="panel-tit">Quote ID:</strong> 12345-67890
+                </div>
+
+            </div>
+            <table class="table">
+                <tr class="item-row">
+                    <td class="col-md-6">estmator:</td>
+                    <td class="col-md-6">client:</td>
+                </tr>
+            </table>
+
+        </div>
+        {% endif %}
 
     </div><!-- /.container-fluid -->
 {% endblock %}
