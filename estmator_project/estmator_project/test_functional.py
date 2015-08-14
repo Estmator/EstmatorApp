@@ -11,11 +11,11 @@ from .factories import (
     ProductFactory, QuoteFactory, QuoteModsFactory)
 
 
-class LiveServerSplinterTest(LiveServerTestCase):
+class LiveServerSplinterAuthTest(LiveServerTestCase):
 
     @classmethod
     def setUpClass(cls):
-        super(LiveServerSplinterTest, cls).setUpClass()
+        super(LiveServerSplinterAuthTest, cls).setUpClass()
         cls.browser = Browser()
         cls.user1 = UserFactory()
         cls.user1.set_password('secret')
@@ -30,29 +30,42 @@ class LiveServerSplinterTest(LiveServerTestCase):
         cls.product2 = ProductFactory(category=cls.category1)
         cls.product3 = ProductFactory(category=cls.category2)
 
-        cls.login_helper(cls.user1.username, 'secret')
-
     @classmethod
     def tearDownClass(cls):
         cls.browser.quit()
-        super(LiveServerSplinterTest, cls).tearDownClass()
+        super(LiveServerSplinterAuthTest, cls).tearDownClass()
         sleep(3)
 
-    @classmethod
-    def login_helper(cls, username, password):
-        cls.browser.visit('{}{}'.format(
-            cls.live_server_url, '/accounts/login/')
+    def login_helper(self, username, password):
+        self.browser.visit('{}{}'.format(
+            self.live_server_url, '/accounts/login/')
         )
 
-        cls.browser.fill('username', username)
-        cls.browser.fill('password', password)
-        cls.browser.find_by_value('Log in').first.click()
+        self.browser.fill('username', username)
+        self.browser.fill('password', password)
+        self.browser.find_by_value('Log in').first.click()
 
     def setUp(self):
+        self.login_helper(self.user1.username, 'secret')
         pass
 
-    def test_auth_redirect_to_menu_page(self):
+    # def test_redirected_to_menu_after_login(self):
+    #     self.login_helper(self.user1.username, 'secret')
+    #     self.browser.visit('{}{}'.format(
+    #         self.live_server_url, '/menu')
+    #     )
+    #     self.assertTrue(self.browser.is_text_present('Select An Option'))
+
+    def test_new_quote_button(self):
         self.browser.visit('{}{}'.format(
             self.live_server_url, '/menu')
         )
+        new_quote_visible = self.browser.find_by_id('new_quote').visible
+        self.assertFalse(new_quote_visible)
+
+        self.browser.find_by_id('btn_new_quote').click()
+        self.assertTrue(self.browser.is_text_present('New Quote'))
+
+        new_quote_visible = self.browser.find_by_id('new_quote').visible
+        self.assertTrue(new_quote_visible)
 
