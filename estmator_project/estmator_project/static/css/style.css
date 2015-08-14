@@ -110,6 +110,10 @@ body {
     padding: 5%;
 }
 
+#section_quote {
+    background-color: lightgray;
+}
+
 .index_jumbo {
     margin: 2rem;
     background-color:rgba(0,0,0,0.65);
