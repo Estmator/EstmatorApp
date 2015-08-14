@@ -112,8 +112,12 @@ body {
 
 .index_jumbo {
     margin: 2rem;
-    background-color:rgba(0,0,0,0.75);
+    background-color:rgba(0,0,0,0.65);
     color: white;
+}
+
+.jumbotron {
+    padding: 1rem 2rem;
 }
 
 .tag_logo {
@@ -121,7 +125,10 @@ body {
 }
 
 .tag_line {
-    font-size: 5rem;
+    font-size: x-large;
+    white-space:nowrap;
+    overflow:hidden;
+    max-width: 100%;
 }
 
 .index_header {
@@ -135,6 +142,17 @@ body {
 main.container-fluid {
     padding-left: 0;
     padding-right: 0;
+}
+
+a.lrn_more {
+    background-color: rgba(0, 0, 0, .5);
+    border-style: none;
+    color: #f68620;
+}
+
+a.lrn_more:hover {
+    color: rgba(0,0,0,.5);
+    background-color: #f68620;
 }
 
 /* Main Menu
