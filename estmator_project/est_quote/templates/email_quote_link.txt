@@ -1,0 +1,30 @@
+{% load i18n %}
+{% load url from future %}
+
+{% blocktrans %}
+≈ estmator
+{% endblocktrans %}
+
+{{ client }},
+
+{% blocktrans %}
+Thank you for letting us estimate your relocation!
+{% endblocktrans %}
+
+{% blocktrans %}
+To view your quote, please use the following link:
+{% endblocktrans %}
+
+http://{{site.domain}}{% url 'quote_from_token' token %}
+
+{% blocktrans %}
+Sincerely,
+{% endblocktrans %}
+{% if user.get_full_name != "" %}
+{{ user.get_full_name }}
+{% else %}
+{% trans 'estmator management' %}
+{% endif %}
+{% blocktrans %}
+≈ count ≈ quote ≈ close
+{% endblocktrans %}

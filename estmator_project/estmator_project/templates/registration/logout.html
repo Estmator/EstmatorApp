@@ -1,0 +1,13 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+
+{% block header_buttons %}
+{% if user.is_authenticated %}
+{% else %}
+<a href="{% url 'auth_login' %}" class="btn btn-default navbar-btn">Sign in</a>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<p>{% trans "Successfully logged out" %}.</p>
+{% endblock %}

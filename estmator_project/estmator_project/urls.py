@@ -7,17 +7,37 @@ import views
 
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^about/$', views.AboutView.as_view(), name='about'),
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^api/v1/', include('est_api.urls')),
-    url(r'^quote/$', views.QuoteView.as_view(), name='quote'),
+    url(r'^quote/$', views.quote_view, name='quote'),
+    url(r'^quote/review$', views.review_quote_view, name='review'),
     url(r'^quote/form$', views.quote_form_view, name='quote_form'),
-    url(r'^quote/form/edit$', views.quote_edit_form_view, name='quote_edit_form'),
-    url(r'^client/form$', views.client_form_view, name='client_form'),
-    url(r'^client/form/edit$', views.client_edit_form_view, name='client_edit_form'),
-    url(r'^client/listform$', views.client_list_form_view, name='client_list_form'),
-    url(r'^menu/$', views.menu_view, name='menu')
+    url(r'^quote/send/(?P<pk>\d+)', views.send_quote, name='send_quote'),
+    url(
+        r'^quote/(?P<token>[a-z0-9]{8}(-[a-z0-9]{4}){3}-[a-z0-9]{12})$',
+        views.quote_from_token,
+        name='quote_from_token'),
+    url(
+        r'^quote/form/edit$',
+        views.quote_edit_form_view,
+        name='quote_edit_form'),
+    url(
+        r'^client/form$',
+        views.client_form_view,
+        name='client_form'),
+    url(
+        r'^client/form/edit$',
+        views.client_edit_form_view,
+        name='client_edit_form'),
+    url(
+        r'^client/listform$',
+        views.client_list_form_view,
+        name='client_list_form'),
+    url(r'^menu/$', views.menu_view, name='menu'),
+    url(r'^connection-test$', views.connection_test, name='connection_test')
 ]
 
 

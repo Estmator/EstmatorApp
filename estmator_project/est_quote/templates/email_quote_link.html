@@ -1,0 +1,66 @@
+{% load i18n %}
+{% load url from future %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>{{ site.name }} {% trans 'Quote' %}</title>
+</head>
+
+<body>
+
+<p style="font-size:20px; font-weight:bold;">
+{% blocktrans %}
+<span style="color:#f68620;">&asymp;</span> estmator
+{% endblocktrans %}
+</p>
+
+<br>
+
+<p>
+{{ client }},
+</p>
+
+<p>
+    {% blocktrans %}
+    Thank you for letting us estimate your relocation!
+    {% endblocktrans %}
+</p>
+
+<p>
+    {% blocktrans %}
+    To view your quote, please use the following link:
+    {% endblocktrans %}
+</p>
+
+<p>
+    <a href="http://{{site.domain}}{% url 'quote_from_token' token %}">
+        http://{{site.domain}}{% url 'quote_from_token' token %}
+    </a>
+</p>
+
+<p>
+    {% blocktrans %}
+    Sincerely,
+    {% endblocktrans %}
+    <br>
+    {% if user.get_full_name != "" %}
+    {{ user.get_full_name }}
+    {% else %}
+    {% trans 'estmator management' %}
+    {% endif %}
+</p>
+
+<br>
+
+<p>
+{% blocktrans %}
+<span style="color:#f68620;">&asymp;</span> count
+<span style="color:#f68620;">&asymp;</span> quote
+<span style="color:#f68620;">&asymp;</span> close
+{% endblocktrans %}
+</p>
+
+</body>
+
+</html>
