@@ -13,7 +13,7 @@
 
 {% block header_buttons %}
 <button type="button" class="navbar-toggle hidden-lg" data-toggle="offcanvas" data-target=".reveal-right" data-disable-scrolling="false">
-    <span class="glyphicon glyphicon-option-horizontal"></span>
+    <span class="glyphicon glyphicon-option-horizontal white"></span>
 </button>
 {% endblock %}
 
@@ -21,7 +21,9 @@
 {% endblock %}
 
 {% block header_text %}
+<span class="hidden-xs hidden-sm">
 Quote for {{ client.first_name }} {{ client.last_name }}
+</span>
 {% endblock %}
 
 {% block content %}

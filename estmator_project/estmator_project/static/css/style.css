@@ -81,6 +81,10 @@ body {
     background-color: lightgray;
 }
 
+.white, .white a {
+    color: white;
+}
+
 .hilite_color {
     color: #f68620;
 }
