@@ -6,13 +6,6 @@
 <li><a href="{% url 'index' %}">Home</a></li>
 {% endblock %}
 
-{% block header_buttons %}
-{% if user.is_authenticated %}
-{% else %}
-<a href="{% url 'auth_login' %}" class="btn btn-default navbar-btn">Sign in</a>
-{% endif %}
-{% endblock %}
-
 {% block content %}
 <section class="hero gray" lazy-background="">
   <div class="container about_div">
