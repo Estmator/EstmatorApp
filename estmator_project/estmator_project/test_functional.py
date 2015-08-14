@@ -1,7 +1,4 @@
 from django.contrib.staticfiles.testing import LiveServerTestCase
-from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
-from django.test import Client, TestCase
 
 from splinter import Browser
 from time import sleep
