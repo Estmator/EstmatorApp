@@ -17,6 +17,13 @@
 </button>
 {% endblock %}
 
+{% block nav_links %}
+{% endblock %}
+
+{% block header_text %}
+Quote for {{ client.first_name }} {{ client.last_name }}
+{% endblock %}
+
 {% block content %}
 <!-- Left Reveal Menu -->
 <div class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm reveal-left">
@@ -45,30 +52,29 @@
 
     <!--Main Content-->
     <div class="row">
-    <div class="col-md-offset-3 col-md-3 col-xs-12">
+    <div class="col-md-offset-3 col-md-4 col-xs-12">
         <span id="companyvals" data-straight-time-rate="{{ client.company.st_rate }}" data-over-time-rate="{{ client.company.ot_rate }}"></span>
         <input type="hidden" name="quote_client" value="{{ client.id }}">
         <input type="hidden" name="quote_name" value="{{ quote_name }}">
         {% for category, pdict in categories.items %}
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="quote-category-header" id="category_{{ category.id }}">{{ category.name }}</h2>
+        <div class="panel panel-default" id="category_{{ category.id }}">
+            <div class="panel-heading">
+                <h3 class="quote-category-header">{{ category.name }}</h3>
             </div>
+
+            <table class="table table-striped">
+            {% for product, count in pdict.items %}
+                <tr class="item-row">
+                    <td><label for="item_{{ product.id }}">{{ product.name }}</label></td>
+                    <td>
+                        <input type="hidden" name="product" value="{{ product.id }}">
+                        <input class="spinner-box" id="item_{{ product.id }}" type="text" value="{{ count }}" name="product_count" data-mins="{{ product.mins_piece }}">
+                    </td>
+                    <td><span class="calc_mins" id="hour_for_item_{{ product.id }}"> - </span></td>
+                </tr>
+            {% endfor %}
+            </table>
         </div>
-        {% for product, count in pdict.items %}
-        <div class="row item-row">
-            <div class="col-xs-12 col-md-12">
-                <label for="item_{{ product.id }}">{{ product.name }}</label>
-            </div>
-            <div class="col-xs-6 col-md-6">
-                <input type="hidden" name="product" value="{{ product.id }}">
-                <input class="spinner-box" id="item_{{ product.id }}" type="text" value="{{ count }}" name="product_count" data-mins="{{ product.mins_piece }}">
-            </div>
-            <div class="col-xs-6 col-md-6">
-                <span class="calc_mins" id="hour_for_item_{{ product.id }}"> -- </span>
-            </div>
-        </div>
-        {% endfor %}
         {% endfor %}
     </div>
     <div class="col-md-4 col-xs-12">

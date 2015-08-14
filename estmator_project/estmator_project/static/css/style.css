@@ -102,7 +102,7 @@ body {
 }
 
 .quote-category-header {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
 }
 
 .input-group .form-control {
@@ -124,8 +124,4 @@ img.gh_img {
 
 img.logo {
     max-width: 7rem;
-}
-
-.about_intro {
-    margin-top: 1.5rem;
 }
