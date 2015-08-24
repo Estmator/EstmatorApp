@@ -137,4 +137,3 @@ USE_TZ = os.environ.get('USE_TZ', True)
 
 # Login Behavior
 LOGIN_REDIRECT_URL = '/menu'
-
