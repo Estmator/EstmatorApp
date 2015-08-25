@@ -11,7 +11,6 @@ branches:
   only:
     - master
     - development
-    - test
 
 # blacklist
   except:
