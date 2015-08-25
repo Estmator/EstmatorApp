@@ -13,7 +13,7 @@ class LiveServerSplinterAuthTest(LiveServerTestCase):
     @classmethod
     def setUpClass(cls):
         super(LiveServerSplinterAuthTest, cls).setUpClass()
-        cls.browser = Browser()
+        cls.browser = Browser('chrome')
         cls.user1 = UserFactory()
         cls.user1.set_password('secret')
         cls.user1.save()
@@ -62,8 +62,7 @@ class LiveServerSplinterAuthTest(LiveServerTestCase):
 
         self.browser.find_by_id('btn_new_quote').click()
         self.assertTrue(self.browser.is_text_present('New Quote'))
-
-        new_quote_visible = self.browser.find_by_id('new_quote').visible
         sleep(1)
+        new_quote_visible = self.browser.find_by_id('new_quote').visible
         self.assertTrue(new_quote_visible)
 
