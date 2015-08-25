@@ -13,25 +13,30 @@ class LiveServerSplinterAuthTest(LiveServerTestCase):
     @classmethod
     def setUpClass(cls):
         super(LiveServerSplinterAuthTest, cls).setUpClass()
-        cls.browser = Browser('chrome')
-        cls.user1 = UserFactory()
-        cls.user1.set_password('secret')
-        cls.user1.save()
-
-        cls.client1 = ClientFactory()
-
-        cls.category1 = CategoryFactory(name='Chairs')
-        cls.category2 = CategoryFactory(name='Tables')
-
-        cls.product1 = ProductFactory(category=cls.category1)
-        cls.product2 = ProductFactory(category=cls.category1)
-        cls.product3 = ProductFactory(category=cls.category2)
 
     @classmethod
     def tearDownClass(cls):
-        cls.browser.quit()
         super(LiveServerSplinterAuthTest, cls).tearDownClass()
-        sleep(3)
+
+    def setUp(self):
+        self.user1 = UserFactory()
+        self.user1.set_password('secret')
+        self.user1.save()
+
+        self.client1 = ClientFactory()
+
+        self.category1 = CategoryFactory(name='Chairs')
+        self.category2 = CategoryFactory(name='Tables')
+
+        self.product1 = ProductFactory(category=self.category1)
+        self.product2 = ProductFactory(category=self.category1)
+        self.product3 = ProductFactory(category=self.category2)
+
+        self.browser = Browser('chrome')
+        self.login_helper(self.user1.username, 'secret')
+
+    def tearDown(self):
+        self.browser.quit()
 
     def login_helper(self, username, password):
         self.browser.visit('{}{}'.format(
@@ -42,16 +47,8 @@ class LiveServerSplinterAuthTest(LiveServerTestCase):
         self.browser.fill('password', password)
         self.browser.find_by_value('Log in').first.click()
 
-    def setUp(self):
-        self.login_helper(self.user1.username, 'secret')
-        pass
-
-    # def test_redirected_to_menu_after_login(self):
-    #     self.login_helper(self.user1.username, 'secret')
-    #     self.browser.visit('{}{}'.format(
-    #         self.live_server_url, '/menu')
-    #     )
-    #     self.assertTrue(self.browser.is_text_present('Select An Option'))
+    def test_redirected_to_menu_after_login(self):
+        self.assertTrue(self.browser.is_text_present('Select An Option'))
 
     def test_new_quote_button(self):
         self.browser.visit('{}{}'.format(
