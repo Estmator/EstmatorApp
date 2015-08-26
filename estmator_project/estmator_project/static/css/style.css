@@ -258,6 +258,11 @@ img.logo {
     color:#f68620;;
 }
 
+#send_btn {
+    position: absolute;
+    right: 2rem;
+}
+
 /* Registration pages
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .reg_form {

@@ -1,9 +1,11 @@
 {% extends "base.html" %}
+
 {% load static from staticfiles %}
-{% load i18n %}
+
 {% block nav_links %}
 <li><a href="{% url 'about' %}">About</a></li>
 {% endblock %}
+
 {% block content %}
 <section class="header_splash" lazy-background="">
     <div class="row">

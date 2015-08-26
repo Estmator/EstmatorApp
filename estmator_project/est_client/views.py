@@ -1,9 +1,10 @@
-from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect, HttpResponseNotAllowed, HttpResponse
-from django.core.serializers import get_serializer
-from .models import Client, Company
-from est_quote.forms import QuoteCreateForm
+from django.http import HttpResponse, HttpResponseNotAllowed
+
+from est_client.models import Client, Company
+from est_client.forms import ClientCreateForm
+from est_quote.forms import ClientListForm
+
 
 @login_required
 def client_view(request):
@@ -26,3 +27,31 @@ def client_view(request):
         return HttpResponse()
     else:
         return HttpResponseNotAllowed(['POST'])
+
+
+@login_required
+def client_form_view(request):
+    if request.method == 'GET':
+        client_form = ClientCreateForm()
+        return HttpResponse(client_form.as_p())
+    else:
+        return HttpResponseNotAllowed(['GET'])
+
+
+@login_required
+def client_edit_form_view(request):
+    if request.method == 'GET':
+        client = Client.objects.get(id=request.GET['pk'])
+        client_form = ClientCreateForm(instance=client)
+        return HttpResponse(client_form.as_p())
+    else:
+        return HttpResponseNotAllowed(['GET'])
+
+
+@login_required
+def client_list_form_view(request):
+    if request.method == 'GET':
+        client_list_form = ClientListForm()
+        return HttpResponse(client_list_form.as_p())
+    else:
+        return HttpResponseNotAllowed(['GET'])

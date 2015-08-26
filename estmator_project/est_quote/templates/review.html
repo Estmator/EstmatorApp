@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+
+{% block extra_foot %}
+<script src="{% static './js/quote.js' %}"></script>
+{% endblock %}
+
+{% block header_text %}
+<span class="hidden-xs hidden-sm">
+Quote for {{ quote.client.first_name }} {{ quote.client.last_name }}
+</span>
+{% endblock %}
+
+{% block content %}
+<div id="review-container" class="container-fluid">
+    <h2>Summary</h2>
+
+    <div id="client-panel">
+    {% with qcc=quote.client.company %}
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ quote.client.first_name }} {{ quote.client.last_name }}</h3>
+            </div>
+            <div class="panel-body">
+                <div class="pull-left">
+                    <address>
+                    <p>{{ qcc.company_name }}</p>
+                    <p>{{ qcc.address }}</p>
+                    {% if qcc.address2 %}
+                    <p>{{ qcc.address2 }}</p>
+                    {% endif %}
+                    <p>{{ qcc.city }}, {{ qcc.state }} {{ qcc.postal }}</p>
+                    </address>
+                </div>
+                <div class="pull-right">
+                    <img src="{% static 'images/est_logo_symbol.png' %}" alt'user logo' class="img-responsive">
+                </div>
+            </div>
+
+        </div>
+
+    {% endwith %}
+    </div>
+
+    <div class='panel panel-default'>
+    {% with user=quote.user %}
+        <div class="panel-heading">
+            <h2 class="panel-title">{{ user.get_full_name|default:'Dedicated <span clas="unicode-logo">&asymp;</span> Employee' }}</h2>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-8">
+            <h3>Profile</h3>
+            <p>{{ user.profile.review_intro }}</p>
+            </div>
+            <div class="col-md-4">
+            <h3>Contact</h3>
+            <p>Cell Phone: {{ user.profile.cell }}</p>
+            <p>Desk Phone: {{ user.profile.desk }}</p>
+            </div>
+        </div>
+    {% endwith %}
+    </div>
+
+    <h2>Relocation Inventory:</h3>
+
+    {% for category, products in categories.iteritems %}
+    <div class='panel panel-default'>
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ category }}</h3>
+        </div>
+        <table class="table">
+        {% for p in products %}
+            <tr class="item-row">
+                <td>{{ p.name }}</td>
+                <td class="text-right">{{ p.count }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+
+    </div>
+    {% endfor %}
+
+    <h2>Totals</h3>
+
+    <div class='panel panel-default'>
+        <!-- <div class="panel-heading">
+            <h3 class="panel-title"></h3>
+        </div> -->
+        <table class="table">
+            <tr class="item-row">
+                <td>Total (minutes)</td>
+                <td class="text-right">{{ quote.grand_total }}</td>
+            </tr>
+            <tr class="item-row">
+            <td>Standard Rate (8 AM - 5 PM):</td>
+            <td class="text-right">${{ st|floatformat:2 }}</td>
+            </tr>
+            <tr class="item-row">
+            <td>Overtime Rate:</td>
+            <td class="text-right">${{ ot|floatformat:2 }}</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <h2>Signatures</h2>
+
+    <div class='panel panel-default'>
+        <div class="panel-heading clear-fix">
+            <div class="pull-right">
+                <strong>Quote Date:</strong> {{ quote.date }}
+            </div>
+            <div>
+                <strong class="panel-tit">Quote ID:</strong> 12345-67890
+            </div>
+
+        </div>
+        <table class="table">
+            <tr class="item-row">
+                <td class="col-md-6">estmator:</td>
+                <td class="col-md-6">client:</td>
+            </tr>
+        </table>
+
+    </div>
+
+</div><!-- /.container-fluid -->
+{% endblock %}
+
+{% block footer_right %}
+    {% if user.is_authenticated %}
+    <a href="{% url 'send_quote' quote.pk %}">
+        <button type="button" class="btn btn-default navbar-btn" id="send_btn">Send Email</button>
+    </a>
+    {% endif %}
+{% endblock %}
