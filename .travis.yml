@@ -1,20 +1,21 @@
 language: python
 
 notifications:
-  email:
+  email: false
     # change is when the repo status goes from pass to fail or vice versa
-    on_success: change
-    on_failure: always
+    # on_success: change
+    # on_failure: always
 
 # whitelist
 branches:
   only:
     - master
     - development
+    - test
 
 # blacklist
-  except:
-    - /^.*test.*$/
+  # except:
+  #   - /^.*test.*$/
 
 python:
   - "2.7"
