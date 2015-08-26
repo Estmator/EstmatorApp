@@ -32,7 +32,7 @@ class LiveServerSplinterAuthTest(LiveServerTestCase):
         self.product2 = ProductFactory(category=self.category1)
         self.product3 = ProductFactory(category=self.category2)
 
-        self.browser = Browser('chrome')
+        self.browser = Browser()
         self.login_helper(self.user1.username, 'secret')
 
     def tearDown(self):
