@@ -11,11 +11,10 @@ branches:
   only:
     - master
     - development
-    - test
 
 # blacklist
-  # except:
-  #   - /^.*test.*$/
+  except:
+    - /^.*test.*$/
 
 python:
   - "2.7"
