@@ -54,8 +54,7 @@ INSTALLED_APPS = (
     'registration',
     'bootstrap3',
     'rest_framework',
-    'localflavor',
-    # 'test_plus'
+    'localflavor'
 )
 
 
@@ -137,3 +136,19 @@ USE_TZ = os.environ.get('USE_TZ', True)
 
 # Login Behavior
 LOGIN_REDIRECT_URL = '/menu'
+
+BOOTSTRAP3 = {
+
+    # The URL to the jQuery JavaScript file
+    'jquery_url': '//code.jquery.com/jquery.min.js',
+
+    # The Bootstrap base URL
+    'base_url': '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/',
+
+    # The complete URL to the Bootstrap CSS file (None means no theme)
+    'theme_url': os.path.join(STATIC_URL, 'css', 'style.css'),
+
+    # Put JavaScript in the HEAD section of the HTML document (only relevant if you use bootstrap3.html)
+    'javascript_in_head': True,
+
+}

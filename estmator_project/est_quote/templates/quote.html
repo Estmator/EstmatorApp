@@ -1,7 +1,6 @@
 {% extends "base.html" %}
-{% load i18n %}
-{% load static from staticfiles %}
 
+{% load static from staticfiles %}
 
 {% block leftbutton %}
 <button type="button" class="navbar-toggle hidden-md hidden-lg" data-toggle="offcanvas" data-target=".reveal-left" data-disable-scrolling="false">
@@ -15,9 +14,6 @@
 <button type="button" class="navbar-toggle hidden-lg" data-toggle="offcanvas" data-target=".reveal-right" data-disable-scrolling="false">
     <span class="glyphicon glyphicon-option-horizontal white"></span>
 </button>
-{% endblock %}
-
-{% block nav_links %}
 {% endblock %}
 
 {% block header_text %}
