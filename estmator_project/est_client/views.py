@@ -94,7 +94,7 @@ def company_form_view(request):
 @login_required
 def company_edit_form_view(request):
     if request.method == 'GET':
-        company = Client.objects.get(id=request.GET['pk'])
+        company = Company.objects.get(id=request.GET['pk'])
         company_form = CompanyCreateForm(instance=company)
         return HttpResponse(company_form.as_p())
     else:

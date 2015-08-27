@@ -226,7 +226,7 @@
                 <h4 class="modal-title">Edit Company</h4>
             </div>
             <div class="modal-body text-center">
-                <form id="edit_client_form" action="{% url 'api_company' %}" method="post">{% csrf_token %}<!-- need to add -->
+                <form id="edit_company_form" action="{% url 'api_company' %}" method="post">{% csrf_token %}<!-- need to add -->
                     <div id="edit_company_form_list"></div>
                     <div id="edit_company_form_contents">{{ company_form }}</div>
                     <button type="submit" class="btn btn-default">Submit</button>
