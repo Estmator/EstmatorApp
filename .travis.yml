@@ -11,7 +11,6 @@ branches:
   only:
     - master
     - development
-    - test
 
 # blacklist
   except:
@@ -23,6 +22,11 @@ python:
 # Django versions to test against
 env:
   - DJANGO_VERSION=1.8.3 SECRET_KEY='sooper-s3cr3+-k3y' DEBUG='True'
+
+before_install:
+    - "export DISPLAY=:99.0"
+    - "sh -e /etc/init.d/xvfb start"
+    - sleep 3 # give xvfb some time to start
 
 install:
   - pip install -r requirements.txt

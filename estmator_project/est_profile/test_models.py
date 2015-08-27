@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
-from django.db.transaction import TransactionManagementError
 from django.test import TestCase
 
 from estmator_project.factories import UserFactory
@@ -38,20 +37,5 @@ class UserProfileTestCase(TestCase):
         user.save()
         self.assertTrue(user.is_active)
 
-    # def test_cell_phone_char_limit(self):
-    #     user = UserFactory.create()
-    #     profile = user.profile
-    #     with self.assertRaises(TransactionManagementError):
-    #         profile.cell = '12345678901234567890123567827957432'
-    #         profile.save()
-
-    # def test_desk_phone_char_limit(self):
-    #     user = UserFactory.create()
-    #     profile = user.profile
-    #     profile.desk = '1234567890123456789012356'
-    #     with self.assertRaises(DataError):
-    #         profile.save()
-
     def tearDown(self):
         User.objects.all().delete()
-
