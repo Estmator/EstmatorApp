@@ -1,5 +1,5 @@
 from django import forms
-from .models import Client
+from .models import Client, Company
 
 
 class ClientCreateForm(forms.ModelForm):
@@ -14,3 +14,25 @@ class ClientCreateForm(forms.ModelForm):
             'desk',
             'email'
         ]
+
+
+class CompanyCreateForm(forms.ModelForm):
+    class Meta:
+        model = Company
+        fields = [
+            'company_name',
+            'phone',
+            'address',
+            'address2',
+            'city',
+            'state',
+            'postal',
+            'st_rate',
+            'ot_rate'
+        ]
+
+
+class CompanyListForm(forms.ModelForm):
+    class Meta:
+        model = Client
+        fields = ['company']
