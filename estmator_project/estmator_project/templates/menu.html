@@ -90,6 +90,37 @@
             </script>
         </div><!-- end client column -->
         
+        <div class="col-md-3 col-xs-12 text-center">
+            <div class="form-group">
+                <button class="btn btn-lg btn-default btn-block" data-toggle="modal" data-target="#new_company">New Company</button>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-default btn-block" id="btn_edit_company">Edit Company</button>
+            </div>
+            <script>
+                //Edit Company Button
+                $('#btn_edit_company').click(function () {
+                    $.ajax({
+                        method: 'GET',
+                        url: "{% url 'company_list_form' %}" // need to add
+                    }).done(function(response) {
+                        $('#edit_company_form_list').html(response).find('select').change(function (e) {
+                            var companyID = e.target.value;
+                            $.ajax({
+                                method: 'GET',
+                                url: "{% url 'company_edit_form' %}",
+                                data: {pk: companyID}
+                            }).done(function (response) {
+                               $('#edit_company_form_contents').html(response);
+                            });
+                        });
+                        $('#edit_company_form_contents :input').attr('disabled', true);
+                        $('#edit_company').modal('toggle');
+                    });
+                });
+            </script>
+        </div><!-- end company column -->
+        
     </div><!-- end row -->
 
 </div> <!-- /container -->
@@ -160,6 +191,44 @@
                 <form id="edit_client_form" action="{% url 'api_client' %}" method="post">{% csrf_token %}
                     <div id="edit_client_form_list"></div>
                     <div id="edit_client_form_contents">{{ client_form }}</div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Company modals follow -->
+<div class="modal fade" id="new_company" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">New Company</h4>
+            </div>
+            <div class="modal-body text-center">
+                <form id="new_company_form" action="{% url 'api_company' %}" method="post">{% csrf_token %}<!-- need to add route -->
+                    {{ company_form }}
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit_company" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Edit Company</h4>
+            </div>
+            <div class="modal-body text-center">
+                <form id="edit_client_form" action="{% url 'api_company' %}" method="post">{% csrf_token %}<!-- need to add -->
+                    <div id="edit_company_form_list"></div>
+                    <div id="edit_company_form_contents">{{ company_form }}</div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
             </div>
