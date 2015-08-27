@@ -21,7 +21,7 @@ urlpatterns = [
         views.client_list_form_view,
         name='client_list_form'
     ),
-    url(r'^$', views.company_view, name='api_company'),
+    url(r'^company/$', views.company_view, name='api_company'),
     url(
         r'^company/form$',
         views.company_form_view,

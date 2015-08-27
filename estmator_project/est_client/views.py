@@ -66,7 +66,7 @@ def company_view(request):
         else:
             company = Company()
 
-        company.company_name = request.POST['first_name']
+        company.company_name = request.POST['company_name']
         company.phone = request.POST['phone']
         company.address = request.POST['address']
         company.address2 = request.POST['address2']
