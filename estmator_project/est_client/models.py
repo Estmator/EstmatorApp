@@ -61,7 +61,7 @@ class Client(models.Model):
         quotes = self.quotes.all()
         quote_form = '<p>\n' \
                      '<label for="id_quote">Quote:</label>' \
-                     '<select id="id_quote" name="quote">\n' \
+                     '<select id="id_quote" name="quote" required>\n' \
                      '<option value selected="selected">---------</option>\n'
         for quote in quotes:
             quote_form += (
