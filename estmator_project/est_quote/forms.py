@@ -1,20 +1,27 @@
-from django import forms
+from django.forms import ModelForm, Select, TextInput
 from .models import Quote
 
 
-class QuoteCreateForm(forms.ModelForm):
+class QuoteCreateForm(ModelForm):
     class Meta:
         model = Quote
         fields = ['client', 'name']
+        widgets = {
+            'client': Select(attrs={'required': True}),
+            'name': TextInput(attrs={'required': True})
+        }
 
 
-class ClientListForm(forms.ModelForm):
+class ClientListForm(ModelForm):
     class Meta:
         model = Quote
         fields = ['client']
+        widgets = {
+            'client': Select(attrs={'required': True}),
+        }
 
 
-class QuoteOptionsForm(forms.ModelForm):
+class QuoteOptionsForm(ModelForm):
     class Meta:
         model = Quote
         fields = ['travel_time',

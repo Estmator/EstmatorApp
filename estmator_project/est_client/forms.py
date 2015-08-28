@@ -1,8 +1,8 @@
-from django import forms
-from .models import Client
+from django.forms import ModelForm, Select
+from .models import Client, Company
 
 
-class ClientCreateForm(forms.ModelForm):
+class ClientCreateForm(ModelForm):
     class Meta:
         model = Client
         fields = [
@@ -14,3 +14,31 @@ class ClientCreateForm(forms.ModelForm):
             'desk',
             'email'
         ]
+        widgets = {
+            'company': Select(attrs={'required': True}),
+        }
+
+
+class CompanyCreateForm(ModelForm):
+    class Meta:
+        model = Company
+        fields = [
+            'company_name',
+            'phone',
+            'address',
+            'address2',
+            'city',
+            'state',
+            'postal',
+            'st_rate',
+            'ot_rate'
+        ]
+        widgets = {
+            'company_name': Select(attrs={'required': True}),
+        }
+
+
+class CompanyListForm(ModelForm):
+    class Meta:
+        model = Client
+        fields = ['company']
