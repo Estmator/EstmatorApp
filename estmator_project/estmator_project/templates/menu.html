@@ -25,10 +25,10 @@
                 $('#btn_new_quote').click(function () {
                     $.ajax({
                         method: 'GET',
-                        url: "{% url 'client_form' %}"
+                        url: "{% url 'quote_form' %}"
                     }).done(function(response) {
-                        $('#new_client_form').html(response);
-                        $('#new_client').modal('toggle');
+                        $('#new_quote_form').html(response);
+                        $('#new_quote').modal('toggle');
                     });
                 });
             </script>
