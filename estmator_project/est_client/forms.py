@@ -1,4 +1,4 @@
-from django.forms import ModelForm, Select
+from django.forms import ModelForm, Select, TextInput
 from .models import Client, Company
 
 
@@ -34,7 +34,7 @@ class CompanyCreateForm(ModelForm):
             'ot_rate'
         ]
         widgets = {
-            'company_name': Select(attrs={'required': True}),
+            'company_name': TextInput(attrs={'required': True}),
         }
 
 
