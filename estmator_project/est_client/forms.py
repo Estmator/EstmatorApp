@@ -16,6 +16,11 @@ class ClientCreateForm(ModelForm):
         ]
         widgets = {
             'company': Select(attrs={'required': True}),
+            'first_name': TextInput(attrs={'required': True}),
+            'last_name': TextInput(attrs={'required': True}),
+            'title': TextInput(attrs={'required': True}),
+            'cell': TextInput(attrs={'required': True}),
+            'email': TextInput(attrs={'required': True}),
         }
 
 
@@ -35,6 +40,10 @@ class CompanyCreateForm(ModelForm):
         ]
         widgets = {
             'company_name': TextInput(attrs={'required': True}),
+            'phone': TextInput(attrs={'required': True}),
+            'address': TextInput(attrs={'required': True}),
+            'city': TextInput(attrs={'required': True}),
+            'postal': TextInput(attrs={'required': True}),
         }
 
 
