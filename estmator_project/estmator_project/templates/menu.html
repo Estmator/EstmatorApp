@@ -70,7 +70,7 @@
                         method: 'GET',
                         url: "{% url 'client_form' %}"
                     }).done(function(response) {
-                        $('#new_client_form').html(response);
+                        $('#new_client_form_contents').html(response);
                         $('#new_client').modal('toggle');
                     });
                 });
@@ -182,8 +182,8 @@
                 <h4 class="modal-title">New Client</h4>
             </div>
             <div class="modal-body text-center">
-                <form action="{% url 'api_client' %}" method="post">{% csrf_token %}
-                    <div id="new_client_form"></div>
+                <form id="new_client_form" action="{% url 'api_client' %}" method="post">{% csrf_token %}
+                    <div id="new_client_form_contents"></div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
             </div>
