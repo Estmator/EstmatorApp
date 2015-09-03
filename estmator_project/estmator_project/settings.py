@@ -154,7 +154,7 @@ BOOTSTRAP3 = {
     'base_url': '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/',
 
     # The complete URL to the Bootstrap CSS file (None means no theme)
-    'theme_url': os.path.join(STATIC_URL, 'css', 'style.css'),
+    # 'theme_url': os.path.join(STATIC_URL, 'css', 'style.css'),
 
     # Put JavaScript in the HEAD section of the HTML document (only relevant if you use bootstrap3.html)
     'javascript_in_head': True,
