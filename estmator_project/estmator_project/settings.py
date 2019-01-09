@@ -40,7 +40,7 @@ STATICFILES_DIRS = (
 SECRET_KEY = os.environ.get('SECRET_KEY', None)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', False)
+DEBUG = os.environ.get('DEBUG') == 'True'
 TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split()
@@ -68,23 +68,30 @@ INSTALLED_APPS = (
 
 # email settings
 SITE_ID = 1
-EMAIL_BACKEND = os.environ.get(
-    'EMAIL_BACKEND',
-    'django.core.mail.backends.console.EmailBackend'
-)
-EMAIL_HOST = os.environ.get('EMAIL_HOST', None)
-EMAIL_PORT = os.environ.get('EMAIL_PORT', None)
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', None)
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', None)
-EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', None)
-EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', None)
-EMAIL_TIMEOUT = os.environ.get('EMAIL_TIMEOUT', None)
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-USE_HTML_TEMPLATES = os.environ.get('USE_HTML_TEMPLATES', True)
+if DEBUG:
+    EMAIL_BACKEND = os.environ.get(
+        'EMAIL_BACKEND',
+        'django.core.mail.backends.console.EmailBackend'
+    )
+else:
+    EMAIL_BACKEND = os.environ.get(
+        'EMAIL_BACKEND',
+        'django.core.mail.backends.console.EmailBackend'
+    )
+    EMAIL_HOST = os.environ.get('EMAIL_HOST', None)
+    EMAIL_PORT = os.environ.get('EMAIL_PORT', None)
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', None)
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', None)
+    EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', None)
+    EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', None)
+    EMAIL_TIMEOUT = os.environ.get('EMAIL_TIMEOUT', None)
+    DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+    USE_HTML_TEMPLATES = os.environ.get('USE_HTML_TEMPLATES', True)
 
 # registration settings
+    REGISTRATION_EMAIL_HTML = USE_HTML_TEMPLATES
+
 ACCOUNT_ACTIVATION_DAYS = 7
-REGISTRATION_EMAIL_HTML = USE_HTML_TEMPLATES
 LOGIN_REDIRECT_URL = '/menu/'
 
 
@@ -128,10 +135,22 @@ WSGI_APPLICATION = 'estmator_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-DATABASES = {'default': dj_database_url.config(
-    default='postgres://localhost:5432/estmator'
-    )
-}
+if 'RDS_DB_NAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+        }
+    }
+else:
+    DATABASES = {'default': dj_database_url.config(
+        default='postgres://localhost:5432/postgres'
+        )
+    }
 
 
 # Internationalization
