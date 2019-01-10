@@ -2,110 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="408c3ea1-0233-48ed-83bc-10a564e63d17" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/estmator_project/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_api/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_api/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_api/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_api/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_api/migrations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_api/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_client/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_client/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_client/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_client/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_client/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_client/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_client/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_client/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_client/migrations/0002_auto_20150812_0239.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_client/migrations/0002_auto_20150812_0239.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_client/migrations/0003_auto_20150812_1532.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_client/migrations/0003_auto_20150812_1532.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_client/migrations/0004_auto_20150812_1534.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_client/migrations/0004_auto_20150812_1534.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_client/migrations/0005_auto_20150812_1748.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_client/migrations/0005_auto_20150812_1748.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_client/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_client/migrations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_client/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_client/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_client/test_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_client/test_models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_client/test_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_client/test_views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_client/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_client/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_client/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_client/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_profile/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_profile/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_profile/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_profile/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_profile/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_profile/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_profile/handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_profile/handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_profile/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_profile/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_profile/migrations/0002_userprofile_review_intro.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_profile/migrations/0002_userprofile_review_intro.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_profile/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_profile/migrations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_profile/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_profile/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_profile/test_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_profile/test_models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_profile/test_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_profile/test_views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_profile/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_profile/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_profile/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_profile/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/migrations/0002_auto_20150811_2326.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/migrations/0002_auto_20150811_2326.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/migrations/0002_auto_20150812_1825.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/migrations/0002_auto_20150812_1825.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/migrations/0003_merge.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/migrations/0003_merge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/migrations/0003_quotemodifiers_logo.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/migrations/0003_quotemodifiers_logo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/migrations/0004_merge.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/migrations/0004_merge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/migrations/0005_quote_token.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/migrations/0005_quote_token.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/migrations/0006_auto_20150812_2106.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/migrations/0006_auto_20150812_2106.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/migrations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/templates/email_quote_link.html" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/templates/email_quote_link.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/templates/email_quote_link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/templates/email_quote_link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/templates/quote.html" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/templates/quote.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/templates/review.html" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/templates/review.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/test_forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/test_forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/test_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/test_models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/test_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/test_views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/est_quote/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/est_quote/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/factories.py" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/factories.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/css/jquery.bootstrap-touchspin.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/css/navmenu-reveal.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/images/calc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/images/close.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/images/est_logo_symbol.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/images/est_pics/andrew.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/images/est_pics/jim.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/images/est_pics/jonathan.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/images/est_pics/scott.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/images/furniture.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/images/gh.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/images/icons/apple-icon-57x57_360.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/images/icons/apple-icon-60x60.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/images/icons/apple-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/images/icons/favicon-16x16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/images/icons/favicon-32x32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/images/li.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/images/quote.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/js/jquery.bootstrap-touchspin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/js/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/js/menu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/static/js/quote.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/templates/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/templates/bootstrap.html" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/templates/bootstrap.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/templates/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/templates/menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/templates/registration/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/templates/registration/logout.html" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/templates/registration/logout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/templates/registration/password_change_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/templates/registration/password_change_done.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/templates/registration/password_change_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/templates/registration/password_change_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/templates/registration/password_reset_complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/templates/registration/password_reset_complete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/templates/registration/password_reset_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/templates/registration/password_reset_confirm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/templates/registration/password_reset_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/templates/registration/password_reset_done.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/templates/registration/password_reset_email.html" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/templates/registration/password_reset_email.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/templates/registration/password_reset_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/templates/registration/password_reset_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/templates/registration/registration_base.html" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/templates/registration/registration_base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/test_functional.py" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/test_functional.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/test_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/test_views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/estmator_project/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/photo_files/2015-08-12/est_logo_symbol.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/photo_files/2015-08-12/est_logo_symbol.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estmator_project/static/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/static/.gitkeep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/estmator_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/estmator_project/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -127,23 +24,23 @@
         <counts>
           <entry key="Pipfile" value="1" />
           <entry key="config" value="4" />
-          <entry key="env" value="2" />
+          <entry key="env" value="3" />
           <entry key="gitignore" value="1" />
           <entry key="jpg" value="1" />
           <entry key="md" value="1" />
-          <entry key="py" value="9" />
+          <entry key="py" value="11" />
           <entry key="txt" value="4" />
           <entry key="yml" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key=".env file" value="2" />
+          <entry key=".env file" value="3" />
           <entry key="Git file" value="1" />
           <entry key="Image" value="1" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="8" />
-          <entry key="Python" value="9" />
+          <entry key="Python" value="11" />
           <entry key="TOML file" value="1" />
           <entry key="YAML" value="8" />
         </counts>
@@ -152,7 +49,7 @@
         <counts>
           <entry key="config" value="138" />
           <entry key="env" value="8" />
-          <entry key="py" value="163" />
+          <entry key="py" value="198" />
           <entry key="yml" value="29" />
         </counts>
       </usages-collector>
@@ -160,14 +57,24 @@
         <counts>
           <entry key=".env file" value="8" />
           <entry key="PLAIN_TEXT" value="138" />
-          <entry key="Python" value="163" />
+          <entry key="Python" value="198" />
           <entry key="YAML" value="29" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/estmator_project/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="460">
+              <caret line="47" column="105" lean-forward="true" selection-start-line="47" selection-start-column="105" selection-end-line="47" selection-end-column="105" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -184,6 +91,7 @@
         <option value="$PROJECT_DIR$/estmator_project/est_quote/urls.py" />
         <option value="$PROJECT_DIR$/estmator_project/estmator_project/settings.py" />
         <option value="$PROJECT_DIR$/.ebextensions/django.config" />
+        <option value="$PROJECT_DIR$/estmator_project/settings.py" />
       </list>
     </option>
   </component>
@@ -211,6 +119,11 @@
             <path>
               <item name="EstmatorApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="EstmatorApp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EstmatorApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EstmatorApp" type="462c0819:PsiDirectoryNode" />
+              <item name="estmator_project" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -257,6 +170,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1680" y="0" width="1920" height="1080" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22257721" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -321,13 +235,6 @@
     <entry file="file://$PROJECT_DIR$/logo/est_logo.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="29" lean-forward="true" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/estmator_project/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -377,13 +284,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/estmator_project/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="147" column="5" selection-start-line="147" selection-start-column="5" selection-end-line="147" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.elasticbeanstalk/config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -393,6 +293,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tmp/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/est_quote/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-759" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="14" lean-forward="true" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estmator_project/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="47" column="105" lean-forward="true" selection-start-line="47" selection-start-column="105" selection-end-line="47" selection-end-column="105" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
