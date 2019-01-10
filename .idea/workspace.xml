@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="408c3ea1-0233-48ed-83bc-10a564e63d17" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.ebextensions/django.config" beforeDir="false" afterPath="$PROJECT_DIR$/.ebextensions/django.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +26,8 @@
           <entry key="Pipfile" value="1" />
           <entry key="config" value="5" />
           <entry key="env" value="3" />
-          <entry key="gitignore" value="1" />
+          <entry key="gitignore" value="4" />
+          <entry key="gitkeep" value="1" />
           <entry key="jpg" value="1" />
           <entry key="md" value="1" />
           <entry key="py" value="11" />
@@ -36,10 +38,10 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="3" />
-          <entry key="Git file" value="1" />
+          <entry key="Git file" value="4" />
           <entry key="Image" value="1" />
           <entry key="Markdown" value="1" />
-          <entry key="PLAIN_TEXT" value="9" />
+          <entry key="PLAIN_TEXT" value="10" />
           <entry key="Python" value="11" />
           <entry key="TOML file" value="1" />
           <entry key="YAML" value="10" />
@@ -49,6 +51,7 @@
         <counts>
           <entry key="config" value="138" />
           <entry key="env" value="8" />
+          <entry key="gitignore" value="1" />
           <entry key="py" value="198" />
           <entry key="yml" value="29" />
         </counts>
@@ -56,6 +59,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="8" />
+          <entry key="Git file" value="1" />
           <entry key="PLAIN_TEXT" value="138" />
           <entry key="Python" value="198" />
           <entry key="YAML" value="29" />
@@ -65,20 +69,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.elasticbeanstalk/config.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.ebextensions/django.config">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+            <state relative-caret-position="18">
+              <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -101,6 +96,7 @@
         <option value="$PROJECT_DIR$/estmator_project/estmator_project/settings.py" />
         <option value="$PROJECT_DIR$/estmator_project/settings.py" />
         <option value="$PROJECT_DIR$/.ebextensions/django.config" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -138,6 +134,11 @@
               <item name="EstmatorApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="EstmatorApp" type="462c0819:PsiDirectoryNode" />
               <item name=".elasticbeanstalk" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EstmatorApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EstmatorApp" type="462c0819:PsiDirectoryNode" />
+              <item name="estmator_project" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -313,17 +314,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.elasticbeanstalk/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/estmator_project/static/.gitkeep">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.ebextensions/django.config">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.elasticbeanstalk/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
         </state>
       </provider>
     </entry>

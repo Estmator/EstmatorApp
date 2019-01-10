@@ -1,0 +1,270 @@
+/* Base Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+html {
+    overflow-x: hidden;
+}
+
+body {
+    height: 100%;
+}
+
+#tagline {
+    text-align: center;
+    float: none;
+}
+
+#content {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Positioning
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.pad_top {
+    padding-top: 50px;
+}
+
+.pad_bottom {
+    padding-bottom: 66px;
+}
+
+@media (min-width: 767px) {
+    .pad_bottom {
+        padding-bottom: 50px;
+    }
+}
+
+.pad_top_75 {
+    padding-top: 75px;
+}
+
+.pad_bottom_75 {
+    padding-bottom: 75px;
+}
+
+.margin_top_50 {
+    margin-top: 50px;
+}
+
+.margin_bottom_50 {
+    margin-bottom: 50px;
+}
+
+
+
+/* Nav
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.navmenu {
+    width: 180px;
+}
+
+@media (min-width: 992px) {
+    .navmenu {
+        width: 200px;
+    }
+}
+
+#left_menu_btn {
+    display: block;
+}
+
+@media (min-width: 767px) {
+    #left_menu_btn {
+        display: none !important;
+    }
+}
+
+#navbar-header {
+    font-size: 2em;
+}
+
+#logo_image {
+    padding: 15px 5px 15px 15px;
+}
+
+/* Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.bgcol {
+    background-color: #444444;
+}
+
+.gray {
+    background-color: lightgray;
+}
+
+.white, .white a {
+    color: white;
+}
+
+.hilite_color {
+    color: #f68620;
+}
+
+/* Index page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media (max-width: 992px) {
+    .home_hero_icons {
+        display: none;  
+    }
+    .home_hero_links {
+        display: inherit;
+    }
+}
+
+@media (min-width: 993px) {
+    .home_hero_links {
+        display: none;
+    }
+}
+
+
+.home_hero_sections {
+    padding: 5%;
+}
+
+#section_quote {
+    background-color: lightgray;
+}
+
+.index_jumbo {
+    margin: 2rem;
+    background-color:rgba(0,0,0,0.65);
+    color: white;
+}
+
+.jumbotron {
+    padding: 1rem 2rem;
+}
+
+.tag_logo {
+    max-width: 10%;
+}
+
+a.tag_link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.tag_line {
+    font-size: x-large;
+    white-space:nowrap;
+    overflow:hidden;
+    max-width: 100%;
+}
+
+.index_header {
+    text-align: center;
+}
+
+.header_splash {
+    background-image: url('../images/furniture.jpg')
+}
+
+main.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+a.lrn_more {
+    background-color: rgba(0, 0, 0, .5);
+    border-style: none;
+    color: #f68620;
+}
+
+a.lrn_more:hover {
+    color: rgba(0,0,0,.5);
+    background-color: #f68620;
+}
+
+/* Main Menu
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+#est-menu {
+    padding-top: 100px;
+}
+
+
+
+/* Quote Page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media (min-width: 992px) {
+    #quote-totals-container {
+        position: fixed;
+    }
+}
+
+/*keeps spinner inputs under the reveal menus*/
+.input-group .form-control, .input-group-btn:last-child>.btn {
+    z-index: 0;
+}
+
+#calculate_btn {
+    position: absolute;
+    left: 2rem;
+}
+
+#tagline {
+    position: absolute;
+    left: 35%;
+    right: 35%;
+}
+
+
+@media (max-width: 400px) {
+    #tagline {
+        display: none;
+    }
+}
+
+#review_btn {
+    position: absolute;
+    right: 2rem;
+}
+
+
+/* About page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+img.media-object.img-circle {
+    max-width: 5rem;
+}
+
+img.gh_img {
+    max-width: 2rem;
+}
+
+img.logo {
+    max-width: 7rem;
+}
+
+.ul_foot {
+    font-weight: bolder;
+    text-decoration: underline;
+    color: #f68620;
+    font-size: large;
+}
+
+
+/* Review page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+#review-container {
+    max-width:960px;
+}
+
+#client-panel img {
+    max-height: 9em;
+}
+
+.unicode-label {
+    color:#f68620;;
+}
+
+#send_btn {
+    position: absolute;
+    right: 2rem;
+}
+
+/* Registration pages
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.reg_form {
+    padding: 10rem;
+}
