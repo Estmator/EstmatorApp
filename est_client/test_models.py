@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 from django.test import TestCase
 from est_client.models import Client, Company
-from estmator_project.factories import ClientFactory, CompanyFactory
+from tmp.factories import ClientFactory, CompanyFactory
 
 
 class TestCompanyModel(TestCase):

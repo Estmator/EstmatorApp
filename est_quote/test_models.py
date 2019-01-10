@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 from django.test import TestCase
 from est_quote.models import Category, Product, Quote
-from estmator_project.factories import (
+from tmp.factories import (
     CategoryFactory, ProductFactory, QuoteFactory)
 
 

@@ -1,7 +1,7 @@
 from django.test import TestCase, Client
 from django.core.urlresolvers import reverse
 from . import models
-from estmator_project.factories import (
+from tmp.factories import (
     UserFactory, ClientFactory, CompanyFactory, CategoryFactory,
     ProductFactory, QuoteFactory, QuoteModsFactory
 )
